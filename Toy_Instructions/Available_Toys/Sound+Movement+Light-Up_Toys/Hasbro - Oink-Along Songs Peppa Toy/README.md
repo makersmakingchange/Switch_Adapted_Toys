@@ -41,10 +41,10 @@ Reference the [Assembly Guide](/Documentation/Peppa_Pig_Assembly_Guide_v1.0.pdf)
 ### Documentation
 | Document             | Version | Link |
 |----------------------|---------|------|
-| Design Rationale     | 1.0     | [Peppa_Pig_Design_Rationale](/Documentation/Peppa_Pig_Design_Rationale_v1.0.pdf)     |
+| Design Rationale     | 1.0     | [Peppa Pig Design Rationale](https://github.com/makersmakingchange/Adapted-Toys/blob/bc86300f3b0eae2811bf68a4ef74ecb4e4579407/Toy_Instructions/Available_Toys/Sound%2BMovement%2BLight-Up_Toys/Hasbro%20-%20Oink-Along%20Songs%20Peppa%20Toy/Peppa_Pig_Design_Rationale_v1.0.pdf)     |
 | Maker Checklist      | 1.0     | [Peppa_Pig_Maker_Checklist](/Documentation/Peppa_Pig_Maker_Checklist_v1.0.pdf)     |
 | Bill of Materials    | 1.0     | [Peppa_Pig_Bill_of_Materials](/Documentation/Peppa_Pig_BOM_v1.0.xlsx)     |
-| Assembly Guide       | 1.0     | [Peppa_Pig_Assembly_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/9d625e8b73419c6701886cfb9ad90c898146936d/Toy_Instructions/Available_Toys/Sound%2BMovement%2BLight-Up_Toys/Hasbro%20-%20Oink-Along%20Songs%20Peppa%20Toy/Peppa_Pig_Assembly_Guide_v1.0.pdf)     |
+| Assembly Guide       | 1.0     | [Peppa Pig Assembly Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/9d625e8b73419c6701886cfb9ad90c898146936d/Toy_Instructions/Available_Toys/Sound%2BMovement%2BLight-Up_Toys/Hasbro%20-%20Oink-Along%20Songs%20Peppa%20Toy/Peppa_Pig_Assembly_Guide_v1.0.pdf)     |
 | User Guide           | 1.0     | [Peppa_Pig_User_Guide](/Documentation/Peppa_Pig_User_Guide_v1.0.pdf)    |
 | Changelog            | 1.0     | [Peppa_Pig_Changelog](/Documentation/Peppa_Pig_Changelog_v1.0.pdf)     |
 
