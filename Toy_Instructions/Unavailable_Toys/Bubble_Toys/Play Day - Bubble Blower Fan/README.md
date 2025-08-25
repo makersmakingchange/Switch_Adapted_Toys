@@ -3,7 +3,8 @@ The Switch Adapted Bubble Blower Fan is a commercial toy modified for use with a
 
 Attach an assistive switch with a 3.5 mm plug to the 3.5 mm jack on the toy. When the assistive switch is activated, the toy will generate bubbles. 
 
-<img src="Photos/SwitchAdaptedBubbleBlowerFan.jpg" width="500" alt="Picture of Bubble Blower Fan with a connected assistive switch.">
+<img width="658" height="793" alt="image" src="https://github.com/user-attachments/assets/c9e456b8-67e1-4f24-9a6f-59f57aff74f2" />
+
 
 ## More info at
 - [Makers Making Change Project Page](https://makersmakingchange.com/project/switch-adapted-bubble-blower-fan/)
