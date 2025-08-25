@@ -7,7 +7,8 @@
 The Switch Adapted Whale Bubble Blower is an adapted “Balnore Bubble Machine” that can be activated with a 3.5mm switch. This adaptation is intended for users who have difficulty activating the button on the side of the bubble machine.
 
 <!--- PHOTO --->
-![The switch adapted whale bubble blower with an MMC60 assistive switch.](Photos/Bubble_blower_and_switch.jpeg)
+<img width="3339" height="2160" alt="image" src="https://github.com/user-attachments/assets/b2eca35a-e7e8-45de-8d2d-bbb95873b459" />
+
 
 ## More info at
  - [Makers Making Change Project Page]([https://makersmakingchange.com/project/switch-adapted-whale-bubble-blower/](https://www.makersmakingchange.com/s/product/whale-bubble-blower/01tJR0000008XObYAM))
