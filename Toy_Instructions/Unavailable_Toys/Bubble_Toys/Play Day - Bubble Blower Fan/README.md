@@ -48,7 +48,7 @@ Reference the [Assembly Guide](https://github.com/makersmakingchange/Adapted-Toy
 | Bill of Materials    | 1.0     | [BubbleBlowerFan_Bill_of_Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/fbb5f4c7a2e73e375d4c18f5000931a1d9781dcc/Toy_Instructions/Unavailable_Toys/Bubble_Toys/Play%20Day%20-%20Bubble%20Blower%20Fan/BubbleBlowerFan_BOM_v1.0.csv)     |
 | Assembly Guide       | 1.0     | [BubbleBlowerFan_Assembly_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/e83be27dd523403fe3f2d48fcf537f965dd8a77c/Toy_Instructions/Unavailable_Toys/Bubble_Toys/Play%20Day%20-%20Bubble%20Blower%20Fan/BubbleBlowerFan_Assembly_Guide_v1.0.pdf)     |
 | User Guide           | 1.0     | [BubbleBlowerFan_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/9f7d46c8b9c26929b344122a5c9de41f57da8927/Toy_Instructions/Unavailable_Toys/Bubble_Toys/Play%20Day%20-%20Bubble%20Blower%20Fan/BubbleBlowerFan_User_Guide_v1.0.pdf)    |
-| Changelog            | 1.0     | [BubbleBlowerFan_Changelog](/Documentation/BubbleBlowerFan_Changelog_v1.0.pdf)     |
+| Changelog            | 1.0     | [BubbleBlowerFan_Changelog](https://github.com/makersmakingchange/Adapted-Toys/blob/92c5e40573ba7fc84c9a5953a3d8f33fe10cbd0a/Toy_Instructions/Unavailable_Toys/Bubble_Toys/Play%20Day%20-%20Bubble%20Blower%20Fan/BubbleBlowerFan_Changelog_v1.0.pdf)    |
 
 
 ## Attribution
