@@ -51,11 +51,6 @@ Reference the [Assembly Guide](/Documentation/BubbleBlowerFan_Assembly_Guide_v1.
 | User Guide           | 1.0     | [BubbleBlowerFan_User_Guide](/Documentation/BubbleBlowerFan_User_Guide_v1.0.pdf)    |
 | Changelog            | 1.0     | [BubbleBlowerFan_Changelog](/Documentation/BubbleBlowerFan_Changelog_v1.0.pdf)     |
 
-### Design Files
-[CAD Files](/Design_Files)
-
-### Build Files
- - [3D Printing Files](/Build_Files/3D_Printing)
 
 ## Attribution
 Modification method and documentation created by Neil Squire / Makers Making Change.
