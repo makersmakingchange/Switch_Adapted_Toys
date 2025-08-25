@@ -33,7 +33,7 @@ The Makers Checklist provides an outline of all the steps required to create the
 
 ### 2. Order the Off-The-Shelf Components
 
-The [Bill of Materials](/Documentation/BubbleBlowerFan_BOM.xlsx) lists all of the parts and components required to build the device.
+The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/fbb5f4c7a2e73e375d4c18f5000931a1d9781dcc/Toy_Instructions/Unavailable_Toys/Bubble_Toys/Play%20Day%20-%20Bubble%20Blower%20Fan/BubbleBlowerFan_BOM_v1.0.csv) lists all of the parts and components required to build the device.
 
 ### 3. Assemble the Switch Adapted Bubble Blower Fan
 
@@ -45,7 +45,7 @@ Reference the [Assembly Guide](/Documentation/BubbleBlowerFan_Assembly_Guide_v1.
 |----------------------|---------|------|
 | Design Rationale     | 1.0     | [BubbleBlowerFan_Design_Rationale](/Documentation/BubbleBlowerFan_Design_Rationale_v1.0.pdf)     |
 | Maker Checklist      | 1.0     | [BubbleBlowerFan_Maker_Checklist](/Documentation/BubbleBlowerFan_Maker_Checklist_v1.0.pdf)     |
-| Bill of Materials    | 1.0     | [BubbleBlowerFan_Bill_of_Materials](/Documentation/BubbleBlowerFan_BOM_v1.0.xlsx)     |
+| Bill of Materials    | 1.0     | [BubbleBlowerFan_Bill_of_Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/fbb5f4c7a2e73e375d4c18f5000931a1d9781dcc/Toy_Instructions/Unavailable_Toys/Bubble_Toys/Play%20Day%20-%20Bubble%20Blower%20Fan/BubbleBlowerFan_BOM_v1.0.csv)     |
 | 3D Printing Guide    | 1.0     | [BubbleBlowerFan_3D_Printing_Guide](/Documentation/BubbleBlowerFan_3D_Printing_Guide_v1.0.pdf)     |
 | Assembly Guide       | 1.0     | [BubbleBlowerFan_Assembly_Guide](/Documentation/BubbleBlowerFan_Assembly_Guide_v1.0.pdf)     |
 | User Guide           | 1.0     | [BubbleBlowerFan_User_Guide](/Documentation/BubbleBlowerFan_User_Guide_v1.0.pdf)    |
