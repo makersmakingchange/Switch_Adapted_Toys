@@ -32,7 +32,7 @@ Reference the [maker guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v1.0.pd
 |----------|---------|------|
 | Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](https://github.com/makersmakingchange/Adapted-Toys/blob/477ff71a4ea30cbb1452e3a420bfe5437dfe0722/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Design_Rationale_v1.0.pdf)  |
 | Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/4ab061e8bf229d7f69e0603fce10f2122cff193a/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) |
-| Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v0.1.pdf)](https://github.com/makersmakingchange/Adapted-Toys/blob/99dce7b7222f1ad9947b0cb0cf6b98a173f78a60/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) |
+| Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/99dce7b7222f1ad9947b0cb0cf6b98a173f78a60/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) |
 | User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](/Documentation/WhaleBubbleBlower_User_Guide_v0.1.pdf)           |
 | Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](/Documentation/WhaleBubbleBlower_Changelog_v0.1.pdf)               |
 
