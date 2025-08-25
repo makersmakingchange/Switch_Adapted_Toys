@@ -34,7 +34,7 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 | Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/4ab061e8bf229d7f69e0603fce10f2122cff193a/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) |
 | Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/99dce7b7222f1ad9947b0cb0cf6b98a173f78a60/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) |
 | User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/b7809231ccf7f39f1e51af9261299f69c06d14bd/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_User_Guide_v1.0.pdf)           |
-| Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](/Documentation/WhaleBubbleBlower_Changelog_v0.1.pdf)               |
+| Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](https://github.com/makersmakingchange/Adapted-Toys/blob/c8ef1757a3e05e2db554999f5a3bf00b96bb0c6b/Toy_Instructions/Available_Toys/Bubble_Toys/Working%20Documents/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Changelog.docx)               |
 
 ## License
 <!--- LICENSE  Choose an appropriate license. We recommend an open-source hardware compatible license. --->
