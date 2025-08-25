@@ -1,7 +1,9 @@
 # Switch Adapted Peppa Pig Toy
 The Switch Adapted Peppa Pig Toy is a switch adapted plush Peppa Pig toy that makes noises and sings songs when the switch is activated. 
 
-<img align="center" width="500" src="https://github.com/makersmakingchange/switch-adapted-peppa-pig-toy/blob/7c03538f8719ce9216d22b65e7ad89e69738c145/Photos/switch-adapted-peppa-pig-toy.jpg" alt="Picture of a switch adapted plush Peppa Pig toy.">
+<p align="center">
+ <img width="500" src="https://github.com/makersmakingchange/switch-adapted-peppa-pig-toy/blob/7c03538f8719ce9216d22b65e7ad89e69738c145/Photos/switch-adapted-peppa-  pig-toy.jpg" alt="Picture of a switch adapted plush Peppa Pig toy.">
+</p>
 
 ## More info at
 - [Makers Making Change Project Page](https://makersmakingchange.com/project/switch-adapted-peppa-pig-toy/)
