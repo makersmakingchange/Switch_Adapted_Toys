@@ -4,11 +4,36 @@
 # Switch Adapted Whale Bubble Blower
 
 <!--- SUMMARY A brief summary of the project. What it does, who it is for, how much it costs.  --->
-The Whale Bubble Blower from Walmart has been switch adapted for easy activation using a 3.5mm switch
+The Switch Adapted Whale Bubble Blower is an adapted “Balnore Bubble Machine” that can be activated with a 3.5mm switch. This adaptation is intended for users who have difficulty activating the button on the side of the bubble machine.
 
 <!--- PHOTO --->
-<img width="3339" height="2160" alt="image" src="https://github.com/user-attachments/assets/e21aa590-9033-4ea9-8f89-b558344c11f2" />
+![The switch adapted whale bubble blower with an MMC60 assistive switch.](Photos/Bubble_blower_and_switch.jpeg)
 
+## More info at
+ - [Makers Making Change Project Page]([https://makersmakingchange.com/project/switch-adapted-whale-bubble-blower/](https://www.makersmakingchange.com/s/product/whale-bubble-blower/01tJR0000008XObYAM))
+
+
+## Getting Started
+<!--- Include an overall idea of what major steps are required to build the device. --->
+
+### 1. Order the Off-The-Shelf Components
+The [Bill of Materials](/Documentation/WhaleBubbleBlower_BOM_v0.1.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
+
+### 2. Assemble the Switch Adapted Whale Bubble Blower
+Reference the [maker guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) for the tools and steps required to build each portion.
+
+## Files
+<!---FILES  This section includes all the information and files required to build and modify the device, including documentation, design files, and build files. --->
+
+### Documentation
+<!--- DOCUMENTATION --->
+| Document | Version | Link |
+|----------|---------|------|
+| Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](/Documentation/WhaleBubbleBlower_Design_Rationale_v0.1.pdf) |
+| Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](/Documentation/WhaleBubbleBlower_BOM_v0.1.xlsx) |
+| Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v0.1.pdf) |
+| User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](/Documentation/WhaleBubbleBlower_User_Guide_v0.1.pdf)           |
+| Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](/Documentation/WhaleBubbleBlower_Changelog_v0.1.pdf)               |
 
 ## License
 <!--- LICENSE  Choose an appropriate license. We recommend an open-source hardware compatible license. --->
