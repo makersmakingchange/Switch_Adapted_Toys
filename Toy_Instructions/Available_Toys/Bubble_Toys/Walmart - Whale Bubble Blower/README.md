@@ -29,7 +29,7 @@ Reference the [maker guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v1.0.pd
 <!--- DOCUMENTATION --->
 | Document | Version | Link |
 |----------|---------|------|
-| Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](/Documentation/WhaleBubbleBlower_Design_Rationale_v0.1.pdf) |
+| Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart - Whale Bubble Blower/WhaleBubbleBlower_Design_Rationale_v0.1.pdf) |
 | Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](/Documentation/WhaleBubbleBlower_BOM_v0.1.xlsx) |
 | Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v0.1.pdf) |
 | User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](/Documentation/WhaleBubbleBlower_User_Guide_v0.1.pdf)           |
