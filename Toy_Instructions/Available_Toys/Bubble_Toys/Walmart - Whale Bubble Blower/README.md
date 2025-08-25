@@ -21,7 +21,7 @@ The Switch Adapted Whale Bubble Blower is an adapted â€œBalnore Bubble Machineâ€
 The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/9a0147c5b4fc5228f902985cfe9e40308bcc690c/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
 
 ### 2. Assemble the Switch Adapted Whale Bubble Blower
-Reference the [maker guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) for the tools and steps required to build each portion.
+Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/blob/c8ef1757a3e05e2db554999f5a3bf00b96bb0c6b/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) for the tools and steps required to build each portion.
 
 ## Files
 <!---FILES  This section includes all the information and files required to build and modify the device, including documentation, design files, and build files. --->
