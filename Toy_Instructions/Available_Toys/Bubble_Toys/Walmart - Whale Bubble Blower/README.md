@@ -4,7 +4,7 @@
 # Switch Adapted Whale Bubble Blower
 
 <!--- SUMMARY A brief summary of the project. What it does, who it is for, how much it costs.  --->
-"The Whale Bubble Blower from Walmart has been switch adapted for easy activation using a 3.5mm switch"
+The Whale Bubble Blower from Walmart has been switch adapted for easy activation using a 3.5mm switch
 
 <!--- PHOTO --->
 <img width="3339" height="2160" alt="image" src="https://github.com/user-attachments/assets/e21aa590-9033-4ea9-8f89-b558344c11f2" />
