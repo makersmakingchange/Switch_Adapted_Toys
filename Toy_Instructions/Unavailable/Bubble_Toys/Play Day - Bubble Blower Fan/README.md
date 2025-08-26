@@ -49,7 +49,7 @@ Reference the [Assembly Guide](https://github.com/makersmakingchange/Adapted-Toy
 Modification method and documentation created by Neil Squire / Makers Making Change.
 
 ## License
-Everything needed or used to design, make, test, or prepare the Switch Adapted Bubble Blower Fan is licensed under the CERN 2.0 Permissive license <https://ohwr.org/project/cernohl/wikis/Documents/CERN-OHL-version-2> (CERN-OHL-P) . 
+Everything needed or used to design, make, test, or prepare the Switch Adapted Bubble Blower Fan is licensed under the CERN 2.0 Permissive license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-P) . 
 
 Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the Switch Adapted Bubble Blower Fan are published under a Creative Commons Attribution-ShareAlike 4.0 license https://creativecommons.org/licenses/by-sa/4.0/ (CC BY-SA 4.0).
 
