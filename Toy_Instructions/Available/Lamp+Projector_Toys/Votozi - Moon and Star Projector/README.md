@@ -25,7 +25,7 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 |----------|---------|------|
 | Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/e7f703992e87acbce26a720f6fc8d6e3133175c9/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_BOM_V1.0.xlsx) |
 | Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/f33ee1821fe02120cff16a04218ac82712526dc8/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_Assembly_Guide.pdf) |
-| User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/fdeb6ab99f429f457c09a3cf26f13fe69b0b544c/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_User_Guide_v1.0.pdf)           |
+| User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/5c173dd1146b2fd2b433b0da870c7c3bebae929c/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_User_Guide.pdf)           |
 | Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](https://github.com/makersmakingchange/Adapted-Toys/blob/43e2116c8b612cb2f58cdf69b7bc1a573a4398e3/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/Working%20Documents/WhaleBubbleBlower_Changelog.docx)               |
 ## License
 <!---
