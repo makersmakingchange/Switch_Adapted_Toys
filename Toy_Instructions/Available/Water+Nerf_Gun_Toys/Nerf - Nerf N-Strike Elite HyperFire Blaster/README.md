@@ -1,10 +1,10 @@
 # Switch Adapted Nerf N-Strike Hyperfire Blaster
 The Switch Adapted Nerf Gun is designed to be a switch adapted toy for an older audience. The majority of switch adapted toys are designed for a younger audience, so this project aims to adapt a toy aimed at older children and make it switch accessible.
 
-<img src="Photos/Switch-Adapted-Nerf-Gun.jpg" width="500" alt="Picture of Switch Adapted Nerf Gun.">
+<img width="1080" height="893" alt="image" src="https://github.com/user-attachments/assets/5a737fae-a5d9-4452-b6d6-993c661949ed" />
 
 ## More info at
-- [Makers Making Change Project Page](https://makersmakingchange.com/project/switch-adapted-nerf-gun/)
+- [Makers Making Change Project Page](https://www.makersmakingchange.com/product/switch-adapted-nerf-nstrike-hyperfire-blaster/01tJR000000694VYAQ)
 
 ## How to Obtain a Switch Adapted Nerf Gun
 ### 1. Do it Yourself (DIY) or Do it Together (DIT)
@@ -88,3 +88,4 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
  - LinkedIn: [Neil Squire Society](https://www.linkedin.com/company/neil-squire-society/)
  - Thingiverse: [makersmakingchange](https://www.thingiverse.com/makersmakingchange/about)
  - Printables: [MakersMakingChange](https://www.printables.com/@MakersMakingChange)
+
