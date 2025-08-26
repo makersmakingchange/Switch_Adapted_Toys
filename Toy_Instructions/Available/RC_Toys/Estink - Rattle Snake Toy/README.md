@@ -29,7 +29,7 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 | Changelog            | 1.0 | [RattleSnake_Changelog](https://github.com/makersmakingchange/Adapted-Toys/blob/5f80e6b7cd08b7e437c9ad23f1a9116060648fcb/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_ChangeLog.pdf)               |
 | 3D Print Guide | 1.0 | [RattleSnake_3D_Print_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/7300ee1ef6fd14b7e20a9e13d5cae95a1281cb47/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_3D_Print_Guide.pdf) |
 | Maker Checklist | 1.0 | [RattleSnake_Maker_Checklist](https://github.com/makersmakingchange/Adapted-Toys/blob/badd7656d86b0af4fb720fd05f420fd92d215619/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_Maker_Checklist.pdf) |
-
+| Summary | 1.0 | [RattleSnake_Summary](https://github.com/makersmakingchange/Adapted-Toys/blob/f76a05206dba21f5de912e67a63604873f40087e/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_Summary.pdf) |
 ## License
 <!--- LICENSE Choose an appropriate license. We recommend an open-source hardware compatible license. --->
 Everything needed or used to design, make, test, or prepare the Switch Adapted RC Rattle Snake is licensed under the CERN 2.0 Weakly Reciprocal license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-W).
