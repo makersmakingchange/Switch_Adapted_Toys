@@ -11,7 +11,7 @@ The Switch Adapted Whale Bubble Blower is an adapted â€œBalnore Bubble Machineâ€
 
 
 ## More info at
- - [Makers Making Change Project Page]([https://makersmakingchange.com/project/switch-adapted-whale-bubble-blower/](https://www.makersmakingchange.com/s/product/whale-bubble-blower/01tJR0000008XObYAM))
+ - [Makers Making Change Project Page](https://www.makersmakingchange.com/product/switch-adapted-whale-bubble-blower/01tJR0000008XObYAM)
 
 
 ## Getting Started
