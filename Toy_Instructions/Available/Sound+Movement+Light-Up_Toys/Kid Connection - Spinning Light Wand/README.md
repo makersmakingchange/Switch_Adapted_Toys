@@ -8,15 +8,12 @@ The Spinning Light Wand Adaptation comprises instructions and files to adapt a c
 
 ## More info at
 - Makers Making Change Project Page: https://makersmakingchange.com/project/spinning-light-wand-toy-adaptation/
-- Vancouver Hack Space Forum Thread: https://talk.vanhack.ca/t/adapting-toy-wands-for-mmc
-
 
 ## Getting Started
 
 ### 1. Order the Off-The-Shelf Components
 
-The [Bill of Materials](/Documentation/Working_Documents/Spinning_Light_Wand_BOM_V1.1.xlsx) lists all of the parts and components required to adapt the Spinning Light Wand. The toy is typically available at Walmart stores.
-
+The [Bill of Materials]() lists all of the parts and components required to adapt the Spinning Light Wand. The toy is typically available at Walmart stores.
 
 ### 2. Print the 3D Printable components
 Print the components. All of the files and individual print files can be in the [Build_Files](Build_Files) folder.
@@ -28,15 +25,15 @@ Reference the [Assembly Guide v1.0](/Documentation/Spinning_Light_Wand_Assembly_
 ### Documentation
 | Document             | Version | Link |
 |----------------------|---------|------|
-| Design Rationale     | 1.1     | [Spinning_Light_WandDesign_Rationale](/Documentation/Spinning_Light_Wand_Design_Rationale.pdf)     |
-| Bill of Materials    | 1.1     | [Spinning_Light_Wand_Bill_of_Materials](/Documentation/Working_Documents/Spinning_Light_Wand_BOM_V1.1.xlsx)     |
-| 3D Printing Guide    | 1.1     | [Spinning_Light_Wand_3D_Printing_Guide](/Documentation/Spinning_Light_Wand_3D_Printing_Guide.pdf)     |
-| Assembly Guide       | 1.0     | [Spinning_Light_Wand_Assembly_Guide](/Documentation/Spinning_Light_Wand_Assembly_Guide_V1.0.pdf)     |
-| Assembly Guide       | 1.1     | [Spinning_Light_Wand_Assembly_Guide](/Documentation/Spinning_Light_Wand_Assembly_Guide_V1.1.pdf)     |
-| Maker Checklist      | 1.1     | [Spinning_Light_Wand_Maker_Checklist](/Documentation/Spinning_Light_Wand_Checklist.pdf)     |
-| User Guide           | 1.0     | [Spinning_Light_Wand_User_Guide](/Documentation/Spinning_Light_Wand_User_Guide_V1.0.pdf)    |
-| User Guide           | 1.1     | [Spinning_Light_Wand_User_Guide](/Documentation/Spinning_Light_Wand_User_Guide_V1.1.pdf)    |
-| Changelog            | 1.1     | [Spinning_Light_Wand_Changelog](/Documentation/Spinning_Light_Wand_Changelog.pdf)     |
+| Design Rationale     | 1.1     | [Spinning_Light_WandDesign_Rationale]()     |
+| Bill of Materials    | 1.1     | [Spinning_Light_Wand_Bill_of_Materials]()     |
+| 3D Printing Guide    | 1.1     | [Spinning_Light_Wand_3D_Printing_Guide]()     |
+| Assembly Guide       | 1.0     | [Spinning_Light_Wand_Assembly_Guide]()     |
+| Assembly Guide       | 1.1     | [Spinning_Light_Wand_Assembly_Guide]()     |
+| Maker Checklist      | 1.1     | [Spinning_Light_Wand_Maker_Checklist]()     |
+| User Guide           | 1.0     | [Spinning_Light_Wand_User_Guide]()    |
+| User Guide           | 1.1     | [Spinning_Light_Wand_User_Guide]()    |
+| Changelog            | 1.1     | [Spinning_Light_Wand_Changelog]()     |
 
 
 ### Design Files
@@ -83,3 +80,4 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
 <!-- ABOUT MMC END -->
+
