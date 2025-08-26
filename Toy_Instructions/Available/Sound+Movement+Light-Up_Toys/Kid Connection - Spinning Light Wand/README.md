@@ -7,7 +7,7 @@ The Spinning Light Wand Adaptation comprises instructions and files to adapt a c
 
 
 ## More info at
-- Makers Making Change Project Page: https://makersmakingchange.com/project/spinning-light-wand-toy-adaptation/
+- [Makers Making Change Project Page](https://makersmakingchange.com/project/spinning-light-wand-toy-adaptation/)
 
 ## Getting Started
 
@@ -51,8 +51,6 @@ This adaptation was designed by Mimi Xia of the [Makers Making Change Vancouver 
 
 Neil Squire / Makers Making Change assisted with the creation of the documentation.
 
-
-
 ## License
 Everything needed or used to design, make, test, or prepare the Spinning Light Wand Adaptation is licensed under the CERN 2.0 Permissive license https://ohwr.org/project/cernohl/wikis/Documents/CERN-OHL-version-2 (CERN-OHL-P) .
 
@@ -80,4 +78,5 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
 <!-- ABOUT MMC END -->
+
 
