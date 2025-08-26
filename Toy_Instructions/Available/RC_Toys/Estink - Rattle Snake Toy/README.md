@@ -26,7 +26,7 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 | Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/61eccf1686d0bf9c07d14af7184d1c0cee148b85/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_BOM_V1.0.xlsx) |
 | Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/3ffab351692519d6581d821faf11a66c978a04d9/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_Assembly_Guide.pdf) |
 | User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/9df766a7123e797589fd489a29e9c6532143bde8/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_User_Guide.pdf)           |
-| Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](/Documentation/WhaleBubbleBlower_Changelog_v0.1.pdf)               |
+| Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](https://github.com/makersmakingchange/Adapted-Toys/blob/5f80e6b7cd08b7e437c9ad23f1a9116060648fcb/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_ChangeLog.pdf)               |
 
 
 ## License
