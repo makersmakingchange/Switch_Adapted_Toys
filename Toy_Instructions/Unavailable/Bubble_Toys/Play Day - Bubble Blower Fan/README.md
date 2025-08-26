@@ -1,4 +1,4 @@
-# Switch Adapted Bubble Blower Fan
+# Switch Adapted Play Day Bubble Blower Fan
 The Switch Adapted Bubble Blower Fan is a commercial toy modified for use with an assistive switch. The Switch Adapted Bubble Blower may be beneficial to someone who may have difficulty pressing the original small activation button due to its size, location, or required activation force.
 
 Attach an assistive switch with a 3.5 mm plug to the 3.5 mm jack on the toy. When the assistive switch is activated, the toy will generate bubbles. 
