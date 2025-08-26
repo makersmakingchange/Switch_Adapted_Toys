@@ -1,13 +1,17 @@
 # Switch Adapted RC Rattle Snake
 
 ## Overview
-This repository contains the necessary information to switch adapt a commercially available Slithering Snake Toy. 
+This repository contains the necessary information to switch adapt a commercially available Remote Control Rattle Snake. 
+
+<!--- PHOTO --->
+<img width="2560" height="1707" alt="image" src="https://github.com/user-attachments/assets/94fcbabc-5f5d-4904-b632-6f0b8108d6fd" />
+
 
 ## License
 <!--- LICENSE Choose an appropriate license. We recommend an open-source hardware compatible license. --->
-Everything needed or used to design, make, test, or prepare the (todo: Project Title) is licensed under the CERN 2.0 Weakly Reciprocal license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-W).
+Everything needed or used to design, make, test, or prepare the Switch Adapted RC Rattle Snake is licensed under the CERN 2.0 Weakly Reciprocal license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-W).
 
-Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the (todo: Project Title) are published under a Creative Commons Attribution-ShareAlike 4.0 license <https://creativecommons.org/licenses/by-sa/4.0/> (CC BY-SA 4.0).
+Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the Switch Adapted RC Rattle Snake are published under a Creative Commons Attribution-ShareAlike 4.0 license <https://creativecommons.org/licenses/by-sa/4.0/> (CC BY-SA 4.0).
 
 ## Attribution
 <!--- ATTRIBUTION Include any information related to the development of the design. This may include who identified the initial challenge, who contributed to the design --->
