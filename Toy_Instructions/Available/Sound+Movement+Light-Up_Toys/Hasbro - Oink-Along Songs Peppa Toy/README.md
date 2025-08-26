@@ -1,4 +1,4 @@
-# Switch Adapted Peppa Pig Toy
+# Switch Adapted Hasbro Oink Along Songs Peppa Plush
 The Switch Adapted Peppa Pig Toy is a switch adapted plush Peppa Pig toy that makes noises and sings songs when the switch is activated. 
 
 <p align="center">
@@ -9,14 +9,14 @@ The Switch Adapted Peppa Pig Toy is a switch adapted plush Peppa Pig toy that ma
 - [Makers Making Change Project Page](https://makersmakingchange.com/project/switch-adapted-peppa-pig-toy/)
 
 
-## How to Obtain a <Device-Name>
+## How to Obtain a Switch Adapted Hasbro Oink Along Songs Peppa Plush
 ### 1. Do it Yourself (DIY) or Do it Together (DIT)
 
 This is an open-source assistive technology, so anyone is free to build it. All of the files and instructions required to build the Switch Adapted Peppa Pig Toy are contained within this repository. Refer to the Maker Checklist below.
 
 ### 2. Request a build of this device
 
-If you would like to obtain a Switch Adapted Peppa Pig Toy, you may submit a build request through the [MMC Library Page](https://makersmakingchange.com/project/switch-adapted-peppa-pig-toy/). The requestor is responsible for the cost of materials and any shipping.
+If you would like to obtain a Switch Adapted Peppa Pig Toy, you may submit a build request through the [MMC Library Page](https://www.makersmakingchange.com/product/switch-adapted-hasbro-oinkalong-songs-peppa-plush/01tJR000000694UYAQ). The requestor is responsible for the cost of materials and any shipping.
 
 ### 3. How to build this device for someone else
 
@@ -42,11 +42,11 @@ Reference the [Assembly Guide](/Documentation/Peppa_Pig_Assembly_Guide_v1.0.pdf)
 | Document             | Version | Link |
 |----------------------|---------|------|
 | Design Rationale     | 1.0     | [Peppa Pig Design Rationale](https://github.com/makersmakingchange/Adapted-Toys/blob/bc86300f3b0eae2811bf68a4ef74ecb4e4579407/Toy_Instructions/Available_Toys/Sound%2BMovement%2BLight-Up_Toys/Hasbro%20-%20Oink-Along%20Songs%20Peppa%20Toy/Peppa_Pig_Design_Rationale_v1.0.pdf)     |
-| Maker Checklist      | 1.0     | [Peppa_Pig_Maker_Checklist](/Documentation/Peppa_Pig_Maker_Checklist_v1.0.pdf)     |
-| Bill of Materials    | 1.0     | [Peppa_Pig_Bill_of_Materials](/Documentation/Peppa_Pig_BOM_v1.0.xlsx)     |
+| Maker Checklist      | 1.0     | [Peppa_Pig_Maker_Checklist](/Peppa_Pig_Maker_Checklist_v1.0.pdf)     |
+| Bill of Materials    | 1.0     | [Peppa_Pig_Bill_of_Materials](/Peppa_Pig_BOM_v1.0.xlsx)     |
 | Assembly Guide       | 1.0     | [Peppa Pig Assembly Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/9d625e8b73419c6701886cfb9ad90c898146936d/Toy_Instructions/Available_Toys/Sound%2BMovement%2BLight-Up_Toys/Hasbro%20-%20Oink-Along%20Songs%20Peppa%20Toy/Peppa_Pig_Assembly_Guide_v1.0.pdf)     |
-| User Guide           | 1.0     | [Peppa_Pig_User_Guide](/Documentation/Peppa_Pig_User_Guide_v1.0.pdf)    |
-| Changelog            | 1.0     | [Peppa_Pig_Changelog](/Documentation/Peppa_Pig_Changelog_v1.0.pdf)     |
+| User Guide           | 1.0     | [Peppa_Pig_User_Guide](/Peppa_Pig_User_Guide_v1.0.pdf)    |
+| Changelog            | 1.0     | [Peppa_Pig_Changelog](/Peppa_Pig_Changelog_v1.0.pdf)     |
 
 
 ## Attribution
@@ -55,7 +55,7 @@ Modification method and documentation created by Neil Squire / Makers Making Cha
 
 
 ## License
-Everything needed or used to design, make, test, or prepare the Switch Adapted Peppa Pig Toy is licensed under the CERN 2.0 Permissive license <https://ohwr.org/project/cernohl/wikis/Documents/CERN-OHL-version-2> (CERN-OHL-P) . 
+Everything needed or used to design, make, test, or prepare the Switch Adapted Peppa Pig Toy is licensed under the CERN 2.0 Permissive license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-P) . 
 
 Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the Switch Adapted Peppa Pig Toy are published under a Creative Commons Attribution-ShareAlike 4.0 license https://creativecommons.org/licenses/by-sa/4.0/ (CC BY-SA 4.0).
 
