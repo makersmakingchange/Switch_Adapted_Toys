@@ -38,7 +38,7 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 
 ## License
 <!--- LICENSE  Choose an appropriate license. We recommend an open-source hardware compatible license. --->
-Everything needed or used to design, make, test, or prepare the Switch Adapted Whale Bubble Blower is licensed under the CERN 2.0 Permissive license <https://ohwr.org/project/cernohl/wikis/Documents/CERN-OHL-version-2> (CERN-OHL-P).
+Everything needed or used to design, make, test, or prepare the Switch Adapted Whale Bubble Blower is licensed under the CERN 2.0 Permissive license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-P).
 
 Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the Switch Adapted Whale Bubble Blower are published under a Creative Commons Attribution-ShareAlike 4.0 license <https://creativecommons.org/licenses/by-sa/4.0/> (CC BY-SA 4.0).
 
