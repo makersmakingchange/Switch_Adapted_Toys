@@ -1,7 +1,9 @@
 # Switch Adapted Leapfrog MyPal Scout and Violet Plush
 The MyPal Scout and Violet Plush Toys from Leap Frog have been switch adapted for easy activation using a 3.5mm switch. 
 <!--- PHOTO --->
-<img width="3339" height="2160" alt="image" src="\Photos\Violet.png" />
+<p align="center">
+ <img width="500" height="500" alt="Switch Adapted LeapFrog MyPal Violet Plush Toy" src="\Photos\Violet.png" />
+</p>
 ## Overview
 
 The switch adapted My Pal Scout/Violet sings songs and can be controlled with accessible switches that have a 3.5mm jack. The My Pal is a LeapFrog toy that sings lullabies and learning songs, and has activities with numbers, animals, food, and more.
@@ -58,4 +60,5 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
 <!-- ABOUT MMC END -->
+
 
