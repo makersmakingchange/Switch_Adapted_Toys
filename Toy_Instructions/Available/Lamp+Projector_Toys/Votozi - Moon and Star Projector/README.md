@@ -11,7 +11,7 @@ This folder contains information for how to modify a commercially available Moon
 <!--- Include an overall idea of what major steps are required to build the device. --->
 
 ### 1. Order the Off-The-Shelf Components
-The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/e7f703992e87acbce26a720f6fc8d6e3133175c9/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_BOM_V1.0.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
+The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/e7f703992e87acbce26a720f6fc8d6e3133175c9/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_BOM_V1.0.xlsx) lists all of the parts and components required to build the Switch Adapted Moon and Star Projector. The electronic components may be available locally, but will probably need to be ordered online. 
 
 ### 2. Assemble the Switch Adapted Whale Bubble Blower
 Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/blob/f33ee1821fe02120cff16a04218ac82712526dc8/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_Assembly_Guide.pdf) for the tools and steps required to build each portion.
