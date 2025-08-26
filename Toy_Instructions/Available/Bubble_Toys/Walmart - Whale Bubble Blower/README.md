@@ -18,7 +18,7 @@ The Switch Adapted Whale Bubble Blower is an adapted â€œBalnore Bubble Machineâ€
 <!--- Include an overall idea of what major steps are required to build the device. --->
 
 ### 1. Order the Off-The-Shelf Components
-The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/9a0147c5b4fc5228f902985cfe9e40308bcc690c/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
+The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/a10a22f64e9629dad213601bb911e0a12d49a815/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
 
 ### 2. Assemble the Switch Adapted Whale Bubble Blower
 Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/blob/c8ef1757a3e05e2db554999f5a3bf00b96bb0c6b/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) for the tools and steps required to build each portion.
@@ -31,7 +31,7 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 | Document | Version | Link |
 |----------|---------|------|
 | Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](https://github.com/makersmakingchange/Adapted-Toys/blob/477ff71a4ea30cbb1452e3a420bfe5437dfe0722/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Design_Rationale_v1.0.pdf)  |
-| Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/4ab061e8bf229d7f69e0603fce10f2122cff193a/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) |
+| Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/a10a22f64e9629dad213601bb911e0a12d49a815/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) |
 | Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/99dce7b7222f1ad9947b0cb0cf6b98a173f78a60/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) |
 | User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/b7809231ccf7f39f1e51af9261299f69c06d14bd/Toy_Instructions/Available_Toys/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_User_Guide_v1.0.pdf)           |
 | Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](https://github.com/makersmakingchange/Adapted-Toys/blob/c8ef1757a3e05e2db554999f5a3bf00b96bb0c6b/Toy_Instructions/Available_Toys/Bubble_Toys/Working%20Documents/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Changelog.docx)               |
