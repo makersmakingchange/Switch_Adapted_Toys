@@ -27,7 +27,8 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 | Maker Guide       | 1.0 | [RattleSnake_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/3ffab351692519d6581d821faf11a66c978a04d9/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_Assembly_Guide.pdf) |
 | User Guide          | 1.0 | [RattleSnake_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/9df766a7123e797589fd489a29e9c6532143bde8/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_User_Guide.pdf)           |
 | Changelog            | 1.0 | [RattleSnake_Changelog](https://github.com/makersmakingchange/Adapted-Toys/blob/5f80e6b7cd08b7e437c9ad23f1a9116060648fcb/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_ChangeLog.pdf)               |
-| 3D Print Guide | 1.0 | [RattleSnake_3D_Print_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/7300ee1ef6fd14b7e20a9e13d5cae95a1281cb47/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_3D_Print_Guide.pdf)
+| 3D Print Guide | 1.0 | [RattleSnake_3D_Print_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/7300ee1ef6fd14b7e20a9e13d5cae95a1281cb47/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_3D_Print_Guide.pdf) |
+| Maker Checklist | 1.0 | [RattleSnake_Maker_Checklist](https://github.com/makersmakingchange/Adapted-Toys/blob/badd7656d86b0af4fb720fd05f420fd92d215619/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_Maker_Checklist.pdf) |
 
 ## License
 <!--- LICENSE Choose an appropriate license. We recommend an open-source hardware compatible license. --->
