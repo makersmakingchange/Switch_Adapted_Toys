@@ -4,8 +4,11 @@ The MyPal Scout and Violet Plush Toys from Leap Frog have been switch adapted fo
 <p align="center">
  <img width="500" height="500" alt="Switch Adapted LeapFrog MyPal Violet Plush Toy" src="\Photos\Violet.png" />
 </p>
-## Overview
 
+## More Info at
+- [Makers Making Change Project Page] (https://www.makersmakingchange.com/product/switch-adapted-leapfrog-my-pal-scout-plush/01tJR000000690IYAQ)
+
+## Overview
 The switch adapted My Pal Scout/Violet sings songs and can be controlled with accessible switches that have a 3.5mm jack. The My Pal is a LeapFrog toy that sings lullabies and learning songs, and has activities with numbers, animals, food, and more.
 
 ## Usage
@@ -44,10 +47,6 @@ Note: Other wire connections aside from the crimp connectors can be used, such a
 | User Guide          | 1.0 | []()           |
 | Changelog            | 1.0 | []()               |
 
-## Attribution
-
- - Original Device: ATMakers
- - Updated Design: Makers Making Change
 ## License
 <!--- LICENSE  Choose an appropriate license. We recommend an open-source hardware compatible license. --->
 Everything needed or used to design, make, test, or prepare the Switch Adapted Whale Bubble Blower is licensed under the CERN 2.0 Permissive license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-P).
@@ -78,6 +77,7 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
 <!-- ABOUT MMC END -->
+
 
 
 
