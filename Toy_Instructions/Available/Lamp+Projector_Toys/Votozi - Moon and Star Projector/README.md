@@ -1,8 +1,8 @@
-# Star Master Projector - Switch Adapted Toy
+# Switch Adapted Moon and Star Projector
 This repository contains information for how to modify a commercially available Start Master Projector for use with an assistive switch.
 
 <!--- PHOTO --->
-(<img width="1920" height="2560" alt="image" src="https://github.com/user-attachments/assets/18c35ceb-d997-4f2e-94da-c1370d84bb3f" />)
+<img width="1920" height="2560" alt="image" src="https://github.com/user-attachments/assets/18c35ceb-d997-4f2e-94da-c1370d84bb3f" />
 
 
 ## License
@@ -10,7 +10,7 @@ This repository contains information for how to modify a commercially available 
 LICENSE
 Choose an appropriate license. We recommend an open-source hardware compatible license.
 --->
-Everything needed or used to design, make, test, or prepare the (Star Master Switch Adapted Toy) is licensed under the CERN 2.0 Weakly Reciprocal license <https://ohwr.org/project/cernohl/wikis/Documents/CERN-OHL-version-2> (CERN-OHL-W).
+Everything needed or used to design, make, test, or prepare the (Star Master Switch Adapted Toy) is licensed under the CERN 2.0 Weakly Reciprocal license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-W).
 
 Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the (Star Master Switch Adapted Toy) are published under a Creative Commons Attribution-ShareAlike 4.0 license <https://creativecommons.org/licenses/by-sa/4.0/> (CC BY-SA 4.0).
 
