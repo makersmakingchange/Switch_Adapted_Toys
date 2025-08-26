@@ -10,7 +10,7 @@ This repository contains the necessary information to switch adapt a commerciall
 <!--- Include an overall idea of what major steps are required to build the device. --->
 
 ### 1. Order the Off-The-Shelf Components
-The [Bill of Materials](/Documentation/WhaleBubbleBlower_BOM_v0.1.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
+The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/61eccf1686d0bf9c07d14af7184d1c0cee148b85/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_BOM_V1.0.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
 
 ### 2. Assemble the Switch Adapted Whale Bubble Blower
 Reference the [maker guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) for the tools and steps required to build each portion.
@@ -23,7 +23,7 @@ Reference the [maker guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v1.0.pd
 | Document | Version | Link |
 |----------|---------|------|
 | Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](/Documentation/WhaleBubbleBlower_Design_Rationale_v0.1.pdf) |
-| Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](/Documentation/WhaleBubbleBlower_BOM_v0.1.xlsx) |
+| Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/61eccf1686d0bf9c07d14af7184d1c0cee148b85/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_BOM_V1.0.xlsx) |
 | Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v0.1.pdf) |
 | User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](/Documentation/WhaleBubbleBlower_User_Guide_v0.1.pdf)           |
 | Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](/Documentation/WhaleBubbleBlower_Changelog_v0.1.pdf)               |
