@@ -5,18 +5,18 @@ Attach an assistive switch with a 3.5 mm plug to the 3.5 mm jack on the toy. Whe
 
 <img width="658" height="793" alt="image" src="https://github.com/user-attachments/assets/c9e456b8-67e1-4f24-9a6f-59f57aff74f2" />
 
-## How to Obtain a Switch Adapted Bubble Blower Fan
-### 1. Do it Yourself (DIY) or Do it Together (DIT)
+<!-- ## How to Obtain a Switch Adapted Bubble Blower Fan -->
+<!-- ### 1. Do it Yourself (DIY) or Do it Together (DIT) -->
 
-This is an open-source assistive technology, so anyone is free to build it. All of the files and instructions required to build the Switch Adapted Bubble Blower Fan are contained within this repository. Refer to the Maker Checklist below.
+<!-- This is an open-source assistive technology, so anyone is free to build it. All of the files and instructions required to build the Switch Adapted Bubble Blower Fan are contained within this repository. Refer to the Maker Checklist below. -->
 
-### 2. Request a build of this device
+<!-- ### 2. Request a build of this device -->
 
-If you would like to obtain a Switch Adapted Bubble Blower Fan , you may submit a build request through the [MMC Library Page](https://makersmakingchange.com/project/switch-adapted-bubble-blower-fan/). The requestor is responsible for the cost of materials and any shipping.
+<!-- If you would like to obtain a Switch Adapted Bubble Blower Fan , you may submit a build request through the [MMC Library Page](https://makersmakingchange.com/project/switch-adapted-bubble-blower-fan/). The requestor is responsible for the cost of materials and any shipping. -->
 
-### 3. How to build this device for someone else
+<!-- ### 3. How to build this device for someone else -->
 
-If you have the skills and equipment to build this device, and would like to donate your time to create the switch for someone who needs it, visit the [MMC Maker Wanted](https://makersmakingchange.com/maker-wanted/) section.
+<!-- If you have the skills and equipment to build this device, and would like to donate your time to create the switch for someone who needs it, visit the [MMC Maker Wanted](https://makersmakingchange.com/maker-wanted/) section. -->
 
 
 ## Getting Started
