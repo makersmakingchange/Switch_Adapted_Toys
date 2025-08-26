@@ -48,6 +48,15 @@ Note: Other wire connections aside from the crimp connectors can be used, such a
 
  - Original Device: ATMakers
  - Updated Design: Makers Making Change
+## License
+<!--- LICENSE  Choose an appropriate license. We recommend an open-source hardware compatible license. --->
+Everything needed or used to design, make, test, or prepare the Switch Adapted Whale Bubble Blower is licensed under the CERN 2.0 Permissive license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-P).
+
+Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the Switch Adapted Whale Bubble Blower are published under a Creative Commons Attribution-ShareAlike 4.0 license <https://creativecommons.org/licenses/by-sa/4.0/> (CC BY-SA 4.0).
+
+## Attribution
+<!--- ATTRIBUTION Include any information related to the development of the design. This may include who identified the initial challenge, who contributed to the design --->
+ - The documentation template was created by Makers Making Change and is used under a CC BY-SA 4.0 license. It is available at the following link: https://github.com/makersmakingchange/OpenAT-Template
 
 <!-- ABOUT MMC START -->
 ## About Makers Making Change
@@ -69,6 +78,7 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
 <!-- ABOUT MMC END -->
+
 
 
 
