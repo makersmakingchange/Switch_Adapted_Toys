@@ -5,12 +5,6 @@ Attach an assistive switch with a 3.5 mm plug to the 3.5 mm jack on the toy. Whe
 
 <img width="658" height="793" alt="image" src="https://github.com/user-attachments/assets/c9e456b8-67e1-4f24-9a6f-59f57aff74f2" />
 
-
-## More info at
-- [Makers Making Change Project Page](https://makersmakingchange.com/project/switch-adapted-bubble-blower-fan/)
-
-
-
 ## How to Obtain a Switch Adapted Bubble Blower Fan
 ### 1. Do it Yourself (DIY) or Do it Together (DIT)
 
