@@ -34,6 +34,15 @@ Note: Other wire connections aside from the crimp connectors can be used, such a
  - Crimping tool is recommended if available
  - Wire Cutters
  - Wire Strippers
+### Documentation
+<!--- DOCUMENTATION --->
+| Document | Version | Link |
+|----------|---------|------|
+| Design Rationale     | 1.0 | []()  |
+| Bill of Materials    | 1.0 | []() |
+| Maker Guide       | 1.0 | []() |
+| User Guide          | 1.0 | []()           |
+| Changelog            | 1.0 | []()               |
 
 ## Attribution
 
@@ -60,5 +69,6 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
 <!-- ABOUT MMC END -->
+
 
 
