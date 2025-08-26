@@ -10,9 +10,9 @@ This folder contains information for how to modify a commercially available Star
 LICENSE
 Choose an appropriate license. We recommend an open-source hardware compatible license.
 --->
-Everything needed or used to design, make, test, or prepare the (Star Master Switch Adapted Toy) is licensed under the CERN 2.0 Weakly Reciprocal license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-W).
+Everything needed or used to design, make, test, or prepare the Switch Adapted Moon and Star Projector is licensed under the CERN 2.0 Weakly Reciprocal license <https://ohwr.org/cern_ohl_p_v2.txt> (CERN-OHL-W).
 
-Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the (Star Master Switch Adapted Toy) are published under a Creative Commons Attribution-ShareAlike 4.0 license <https://creativecommons.org/licenses/by-sa/4.0/> (CC BY-SA 4.0).
+Accompanying material such as instruction manuals, videos, and other copyrightable works that are useful but not necessary to design, make, test, or prepare the Switch Adapted Moon and Star Projector are published under a Creative Commons Attribution-ShareAlike 4.0 license <https://creativecommons.org/licenses/by-sa/4.0/> (CC BY-SA 4.0).
 
 ## Attribution
 
