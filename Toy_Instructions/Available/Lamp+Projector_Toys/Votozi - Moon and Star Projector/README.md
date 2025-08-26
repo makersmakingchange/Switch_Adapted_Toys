@@ -27,6 +27,8 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 | Maker Guide       | 1.0 | [MoonStarProjector_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/f33ee1821fe02120cff16a04218ac82712526dc8/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_Assembly_Guide.pdf) |
 | User Guide          | 1.0 | [MoonStarProjector_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/5c173dd1146b2fd2b433b0da870c7c3bebae929c/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_User_Guide.pdf)           |
 | Maker Checklist            | 1.0 | [MoonStarProjector_Maker_Checklist](https://github.com/makersmakingchange/Adapted-Toys/blob/6f8715865dff660e9b1ca6471f682d3be3c4f8f1/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_Maker_Checklist.pdf)               |
+| Summary     | 1.0 | [MoonStarProjector_Summary](https://github.com/makersmakingchange/Adapted-Toys/blob/7f0a7f0399af23effeb7bdf6c89f107aea264be9/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_Summary.pdf)    |
+
 ## License
 <!---
 LICENSE
