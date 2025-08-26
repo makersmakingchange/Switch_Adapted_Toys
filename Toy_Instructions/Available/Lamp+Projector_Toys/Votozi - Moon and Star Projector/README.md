@@ -11,7 +11,7 @@ This folder contains information for how to modify a commercially available Moon
 <!--- Include an overall idea of what major steps are required to build the device. --->
 
 ### 1. Order the Off-The-Shelf Components
-The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/a10a22f64e9629dad213601bb911e0a12d49a815/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
+The [Bill of Materials](https://github.com/makersmakingchange/Adapted-Toys/blob/e7f703992e87acbce26a720f6fc8d6e3133175c9/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_BOM_V1.0.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
 
 ### 2. Assemble the Switch Adapted Whale Bubble Blower
 Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/blob/e83c49276aab2990c4e683baedd8f23d08d3a803/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) for the tools and steps required to build each portion.
@@ -24,7 +24,7 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 | Document | Version | Link |
 |----------|---------|------|
 | Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](https://github.com/makersmakingchange/Adapted-Toys/blob/5c0f1ae4ded83be4f4a40ada07c183d7d166e519/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Design_Rationale_v1.0.pdf)  |
-| Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/a10a22f64e9629dad213601bb911e0a12d49a815/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_BOM_v1.0.xlsx) |
+| Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/e7f703992e87acbce26a720f6fc8d6e3133175c9/Toy_Instructions/Available/Lamp%2BProjector_Toys/Votozi%20-%20Moon%20and%20Star%20Projector/Star_Master_Projector_BOM_V1.0.xlsx) |
 | Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/e83c49276aab2990c4e683baedd8f23d08d3a803/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) |
 | User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/fdeb6ab99f429f457c09a3cf26f13fe69b0b544c/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/WhaleBubbleBlower_User_Guide_v1.0.pdf)           |
 | Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](https://github.com/makersmakingchange/Adapted-Toys/blob/43e2116c8b612cb2f58cdf69b7bc1a573a4398e3/Toy_Instructions/Available/Bubble_Toys/Walmart%20-%20Whale%20Bubble%20Blower/Working%20Documents/WhaleBubbleBlower_Changelog.docx)               |
