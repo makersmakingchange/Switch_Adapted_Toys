@@ -1,5 +1,5 @@
 # Switch Adapted Leapfrog MyPal Scout and Violet Plush
-The MyPal Scout and Violet Plush Toys from Leap Frog have been switch adapted for easy activation using a 3.5mm switch. 
+The MyPal Scout and Violet Plush Toys from Leap Frog have been switch adapted for easy activation using a 3.5 mm switch. 
 <!--- PHOTO --->
 <p align="center">
  <img width="500" height="500" alt="Switch Adapted LeapFrog MyPal Violet Plush Toy" src="\Photos\Violet.png" />
@@ -9,34 +9,11 @@ The MyPal Scout and Violet Plush Toys from Leap Frog have been switch adapted fo
 - [Makers Making Change Project Page] (https://www.makersmakingchange.com/product/switch-adapted-leapfrog-my-pal-scout-plush/01tJR000000690IYAQ)
 
 ## Overview
-The switch adapted My Pal Scout/Violet sings songs and can be controlled with accessible switches that have a 3.5mm jack. The My Pal is a LeapFrog toy that sings lullabies and learning songs, and has activities with numbers, animals, food, and more.
+The switch adapted My Pal Scout/Violet sings songs and can be controlled with accessible switches that have a 3.5 mm jack. The My Pal is a LeapFrog toy that sings lullabies and learning songs, and has activities with numbers, animals, food, and more.
 
 ## Usage
 The MyPal Scout and Violet plush toys have four inputs which can be activated by plugging in four AT switches. 
 
-## Build Instructions
-
-You can build the My Pal Scout/Violet by following the Assembly Guide attached. Follow the “How to prep your 3.5mm headphone jack” tutorial first to prepare for this toy adaption.
-
-## Bill of Materials
-Links given in BOM under documentation
-
- - 1 x LeapFrog My Pal Scout or Violet Toy (https://www.amazon.ca/LeapFrog-Pal-Violet-English-Version/dp/B00D2KZ1ZY?th=1)
- - 4 x 3.5mm Female Headphone jacks (something like two of  these cut in half: (Amazon Canada)
- - 8 x Crimp Connectors (Amazon Canada)
- - 1 x 3D Printed Clamp
- - 2 x #4 Metal Screw, 3/8″ Length (Amazon Canada)
- - 1 x 4" Zip Tie (Amazon Canada)
- - 1 x 18" Zip Tie (Amazon Canada
- - Electrical Tape
-
-Note: Other wire connections aside from the crimp connectors can be used, such as UR2 connectors, Marrettes, or even soldering the connections.
-
-## Tools
- - Needle Nose Pliers (or Wire Crimpers, or Vise Grips)
- - Crimping tool is recommended if available
- - Wire Cutters
- - Wire Strippers
 ### Documentation
 <!--- DOCUMENTATION --->
 | Document | Version | Link |
@@ -77,6 +54,7 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
 ### Contact Us
 For technical questions, to get involved, or to share your experience we encourage you to [visit our website](https://www.makersmakingchange.com/) or [contact us](https://www.makersmakingchange.com/s/contact).
 <!-- ABOUT MMC END -->
+
 
 
 
