@@ -6,6 +6,28 @@ This repository contains the necessary information to switch adapt a commerciall
 <!--- PHOTO --->
 <img width="2560" height="1707" alt="image" src="https://github.com/user-attachments/assets/94fcbabc-5f5d-4904-b632-6f0b8108d6fd" />
 
+## Getting Started
+<!--- Include an overall idea of what major steps are required to build the device. --->
+
+### 1. Order the Off-The-Shelf Components
+The [Bill of Materials](/Documentation/WhaleBubbleBlower_BOM_v0.1.xlsx) lists all of the parts and components required to build the Switch Adapted Whale Bubble Blower. The electronic components may be available locally, but will probably need to be ordered online. 
+
+### 2. Assemble the Switch Adapted Whale Bubble Blower
+Reference the [maker guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v1.0.pdf) for the tools and steps required to build each portion.
+
+## Files
+<!---FILES  This section includes all the information and files required to build and modify the device, including documentation, design files, and build files. --->
+
+### Documentation
+<!--- DOCUMENTATION --->
+| Document | Version | Link |
+|----------|---------|------|
+| Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](/Documentation/WhaleBubbleBlower_Design_Rationale_v0.1.pdf) |
+| Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](/Documentation/WhaleBubbleBlower_BOM_v0.1.xlsx) |
+| Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](/Documentation/WhaleBubbleBlower_Maker_Guide_v0.1.pdf) |
+| User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](/Documentation/WhaleBubbleBlower_User_Guide_v0.1.pdf)           |
+| Changelog            | 1.0 | [WhaleBubbleBlower_Changelog](/Documentation/WhaleBubbleBlower_Changelog_v0.1.pdf)               |
+
 
 ## License
 <!--- LICENSE Choose an appropriate license. We recommend an open-source hardware compatible license. --->
