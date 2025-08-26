@@ -1,5 +1,5 @@
 # Switch Adapted Moon and Star Projector
-This repository contains information for how to modify a commercially available Start Master Projector for use with an assistive switch.
+This folder contains information for how to modify a commercially available Start Master Projector for use with an assistive switch.
 
 <!--- PHOTO --->
 <img width="1920" height="2560" alt="image" src="https://github.com/user-attachments/assets/18c35ceb-d997-4f2e-94da-c1370d84bb3f" />
