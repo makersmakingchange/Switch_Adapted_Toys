@@ -13,7 +13,7 @@ This is an open-source assistive technology, so anyone is free to build it. All 
 
 ### 2. Request a build of this device
 
-If you would like to obtain a Switch Adapted Nerf Gun, you may submit a build request through the [MMC Library Page](https://makersmakingchange.com/project/switch-adapted-nerf-gun/). The requestor is responsible for the cost of materials and any shipping.
+If you would like to obtain a Switch Adapted Nerf Gun, you may submit a build request through the [MMC Library Page](https://www.makersmakingchange.com/request-a-device?id=01tJR000000694VYAQ). The requestor is responsible for the cost of materials and any shipping.
 
 ### 3. How to build this device for someone else
 
@@ -88,4 +88,5 @@ Makers Making Change leverages the capacity of community based Makers, Disabilit
  - LinkedIn: [Neil Squire Society](https://www.linkedin.com/company/neil-squire-society/)
  - Thingiverse: [makersmakingchange](https://www.thingiverse.com/makersmakingchange/about)
  - Printables: [MakersMakingChange](https://www.printables.com/@MakersMakingChange)
+
 
