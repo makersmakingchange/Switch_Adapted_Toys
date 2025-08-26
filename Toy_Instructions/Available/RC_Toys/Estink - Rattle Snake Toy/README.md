@@ -22,7 +22,7 @@ Reference the [maker guide](https://github.com/makersmakingchange/Adapted-Toys/b
 <!--- DOCUMENTATION --->
 | Document | Version | Link |
 |----------|---------|------|
-| Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](/Documentation/WhaleBubbleBlower_Design_Rationale_v0.1.pdf) |
+| Design Rationale     | 1.0 | [WhaleBubbleBlower_Design_Rationale](https://github.com/makersmakingchange/Adapted-Toys/blob/5016a3d5ef5db248452a0a430a34345196785bc4/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_Design_Rationale.pdf) |
 | Bill of Materials    | 1.0 | [WhaleBubbleBlower_BOM](https://github.com/makersmakingchange/Adapted-Toys/blob/61eccf1686d0bf9c07d14af7184d1c0cee148b85/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_BOM_V1.0.xlsx) |
 | Maker Guide       | 1.0 | [WhaleBubbleBlower_Maker_Guide](https://github.com/makersmakingchange/Adapted-Toys/blob/3ffab351692519d6581d821faf11a66c978a04d9/Toy_Instructions/Available/RC_Toys/Estink%20-%20Rattle%20Snake%20Toy/SlitheringSnake_Assembly_Guide.pdf) |
 | User Guide          | 1.0 | [WhaleBubbleBlower_User_Guide](/Documentation/WhaleBubbleBlower_User_Guide_v0.1.pdf)           |
