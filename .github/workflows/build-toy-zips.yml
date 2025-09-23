@@ -1,0 +1,77 @@
+name: Build Toy PDFs & Zips
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install pandoc + wkhtmltopdf (PDF engine)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc wkhtmltopdf
+
+      - name: Find toy folders, make README.pdf, and zip each folder
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Find all toy-info.yml files
+          mapfile -d '' configs < <(find . -type f -name 'toy-info.yml' -print0)
+
+          if [ ${#configs[@]} -eq 0 ]; then
+            echo "No toy-info.yml files found."
+            exit 0
+          fi
+
+          for cfg in "${configs[@]}"; do
+            dir="$(dirname "$cfg")"
+            echo "::group::Processing $dir"
+
+            # Prefer README.md (case-insensitive: check common variants)
+            md=""
+            if   [ -f "$dir/README.md" ]; then md="$dir/README.md"
+            elif [ -f "$dir/readme.md" ]; then md="$dir/readme.md"
+            elif [ -f "$dir/Readme.md" ]; then md="$dir/Readme.md"
+            fi
+
+            if [ -n "$md" ]; then
+              echo "Converting $(basename "$md") → README.pdf"
+              pandoc "$md" -f gfm -o "$dir/README.pdf" --pdf-engine=wkhtmltopdf
+            else
+              echo "No README.md found in $dir; skipping PDF conversion."
+            fi
+
+            # Create a zip in the same folder named after the folder
+            folder_name="$(basename "$dir")"
+            zip_path="$dir/$folder_name.zip"
+
+            echo "Creating zip: $zip_path"
+            (
+              cd "$dir"
+              # Assemble excludes (README.md variants + Working_docs dir + the zip itself + .git)
+              zip -r "$folder_name.zip" . \
+                -x "README.md" "readme.md" "Readme.md" \
+                -x "Working_docs" "Working_docs/*" "Working_docs/**" \
+                -x ".git/**" \
+                -x "$folder_name.zip"
+            )
+
+            echo "::endgroup::"
+          done
+
+      # Optional: upload all created zips as a single workflow artifact for convenience
+      - name: Upload all generated zips (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: toy-zips
+          path: |
+            **/*.zip
+          if-no-files-found: ignore
+          retention-days: 7
