@@ -1,0 +1,17 @@
+# toy-info.yaml
+
+toy:
+  name: "Example Toy Name"
+  available: true           # true = yes, false = no
+  last_update: "2025-09-23" # ISO 8601 format (YYYY-MM-DD)
+  category: "Bubble"  # e.g., Bubble, Lamp_Projector, RC, Sound_Movement_Light, Water_Nerf_Gun
+
+battery:
+  type: "AA"    # e.g., AA, AAA, C, D, CR2023
+  required: 2      # number of batteries required
+  included: 2     # number of batteries included in purchase
+
+adaptation:
+  inputs: 2  # number of inputs to switch adapt
+
+
