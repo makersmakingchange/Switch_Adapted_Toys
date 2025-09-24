@@ -6,7 +6,7 @@ This repository is a collection of guides, files, and tools to help individuals 
 ## What You'll Find Here
  - How-To Guides: - Step-by-step instructions for adapting toys with simple tools and materials and an easy-to-use template for writing toy instructions
  - Educational Resources: Information on how to switch adapt a new toy
- - Equipment lists: Complete list of adapted toys and the parts needed to adapt them
+ - Equipment lists: Complete list of adapted toys and the tools and components needed to adapt them
  <!-- - Workshop Materials: Handouts and presentation slides for toy hackathons and build nights -->
 
 <!--
