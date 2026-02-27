@@ -24,7 +24,7 @@ You can search for a specific toy by typing in the search field on the repositor
 
 ![Screenshot of the top of the GitHub repository with the search field circled in red.](Photos/Search_in_repo.png)
 
-The search is very broad, and does not rely on exact  matching between the files/folder you're looking for and what you type. For example, if you type "Rach", the search will find the Switch Adapted Ms. Rachel Speak and Sing Doll.
+The search is very broad, and does not rely on exact  matching between the files/folder you're looking for and what you type. For example, if you type "Rachel", the search will find the Switch Adapted Ms. Rachel Speak and Sing Doll.
 
 ![Screenshot of the search results when someone types "Rach" into the search field.](Photos/Example_search.png)
 
