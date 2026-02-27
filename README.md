@@ -17,6 +17,17 @@ This repository is a collection of guides, files, and tools to help individuals 
  - Nonprofits and schools running toy adaptation workshops
 -->
 
+## How To Find a Toy
+Toys have been organized by type into separate folders inside the "Toy_Instructions" folder. We have organized the toys this way to help make it easier to find a suitable substitution if you are unable to get the toy someone has requested directly.
+
+You can search for a specific toy by typing in the search field on the repository.
+
+![Screenshot of the top of the GitHub repository with the search field circled in red.](Photos/Search_in_repo.png)
+
+The search is very broad, and does not rely on exact  matching between the files/folder you're looking for and what you type. For example, if you type "Rach", the search will find the Switch Adapted Ms. Rachel Speak and Sing Doll.
+
+![Screenshot of the search results when someone types "Rach" into the search field.](Photos/Example_search.png)
+
 ## Get Involved
 This repository is open source and community-driven. Feel free to open issues, suggest improvements, or submit pull requests! Whether you're documenting your own process or translating guides into another language, your contributions help make inclusive play more accessible for everyone.
 
