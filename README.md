@@ -28,6 +28,18 @@ The search is very broad, and does not rely on exact  matching between the files
 
 ![Screenshot of the search results when someone types "Rach" into the search field.](Photos/Example_search.png)
 
+## Accessing Files
+
+Once you have found the files you need, you can download them from GitHub. You can download individual files by clicking on the down arrow on the page. 
+
+![Screenshot highlighting the download button on GitHub.](Photos/Example_download.png)
+
+You will need to download documents (PDFs or Word documents) to be able to access any hyperlinks in those documents.
+
+Some document types, such as Word documents, do not display on the GitHub webpage, and you will have to download them to view. Clicking the "View raw" button will display the files on your web browser (if possible), or download them to your computer.
+
+![Screenshot highlighting the View raw option for a file type that doesn't preview on GitHub.](Photos/Example_view_raw.png)
+
 ## Get Involved
 This repository is open source and community-driven. Feel free to open issues, suggest improvements, or submit pull requests! Whether you're documenting your own process or translating guides into another language, your contributions help make inclusive play more accessible for everyone.
 
