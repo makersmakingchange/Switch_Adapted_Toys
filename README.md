@@ -1,47 +1,7 @@
-# Switch Adapted Toys
-Welcome to the Maker's Making Change resources for Switch Adapted Toys.
+# Switch Adapted Toys Website
 
-This repository is a collection of guides, files, and tools to help individuals and organizations modify toys for use with assistive switches. These adaptations make play more inclusive for children and adults with limited mobility, giving them the power to activate toys with the press of a button—on their own terms.
+THIS IS A WORK IN PROGRESS. We are creating a site to host this github for it to have a better user experience.
 
-## What You'll Find Here
- - How-To Guides: - Step-by-step instructions for adapting toys with simple tools and materials and an easy-to-use template for writing toy instructions
- - Educational Resources: Information on how to switch adapt a new toy
- - Equipment lists: Complete list of adapted toys and the tools and components needed to adapt them
- <!-- - Workshop Materials: Handouts and presentation slides for toy hackathons and build nights -->
-
-<!--
-## Who This Is For
- - Makers and volunteers interested in assistive technology
- - Therapists and educators supporting play-based learning
- - Families looking to adapt toys at home
- - Nonprofits and schools running toy adaptation workshops
--->
-
-## How To Find a Toy
-Toys have been organized by type into separate folders inside the "Toy_Instructions" folder. We have organized the toys this way to help make it easier to find a suitable substitution if you are unable to get the toy someone has requested directly.
-
-You can search for a specific toy by typing in the search field on the repository.
-
-![Screenshot of the top of the GitHub repository with the search field circled in red.](Photos/Search_in_repo.png)
-
-The search is very broad, and does not rely on exact  matching between the files/folder you're looking for and what you type. For example, if you type "Rachel", the search will find the Switch Adapted Ms. Rachel Speak and Sing Doll, but also any instances where those letters appear in that order, regardless of what charaters are between them.
-
-![Screenshot of the search results when someone types "Rachel" into the search field.](Photos/Example_search.png)
-
-## Accessing Files
-
-Once you have found the files you need, you can download them from GitHub. You can download individual files by clicking on the down arrow on the page. 
-
-![Screenshot highlighting the download button on GitHub.](Photos/Example_download.png)
-
-You will need to download documents (PDFs or Word documents) to be able to access any hyperlinks in those documents.
-
-Some document types, such as Word documents, do not display on the GitHub webpage, and you will have to download them to view. Clicking the "View raw" button will display the files on your web browser (if possible), or download them to your computer.
-
-![Screenshot highlighting the View raw option for a file type that doesn't preview on GitHub.](Photos/Example_view_raw.png)
-
-## Get Involved
-This repository is open source and community-driven. Feel free to open issues, suggest improvements, or submit pull requests! Whether you're documenting your own process or translating guides into another language, your contributions help make inclusive play more accessible for everyone.
 
 ## License
 All content is shared under the [Creative Commons Attribution-ShareAlike 4.0 License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/), unless otherwise noted.
