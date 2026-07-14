@@ -2,114 +2,31 @@
 
 Browse switch-adapted toy builds. Use the filters below to narrow down by category, or scroll through everything.
 
----
+!!! note "Adding a new toy"
+    You don't need to edit this page at all. To add a new toy to the site:
 
-<!--
-============================================================================
- HOW TO ADD A NEW TOY (no coding knowledge needed!)
-============================================================================
- 1. Scroll down to the block that starts with "const toys = [".
- 2. Copy one whole { ... } block below (including the commas).
- 3. Paste it right before the closing "];" line.
- 4. Change the text inside the quotes for your new toy:
-      - name       -> the toy's name, e.g. "Bubble Blower"
-      - image      -> path to a thumbnail photo (see note below)
-      - link       -> the GitHub folder/README link for that toy
-      - category   -> must exactly match one of the categories listed
-                      in "const categories" further up. If your toy's
-                      main folder isn't in that list yet, add it there
-                      FIRST (see instructions above that list).
- 5. Save the file, commit, and push. That's it - the card and the
-    filter button will both appear automatically.
-
- ADDING A THUMBNAIL PHOTO:
- - Put your image file in: docs/images/toys/
- - Give it a short, simple, no-spaces filename, e.g. bubble-blower.jpg
- - Then set image to: "images/toys/bubble-blower.jpg"
- - If you don't have a photo yet, leave it as "images/toys/placeholder.jpg"
-   and swap it in later - the card will still work, just with a
-   placeholder image.
-============================================================================
--->
+    1. Go to the `Toy_Instructions` folder on GitHub.
+    2. Open the category folder that fits your toy (`Bubble`, `Lamp_Projector`, `RC`, `Sound_movement_light`, or `Water_nerf_gun`). If none fit, create a new folder for the category.
+    3. Create a new folder for your toy inside it, and add a photo (jpg/png) of the toy.
+    4. Optional: add a plain text file named `info.txt` inside that folder if you want to set a custom name, link, or description (see the template in `Toy_Instructions/_TEMPLATE/info.txt`).
+    5. Commit your changes. The card and its filter will appear automatically the next time the site rebuilds (a few minutes after you push).
 
 <div id="toy-app">
-
-  <div class="filter-bar" id="filter-bar">
-    <!-- Filter buttons are generated automatically from the category list below -->
-  </div>
+  <div class="filter-bar" id="filter-bar"></div>
   <button class="clear-btn" onclick="clearToyFilters()">Clear Filters</button>
-
-  <div class="toy-grid" id="toy-grid">
-    <!-- Cards are generated automatically - you never need to edit this part -->
-  </div>
-
+  <div class="toy-grid" id="toy-grid"></div>
 </div>
 
 <script>
-// ============================================================================
-// STEP 1: CATEGORIES
-// These come from the main folders inside Toy_Instructions on GitHub.
-// To add a new category/folder, just add a new line in "quotes, like this,"
-// ============================================================================
-const categories = [
-  "Battery Interrupter Toys",
-  "Solderless Toys",
-  "Bluetooth / Electronic Toys",
-  "3D Printed Mounts"
-];
+// Data comes from window.TOY_CATEGORIES and window.TOY_DATA,
+// which are generated automatically by scripts/generate_toy_data.py
+// during the site build - see docs/js/toy-data.js (auto-generated, do not edit).
 
-// ============================================================================
-// STEP 2: TOYS
-// One block per toy. Copy a whole { ... }, block and edit the text in quotes.
-// Make sure "category" exactly matches one entry from the list above.
-// ============================================================================
-const toys = [
-  {
-    name: "Bubble Blower",
-    image: "images/toys/bubble-blower.jpg",
-    link: "https://github.com/makersmakingchange/Switch-Adapted-Bubble-Blower",
-    category: "Battery Interrupter Toys"
-  },
-  {
-    name: "Nerf Gun",
-    image: "images/toys/nerf-gun.jpg",
-    link: "https://github.com/makersmakingchange/Switch-Adapted-Nerf-Gun",
-    category: "Battery Interrupter Toys"
-  },
-  {
-    name: "My Pal Scout / Violet",
-    image: "images/toys/my-pal-scout.jpg",
-    link: "https://github.com/makersmakingchange/My-Pal-Scout-Violet-Switch-Adapted-Toy",
-    category: "Solderless Toys"
-  },
-  {
-    name: "Beat Bow Wow",
-    image: "images/toys/beat-bow-wow.jpg",
-    link: "https://github.com/makersmakingchange/Switch-Adapted-Beat-Bow-Wow",
-    category: "Solderless Toys"
-  },
-  {
-    name: "Spinning Light Wand",
-    image: "images/toys/spinning-light-wand.jpg",
-    link: "https://github.com/makersmakingchange/Spinning-Light-Wand-Adaptation",
-    category: "3D Printed Mounts"
-  },
-  {
-    name: "Spin Art Toy",
-    image: "images/toys/spin-art.jpg",
-    link: "https://github.com/makersmakingchange/Spin-Art-Switch-Adapted-Toy",
-    category: "3D Printed Mounts"
-  }
-];
-
-// ============================================================================
-// Everything below this line is the engine that builds the page.
-// You should not need to touch it.
-// ============================================================================
 let activeFilters = new Set();
 
 function buildFilterBar() {
   const bar = document.getElementById("filter-bar");
+  const categories = window.TOY_CATEGORIES || [];
   bar.innerHTML = categories.map(cat => `
     <label class="filter-chip">
       <input type="checkbox" value="${cat}" onchange="toggleToyFilter(this)">
@@ -135,12 +52,13 @@ function clearToyFilters() {
 
 function renderToyCards() {
   const grid = document.getElementById("toy-grid");
+  const toys = window.TOY_DATA || [];
   const visibleToys = activeFilters.size === 0
     ? toys
     : toys.filter(t => activeFilters.has(t.category));
 
   grid.innerHTML = visibleToys.map(t => `
-    <a href="${t.link}" class="toy-card" target="_blank" rel="noopener">
+    <a href="${t.link}" class="toy-card" target="_blank" rel="noopener" title="${t.description || t.name}">
       <div class="toy-card-image">
         <img src="${t.image}" alt="${t.name}" loading="lazy"
              onerror="this.src='images/toys/placeholder.jpg'">
