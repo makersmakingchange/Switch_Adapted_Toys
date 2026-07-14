@@ -36,7 +36,7 @@ function getSiteBase() {
   return ""; // fallback - relative paths, may break on nested pages
 }
 
-const SITE_BASE = getSiteBase();
+let SITE_BASE = "";
 
 let activeFilters = new Set();
 
@@ -97,6 +97,7 @@ function renderToyCards() {
 // normal page load.
 function initToyApp() {
   if (!document.getElementById("toy-grid")) return;
+  SITE_BASE = getSiteBase();
   buildFilterBar();
   renderToyCards();
 }
