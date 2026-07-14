@@ -38,6 +38,8 @@ function getSiteBase() {
 
 const SITE_BASE = getSiteBase();
 
+let activeFilters = new Set();
+
 function buildFilterBar() {
   const bar = document.getElementById("filter-bar");
   const categories = window.TOY_CATEGORIES || [];
