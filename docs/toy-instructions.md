@@ -22,7 +22,21 @@ Browse switch-adapted toy builds. Use the filters below to narrow down by catego
 // which are generated automatically by scripts/generate_toy_data.py
 // during the site build - see docs/js/toy-data.js (auto-generated, do not edit).
 
-let activeFilters = new Set();
+// Relative image paths break on this page because MkDocs serves it at
+// /toy-instructions/ (a folder) rather than a flat file, so a plain
+// relative path like "images/toys/x.jpg" would incorrectly resolve to
+// /toy-instructions/images/toys/x.jpg. To fix this without hardcoding
+// the site's root path, we borrow the already-correct absolute URL that
+// the browser resolved for the toy-data.js <script> tag itself.
+function getSiteBase() {
+  const script = document.querySelector('script[src$="toy-data.js"]');
+  if (script) {
+    return script.src.replace(/js\/toy-data\.js(\?.*)?$/, "");
+  }
+  return ""; // fallback - relative paths, may break on nested pages
+}
+
+const SITE_BASE = getSiteBase();
 
 function buildFilterBar() {
   const bar = document.getElementById("filter-bar");
@@ -60,8 +74,8 @@ function renderToyCards() {
   grid.innerHTML = visibleToys.map(t => `
     <a href="${t.link}" class="toy-card" target="_blank" rel="noopener" title="${t.description || t.name}">
       <div class="toy-card-image">
-        <img src="${t.image}" alt="${t.name}" loading="lazy"
-             onerror="this.src='images/toys/placeholder.jpg'">
+        <img src="${SITE_BASE}${t.image}" alt="${t.name}" loading="lazy"
+             onerror="this.src='${SITE_BASE}images/placeholder.png'">
       </div>
       <div class="toy-card-label">
         <p class="toy-name">${t.name}</p>
