@@ -61,7 +61,7 @@ function renderToyCards() {
     <a href="${t.link}" class="toy-card" target="_blank" rel="noopener" title="${t.description || t.name}">
       <div class="toy-card-image">
         <img src="${t.image}" alt="${t.name}" loading="lazy"
-             onerror="this.src='images/toys/placeholder.jpg'">
+             onerror="this.src='images/placeholder.png'">
       </div>
       <div class="toy-card-label">
         <p class="toy-name">${t.name}</p>

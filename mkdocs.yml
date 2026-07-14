@@ -44,6 +44,7 @@ plugins:
 
 extra_css:
   - styles/extra.css
+  - js/toy-data.js
 
 extra_javascript:
   - extra.js
