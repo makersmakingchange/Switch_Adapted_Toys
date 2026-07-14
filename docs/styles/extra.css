@@ -413,7 +413,7 @@ h2 { border-left: 5px solid #ef373e; padding-left: 15px; }
 }
 
 .md-header__title .md-ellipsis::after {
-    content: "Gaming Accessibility Made For Everyone | Makers Making Change | Neil Squire"; /* Your Subheading Here */
+    content: "Makers Making Change | Neil Squire"; /* Your Subheading Here */
     font-size: 0.6rem;
     font-weight: 400;
     text-transform: uppercase;

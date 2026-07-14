@@ -61,7 +61,7 @@ function renderToyCards() {
     <a href="${t.link}" class="toy-card" target="_blank" rel="noopener" title="${t.description || t.name}">
       <div class="toy-card-image">
         <img src="${t.image}" alt="${t.name}" loading="lazy"
-             onerror="this.src='images/placeholder.png'">
+             onerror="this.src='images/toys/placeholder.jpg'">
       </div>
       <div class="toy-card-label">
         <p class="toy-name">${t.name}</p>
@@ -75,8 +75,16 @@ function renderToyCards() {
   }
 }
 
-buildFilterBar();
-renderToyCards();
+// document$ is provided by Material for MkDocs and fires after every
+// page load AND every instant-navigation page swap - this avoids both
+// the "toy-data.js hasn't loaded yet" race condition and the
+// "script didn't re-run after clicking an internal link" issue.
+document$.subscribe(function() {
+  if (document.getElementById("toy-grid")) {
+    buildFilterBar();
+    renderToyCards();
+  }
+});
 </script>
 
 <style>
