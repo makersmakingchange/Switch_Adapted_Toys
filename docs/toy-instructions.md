@@ -75,16 +75,30 @@ function renderToyCards() {
   }
 }
 
-// document$ is provided by Material for MkDocs and fires after every
-// page load AND every instant-navigation page swap - this avoids both
-// the "toy-data.js hasn't loaded yet" race condition and the
-// "script didn't re-run after clicking an internal link" issue.
-document$.subscribe(function() {
-  if (document.getElementById("toy-grid")) {
-    buildFilterBar();
-    renderToyCards();
-  }
-});
+// Runs the app once the page (and any deferred scripts like toy-data.js)
+// have finished loading. DOMContentLoaded fires after deferred scripts
+// run, so window.TOY_DATA is guaranteed to be set by this point on a
+// normal page load.
+function initToyApp() {
+  if (!document.getElementById("toy-grid")) return;
+  buildFilterBar();
+  renderToyCards();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initToyApp);
+} else {
+  // DOM already loaded by the time this script ran
+  initToyApp();
+}
+
+// Material for MkDocs uses instant-loading (SPA-style) navigation, which
+// swaps page content without a full reload. If document$ exists (it's
+// provided by the Material theme bundle), also re-run on every page swap
+// so the cards reappear correctly when navigating back to this page.
+if (typeof document$ !== "undefined" && document$ && typeof document$.subscribe === "function") {
+  document$.subscribe(initToyApp);
+}
 </script>
 
 <style>
