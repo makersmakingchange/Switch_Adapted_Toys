@@ -1,5 +1,5 @@
-site_name: GAME Resources
-site_description: Gaming Accessibility Made For Everyone | Makers Making Change
+site_name: Toy Adapting Instructions
+site_description: Neil Squire's Makers Making Change
 site_url: https://makersmakingchange.github.io/Switch_Adapted_Toys/
 use_directory_urls: true 
 
@@ -11,7 +11,7 @@ nav:
 
 theme:
   name: material
-  logo: images/interact_black.png
+  logo: docs\images\Interact_black.png
   custom_dir: overrides
   font:
     text: Open Sans
