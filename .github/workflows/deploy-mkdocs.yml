@@ -12,17 +12,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout your repo
-      - name: Checkout repo
+      # 1️⃣ Checkout the website branch (this repo's default checkout)
+      - name: Checkout website branch
         uses: actions/checkout@v3
 
-      #  Set up Python
+      # 2️⃣ Checkout Toy_Instructions from the main branch into a side folder
+      #    (Toy_Instructions lives permanently on main, not on the website branch)
+      - name: Checkout Toy_Instructions from main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          path: toy-content
+          sparse-checkout: |
+            Toy_Instructions
+          sparse-checkout-cone-mode: false
+
+      # 3️⃣ Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.x"
 
-      # Install MKDocs + plugins
+      # 4️⃣ Install MKDocs + plugins
       - name: Install MKDocs and plugins
         run: |
           pip install mkdocs
@@ -30,12 +41,13 @@ jobs:
           pip install mkdocs-with-pdf
           pip install mkdocs-include-markdown-plugin
 
-        # Generate toy data
+      # 5️⃣ Generate toy card data from the checked-out Toy_Instructions folder
       - name: Generate toy card data from Toy_Instructions folder
         run: python scripts/generate_toy_data.py
+        env:
+          TOY_INSTRUCTIONS_DIR: ${{ github.workspace }}/toy-content/Toy_Instructions
 
-
-      # 4Build and deploy to GitHub Pages
+      # 6️⃣ Build and deploy to GitHub Pages
       - name: Build & deploy
         run: |
           mkdocs gh-deploy --force

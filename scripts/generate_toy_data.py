@@ -29,6 +29,7 @@ Run this BEFORE `mkdocs build` / `mkdocs gh-deploy` in the GitHub Action.
 """
 
 import json
+import os
 import re
 import shutil
 from pathlib import Path
@@ -37,7 +38,15 @@ from pathlib import Path
 # CONFIG - adjust these if your repo layout changes
 # ---------------------------------------------------------------------------
 REPO_ROOT = Path(__file__).resolve().parent.parent
-TOY_INSTRUCTIONS_DIR = REPO_ROOT / "Toy_Instructions"
+
+# Toy_Instructions lives on the `main` branch, while this script and the
+# website files live on the website branch. The GitHub Actions workflow
+# checks out `main` into a separate folder (see workflow step) and passes
+# its location in here via the TOY_INSTRUCTIONS_DIR environment variable.
+# Falls back to a local Toy_Instructions/ folder for local testing.
+TOY_INSTRUCTIONS_DIR = Path(
+    os.environ.get("TOY_INSTRUCTIONS_DIR", REPO_ROOT / "Toy_Instructions")
+)
 DOCS_DIR = REPO_ROOT / "docs"
 IMAGES_OUT_DIR = DOCS_DIR / "images" / "toys"
 JS_OUT_PATH = DOCS_DIR / "js" / "toy-data.js"
@@ -125,7 +134,7 @@ def main():
                 shutil.copyfile(thumbnail, IMAGES_OUT_DIR / image_filename)
                 image_path = f"images/toys/{image_filename}"
             else:
-                image_path = "images/placeholder.jpg"
+                image_path = "images/toys/placeholder.jpg"
                 print(f"NOTE: no thumbnail found for '{name}' - using placeholder.")
 
             toys.append(
