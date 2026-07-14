@@ -125,7 +125,7 @@ def main():
                 shutil.copyfile(thumbnail, IMAGES_OUT_DIR / image_filename)
                 image_path = f"images/toys/{image_filename}"
             else:
-                image_path = "images/toys/placeholder.jpg"
+                image_path = "images/placeholder.jpg"
                 print(f"NOTE: no thumbnail found for '{name}' - using placeholder.")
 
             toys.append(
