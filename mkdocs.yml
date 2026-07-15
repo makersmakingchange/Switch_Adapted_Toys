@@ -11,7 +11,7 @@ nav:
 
 theme:
   name: material
-  logo: images/Interact_black.png
+  logo: images/hfth-logo.png
   custom_dir: overrides
   font:
     text: Open Sans
