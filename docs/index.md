@@ -1,6 +1,6 @@
 # Welcome to MMC's Toy Adapitng Instructions
 
-<img src="./images/main-banner.png" class="page-banner" alt="decorative banner showing various adapted toys/kids playing with them">
+<img src="./images/toy-banner.png" class="page-banner" alt="decorative banner showing various adapted toys/kids playing with them">
 
 ## What is this Resource? 
 Welcome! This resource is a collection of the [Makers Making Change](https://www.makersmakingchange.com/), a program of [Neil Squire](https://www.neilsquire.ca/), toy adapting instructions and resources. Intended for makers and families to find step by step instructions to adapt toys to be assisitive switch accessible and host resources to make that process easier.
