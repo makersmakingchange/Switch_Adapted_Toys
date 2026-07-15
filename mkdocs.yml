@@ -11,7 +11,7 @@ nav:
 
 theme:
   name: material
-  logo: docs\images\Interact_black.png 
+  logo: images/Interact_black.png
   custom_dir: overrides
   font:
     text: Open Sans

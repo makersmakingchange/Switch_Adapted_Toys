@@ -57,6 +57,13 @@ GITHUB_BRANCH = "main"
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
 
+# Folder names under Toy_Instructions that are NOT real toy categories,
+# and should be skipped entirely (case-insensitive match).
+IGNORED_FOLDERS = {
+    "_template",
+    "template",
+}
+
 
 def prettify(folder_name: str) -> str:
     """Turn 'Battery_Interrupter_Toys' into 'Battery Interrupter Toys'."""
@@ -110,7 +117,12 @@ def main():
     toys = []
 
     category_dirs = sorted(
-        [d for d in TOY_INSTRUCTIONS_DIR.iterdir() if d.is_dir() and not d.name.startswith(".")]
+        [
+            d for d in TOY_INSTRUCTIONS_DIR.iterdir()
+            if d.is_dir()
+            and not d.name.startswith(".")
+            and d.name.lower() not in IGNORED_FOLDERS
+        ]
     )
 
     for category_dir in category_dirs:
