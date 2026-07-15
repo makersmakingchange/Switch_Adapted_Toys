@@ -12,6 +12,7 @@ Browse switch-adapted toy builds. Use the filters below to narrow down by catego
     5. Commit your changes. The card and its filter will appear automatically the next time the site rebuilds (a few minutes after you push).
 
 <div id="toy-app">
+  <input type="text" id="toy-search" class="toy-search" placeholder="Search toys by name..." oninput="handleToySearch(this.value)">
   <div class="filter-bar" id="filter-bar"></div>
   <button class="clear-btn" onclick="clearToyFilters()">Clear Filters</button>
   <div class="toy-grid" id="toy-grid"></div>
@@ -39,6 +40,12 @@ function getSiteBase() {
 let SITE_BASE = "";
 
 let activeFilters = new Set();
+let searchQuery = "";
+
+function handleToySearch(value) {
+  searchQuery = value.trim().toLowerCase();
+  renderToyCards();
+}
 
 function buildFilterBar() {
   const bar = document.getElementById("filter-bar");
@@ -62,16 +69,24 @@ function toggleToyFilter(checkbox) {
 
 function clearToyFilters() {
   activeFilters.clear();
+  searchQuery = "";
   document.querySelectorAll("#filter-bar input[type=checkbox]").forEach(cb => cb.checked = false);
+  const searchBox = document.getElementById("toy-search");
+  if (searchBox) searchBox.value = "";
   renderToyCards();
 }
 
 function renderToyCards() {
   const grid = document.getElementById("toy-grid");
   const toys = window.TOY_DATA || [];
-  const visibleToys = activeFilters.size === 0
+
+  let visibleToys = activeFilters.size === 0
     ? toys
     : toys.filter(t => activeFilters.has(t.category));
+
+  if (searchQuery) {
+    visibleToys = visibleToys.filter(t => t.name.toLowerCase().includes(searchQuery));
+  }
 
   grid.innerHTML = visibleToys.map(t => `
     <a href="${t.link}" class="toy-card" target="_blank" rel="noopener" title="${t.description || t.name}">
@@ -98,6 +113,8 @@ function renderToyCards() {
 function initToyApp() {
   if (!document.getElementById("toy-grid")) return;
   SITE_BASE = getSiteBase();
+  activeFilters = new Set();
+  searchQuery = "";
   buildFilterBar();
   renderToyCards();
 }
@@ -119,6 +136,24 @@ if (typeof document$ !== "undefined" && document$ && typeof document$.subscribe 
 </script>
 
 <style>
+.toy-search {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--md-default-fg-color--lightest, #ccc);
+  background: var(--md-default-bg-color, #fff);
+  color: inherit;
+}
+
+.toy-search:focus {
+  outline: none;
+  border-color: var(--md-primary-fg-color, #888);
+}
+
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
