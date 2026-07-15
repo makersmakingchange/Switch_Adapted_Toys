@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - Website-v1.0
+      - main
   pull_request:
 
 jobs:
@@ -12,9 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the website branch (this repo's default checkout)
+      # 1️⃣ Checkout the website branch (always this branch, regardless of
+      #    which branch's push triggered the run - see note above)
       - name: Checkout website branch
         uses: actions/checkout@v3
+        with:
+          ref: Website-v1.0
 
       # 2️⃣ Checkout Toy_Instructions from the main branch into a side folder
       #    (Toy_Instructions lives permanently on main, not on the website branch)
