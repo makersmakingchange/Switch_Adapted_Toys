@@ -9,21 +9,32 @@ Folder convention:
     Toy_Instructions/
         <Category Folder>/
             <Toy Folder>/
-                <photo>.jpg / .png / .webp   (thumbnail - required)
-                info.txt                     (optional overrides)
+                <photo>.jpg / .png / .webp   (thumbnail - optional)
+                toy-info.txt                 (optional overrides, see below)
                 ... any other files (assembly guides, 3D files, etc.)
                                               (ignored by this script)
 
-info.txt (optional) format - one item per line:
+toy-info.txt (optional) format - one item per line, e.g.:
 
     Name: Bubble Blower
+    Available: true
+    Last Update: 2025-09-23
+    Category: Bubble
     Link: https://github.com/makersmakingchange/Switch-Adapted-Bubble-Blower
     Description: A switch-adapted bubble machine for younger kids.
+    Battery Type: AA
+    Battery Required: 2
+    Battery Included: 2
+    Adaptation Inputs: 2
 
-If info.txt is missing entirely, the script falls back to:
-    Name  -> the toy folder name, with underscores/hyphens turned into spaces
-    Link  -> an auto-built link to that folder on GitHub
-    Description -> left blank
+If toy-info.txt is missing entirely, the script falls back to:
+    Name     -> the toy folder name, with underscores/hyphens turned into spaces
+    Category -> the name of the folder this toy sits directly inside
+    Link     -> an auto-built link to that folder on GitHub
+    Available, Description, Battery/Adaptation fields -> left blank/default
+
+Also still reads the older, simpler "info.txt" format (Name/Link/Description
+only) if toy-info.txt isn't present, for backwards compatibility.
 
 Run this BEFORE `mkdocs build` / `mkdocs gh-deploy` in the GitHub Action.
 """
@@ -78,16 +89,59 @@ def slugify(text: str) -> str:
 
 
 def parse_info_txt(info_path: Path) -> dict:
-    """Reads a simple 'Key: value' formatted info.txt file."""
+    """Reads a simple 'Key: value' formatted info.txt file (legacy format)."""
     data = {}
     if not info_path.exists():
         return data
     for line in info_path.read_text(encoding="utf-8").splitlines():
-        if ":" not in line:
+        stripped = line.strip()
+        if stripped.startswith("---"):
+            break  # stop at the "what each line means" divider, if present
+        if ":" not in line or stripped.startswith("#"):
             continue
         key, _, value = line.partition(":")
         data[key.strip().lower()] = value.strip()
     return data
+
+
+def to_bool(value, default=True):
+    if value is None or value == "":
+        return default
+    return str(value).strip().lower() in ("true", "yes", "1")
+
+
+def to_int(value):
+    try:
+        return int(str(value).strip())
+    except (ValueError, TypeError):
+        return None
+
+
+def parse_toy_info(info_path: Path) -> dict:
+    """
+    Reads the richer plain-text toy-info.txt format (Key: value lines,
+    same style as the legacy info.txt but with more fields) and returns
+    a dict of the fields the site uses. Returns {} if the file doesn't
+    exist. Lines starting with '#' are treated as comments and ignored,
+    so the instructional text at the bottom of the template is safely
+    skipped.
+    """
+    raw = parse_info_txt(info_path)  # reuses the same "Key: value" parsing
+    if not raw:
+        return {}
+
+    return {
+        "name": raw.get("name"),
+        "available": to_bool(raw.get("available")),
+        "last_update": raw.get("last update") or raw.get("last_update"),
+        "category": raw.get("category"),
+        "link": raw.get("link"),
+        "description": raw.get("description"),
+        "battery_type": raw.get("battery type") or raw.get("battery_type"),
+        "battery_required": to_int(raw.get("battery required") or raw.get("battery_required")),
+        "battery_included": to_int(raw.get("battery included") or raw.get("battery_included")),
+        "adaptation_inputs": to_int(raw.get("adaptation inputs") or raw.get("adaptation_inputs")),
+    }
 
 
 def find_thumbnail(toy_dir: Path) -> Path | None:
@@ -126,19 +180,31 @@ def main():
     )
 
     for category_dir in category_dirs:
-        category_name = prettify(category_dir.name)
-        categories.append(category_name)
+        folder_category_name = prettify(category_dir.name)
 
         toy_dirs = sorted(
             [d for d in category_dir.iterdir() if d.is_dir() and not d.name.startswith(".")]
         )
 
         for toy_dir in toy_dirs:
-            info = parse_info_txt(toy_dir / "info.txt")
+            info = parse_toy_info(toy_dir / "toy-info.txt")
+            if not info:
+                # Fall back to the old info.txt format, in case some
+                # folders were set up before this richer format existed.
+                legacy = parse_info_txt(toy_dir / "info.txt")
+                if legacy:
+                    info = {
+                        "name": legacy.get("name"),
+                        "link": legacy.get("link"),
+                        "description": legacy.get("description"),
+                    }
 
             name = info.get("name") or prettify(toy_dir.name)
+            # Category can be overridden by toy-info.txt; otherwise use the
+            # folder it's actually sitting in.
+            category_name = info.get("category") or folder_category_name
             link = info.get("link") or build_github_link(category_dir.name, toy_dir.name)
-            description = info.get("description", "")
+            description = info.get("description") or ""
 
             thumbnail = find_thumbnail(toy_dir)
             if thumbnail:
@@ -149,6 +215,9 @@ def main():
                 image_path = "images/placeholder.png"
                 print(f"NOTE: no thumbnail found for '{name}' - using placeholder.")
 
+            if category_name not in categories:
+                categories.append(category_name)
+
             toys.append(
                 {
                     "name": name,
@@ -156,8 +225,16 @@ def main():
                     "link": link,
                     "category": category_name,
                     "description": description,
+                    "available": info.get("available", True),
+                    "last_update": info.get("last_update") or "",
+                    "battery_type": info.get("battery_type") or "",
+                    "battery_required": info.get("battery_required"),
+                    "battery_included": info.get("battery_included"),
+                    "adaptation_inputs": info.get("adaptation_inputs"),
                 }
             )
+
+    categories = sorted(categories)
 
     js_content = (
         "// AUTO-GENERATED by scripts/generate_toy_data.py - do not edit by hand.\n"
