@@ -20,6 +20,7 @@ toy-info.txt (optional) format - one item per line, e.g.:
     Available: true
     Last Update: 2025-09-23
     Category: Bubble
+    Tags: Bubble, HFTH 2026, Battery Powered
     Link: https://github.com/makersmakingchange/Switch-Adapted-Bubble-Blower
     Description: A switch-adapted bubble machine for younger kids.
     Battery Type: AA
@@ -27,9 +28,19 @@ toy-info.txt (optional) format - one item per line, e.g.:
     Battery Included: 2
     Adaptation Inputs: 2
 
+Tags drive the filter chips on the "Toy Instructions" page (rather than
+category/folder). A toy can have as many comma-separated tags as you want,
+and shows up under every one of them - e.g. tagging a toy with
+"HFTH 2026" makes it show up both under its usual category tag AND under
+an "HFTH 2026" filter alongside any other toy tagged that way, regardless
+of which category folder either one lives in. If a toy has no Tags line
+yet, it just falls back to using its Category as its one tag, so nothing
+disappears from the filters for toys that haven't been retagged.
+
 If toy-info.txt is missing entirely, the script falls back to:
     Name     -> the toy folder name, with underscores/hyphens turned into spaces
     Category -> the name of the folder this toy sits directly inside
+    Tags     -> [Category] (a single tag matching the category)
     Link     -> an auto-built link to that folder on GitHub
     Available, Description, Battery/Adaptation fields -> left blank/default
 
@@ -130,6 +141,13 @@ def to_int(value):
         return None
 
 
+def to_list(value):
+    """Turns 'Bubble, HFTH 2026, Battery Powered' into ['Bubble', 'HFTH 2026', 'Battery Powered']."""
+    if not value:
+        return []
+    return [item.strip() for item in value.split(",") if item.strip()]
+
+
 def parse_toy_info(info_path: Path) -> dict:
     """
     Reads the richer plain-text toy-info.txt format (Key: value lines,
@@ -148,6 +166,7 @@ def parse_toy_info(info_path: Path) -> dict:
         "available": to_bool(raw.get("available")),
         "last_update": raw.get("last update") or raw.get("last_update"),
         "category": raw.get("category"),
+        "tags": raw.get("tags"),
         "link": raw.get("link"),
         "description": raw.get("description"),
         "battery_type": raw.get("battery type") or raw.get("battery_type"),
@@ -184,6 +203,8 @@ def render_toy_page(toy: dict) -> str:
     zip_rel = f"../../downloads/{toy['slug']}.zip"
 
     meta_rows = []
+    if toy.get("tags"):
+        meta_rows.append(f"**Tags:** {', '.join(toy['tags'])}")
     if toy.get("battery_type"):
         req = toy.get("battery_required")
         inc = toy.get("battery_included")
@@ -206,7 +227,19 @@ def render_toy_page(toy: dict) -> str:
             "    This toy adaptation is not currently available/supported.\n"
         )
 
-    description = toy.get("description") or "No description has been added for this toy yet."
+    has_info = bool(toy.get("description")) or bool(toy.get("battery_type")) or bool(toy.get("adaptation_inputs"))
+    if toy.get("description"):
+        description = toy["description"]
+    elif has_info:
+        # Had SOME toy-info.txt fields, just no description text.
+        description = "No written description has been added for this toy yet."
+    else:
+        # No toy-info.txt at all - most likely a newly added toy folder.
+        description = (
+            "This toy doesn't have any information added yet (no `toy-info.txt` "
+            "has been created for it). Check back soon for a full description — "
+            "in the meantime, the instructions can still be downloaded below."
+        )
 
     return f"""# {toy['name']}
 
@@ -236,7 +269,7 @@ def main():
     TOY_PAGES_OUT_DIR.mkdir(parents=True, exist_ok=True)
     DOWNLOADS_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    categories = []
+    all_tags = []
     toys = []
 
     category_dirs = sorted(
@@ -277,6 +310,18 @@ def main():
 
             slug = f"{slugify(category_name)}-{slugify(name)}"
 
+            # Tags drive the filter bar now (rather than category/folder).
+            # A toy can carry any number of tags via "Tags: a, b, c" in
+            # toy-info.txt. If none were set, fall back to using its
+            # category as a single tag, so it's still filterable and
+            # nothing "disappears" for toys that haven't been retagged yet.
+            tags = to_list(info.get("tags"))
+            if not tags:
+                tags = [category_name]
+            for t in tags:
+                if t not in all_tags:
+                    all_tags.append(t)
+
             thumbnail = find_thumbnail(toy_dir)
             if thumbnail:
                 image_filename = f"{slug}{thumbnail.suffix.lower()}"
@@ -286,15 +331,13 @@ def main():
                 image_path = "images/placeholder.png"
                 print(f"NOTE: no thumbnail found for '{name}' - using placeholder.")
 
-            if category_name not in categories:
-                categories.append(category_name)
-
             toy = {
                 "name": name,
                 "slug": slug,
                 "image": image_path,
                 "link": link,
                 "category": category_name,
+                "tags": tags,
                 "description": description,
                 "available": info.get("available", True),
                 "last_update": info.get("last_update") or "",
@@ -320,16 +363,16 @@ def main():
 
             toys.append(toy)
 
-    categories = sorted(categories)
+    all_tags = sorted(all_tags)
 
     js_content = (
         "// AUTO-GENERATED by scripts/generate_toy_data.py - do not edit by hand.\n"
-        f"window.TOY_CATEGORIES = {json.dumps(categories, indent=2)};\n"
+        f"window.TOY_TAGS = {json.dumps(all_tags, indent=2)};\n"
         f"window.TOY_DATA = {json.dumps(toys, indent=2)};\n"
     )
     JS_OUT_PATH.write_text(js_content, encoding="utf-8")
 
-    print(f"Generated {len(toys)} toy cards across {len(categories)} categories.")
+    print(f"Generated {len(toys)} toy cards across {len(all_tags)} tags.")
     print(f"-> {JS_OUT_PATH.relative_to(REPO_ROOT)}")
     print(f"-> {len(toys)} detail pages in {TOY_PAGES_OUT_DIR.relative_to(REPO_ROOT)}/")
     print(f"-> {len(toys)} zip downloads in {DOWNLOADS_OUT_DIR.relative_to(REPO_ROOT)}/")

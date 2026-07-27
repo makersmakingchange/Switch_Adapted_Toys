@@ -13,7 +13,7 @@ Browse switch-adapted toy builds. Use the filters below to narrow down by catego
 </div>
 
 <script>
-// Data comes from window.TOY_CATEGORIES and window.TOY_DATA,
+// Data comes from window.TOY_TAGS and window.TOY_DATA,
 // which are generated automatically by scripts/generate_toy_data.py
 // during the site build - see docs/js/toy-data.js (auto-generated, do not edit).
 
@@ -43,11 +43,11 @@ function handleToySearch(value) {
 
 function buildFilterBar() {
   const bar = document.getElementById("filter-bar");
-  const categories = window.TOY_CATEGORIES || [];
-  bar.innerHTML = categories.map(cat => `
+  const tags = window.TOY_TAGS || [];
+  bar.innerHTML = tags.map(tag => `
     <label class="filter-chip">
-      <input type="checkbox" value="${cat}" onchange="toggleToyFilter(this)">
-      <span>${cat}</span>
+      <input type="checkbox" value="${tag}" onchange="toggleToyFilter(this)">
+      <span>${tag}</span>
     </label>
   `).join("");
 }
@@ -76,7 +76,7 @@ function renderToyCards() {
 
   let visibleToys = activeFilters.size === 0
     ? toys
-    : toys.filter(t => activeFilters.has(t.category));
+    : toys.filter(t => (t.tags || []).some(tag => activeFilters.has(tag)));
 
   if (searchQuery) {
     visibleToys = visibleToys.filter(t => t.name.toLowerCase().includes(searchQuery));
