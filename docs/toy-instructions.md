@@ -3,13 +3,7 @@
 Browse switch-adapted toy builds. Use the filters below to narrow down by category, or scroll through everything.
 
 !!! note "Adding a new toy"
-    You don't need to edit this page at all. To add a new toy to the site:
-
-    1. Go to the `Toy_Instructions` folder on GitHub.
-    2. Open the category folder that fits your toy (`Bubble`, `Lamp_Projector`, `RC`, `Sound_movement_light`, or `Water_nerf_gun`). If none fit, create a new folder for the category.
-    3. Create a new folder for your toy inside it, and add a photo (jpg/png) of the toy.
-    4. Optional: add a plain text file named `info.txt` inside that folder if you want to set a custom name, link, or description (see the template in `Toy_Instructions/_TEMPLATE/info.txt`).
-    5. Commit your changes. The card and its filter will appear automatically the next time the site rebuilds (a few minutes after you push).
+    This resource is where Makers Making Change hosts all of our toy instructions both current and past. This means, some of the toys that you find instructions for may not be available at the moment OR information may be out of date.
 
 <div id="toy-app">
   <input type="text" id="toy-search" class="toy-search" placeholder="Search toys by name..." oninput="handleToySearch(this.value)">
@@ -89,7 +83,7 @@ function renderToyCards() {
   }
 
   grid.innerHTML = visibleToys.map(t => `
-    <a href="${t.link}" class="toy-card" target="_blank" rel="noopener" title="${t.description || t.name}">
+    <a href="${SITE_BASE}toys/${t.slug}/" class="toy-card" title="${t.description || t.name}">
       <div class="toy-card-image">
         <img src="${SITE_BASE}${t.image}" alt="${t.name}" loading="lazy"
              onerror="this.src='${SITE_BASE}images/placeholder.png'">

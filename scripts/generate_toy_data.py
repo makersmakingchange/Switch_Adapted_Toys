@@ -37,6 +37,17 @@ Also still reads the older, simpler "info.txt" format (Name/Link/Description
 only) if toy-info.txt isn't present, for backwards compatibility.
 
 Run this BEFORE `mkdocs build` / `mkdocs gh-deploy` in the GitHub Action.
+
+In addition to the toy-data.js used by the "Toy Instructions" grid, this
+script also generates, per toy:
+  - docs/toys/<slug>.md      a dedicated detail page (image, description,
+                              battery/input info, download button)
+  - docs/downloads/<slug>.zip  a zip of that toy's whole folder, so the
+                              "Download Instructions" button on the detail
+                              page doesn't depend on any third-party
+                              zip-a-github-subfolder service.
+Both are fully regenerated on every build, so nothing needs to be committed
+by hand when a new toy folder is added.
 """
 
 import json
@@ -61,6 +72,8 @@ TOY_INSTRUCTIONS_DIR = Path(
 DOCS_DIR = REPO_ROOT / "docs"
 IMAGES_OUT_DIR = DOCS_DIR / "images" / "toys"
 JS_OUT_PATH = DOCS_DIR / "js" / "toy-data.js"
+TOY_PAGES_OUT_DIR = DOCS_DIR / "toys"          # one .md per toy, auto-generated
+DOWNLOADS_OUT_DIR = DOCS_DIR / "downloads"      # one .zip per toy, auto-generated
 
 GITHUB_ORG = "makersmakingchange"
 GITHUB_REPO = "Switch_Adapted_Toys"
@@ -159,6 +172,60 @@ def build_github_link(category_folder: str, toy_folder: str) -> str:
     )
 
 
+def render_toy_page(toy: dict) -> str:
+    """
+    Builds the markdown for a toy's dedicated detail page. This file lives
+    at docs/toys/<slug>.md, which MkDocs (use_directory_urls: true) serves
+    at /toys/<slug>/. That means relative links need to climb two levels
+    ("../../") to reach the docs root - one for the "toys" folder, one for
+    the "<slug>" directory itself.
+    """
+    image_rel = f"../../{toy['image']}"
+    zip_rel = f"../../downloads/{toy['slug']}.zip"
+
+    meta_rows = []
+    if toy.get("battery_type"):
+        req = toy.get("battery_required")
+        inc = toy.get("battery_included")
+        battery_line = f"**Battery:** {toy['battery_type']}"
+        if req:
+            battery_line += f" ({req} required"
+            battery_line += f", {inc} included)" if inc else ")"
+        meta_rows.append(battery_line)
+    if toy.get("adaptation_inputs"):
+        meta_rows.append(f"**Switch Inputs:** {toy['adaptation_inputs']}")
+    if toy.get("last_update"):
+        meta_rows.append(f"**Last Updated:** {toy['last_update']}")
+
+    meta_block = "\n".join(f"- {row}" for row in meta_rows)
+
+    availability_note = ""
+    if not toy.get("available", True):
+        availability_note = (
+            '\n!!! warning "Currently unavailable"\n'
+            "    This toy adaptation is not currently available/supported.\n"
+        )
+
+    description = toy.get("description") or "No description has been added for this toy yet."
+
+    return f"""# {toy['name']}
+
+<img src="{image_rel}" class="toy-page-image" alt="Photo of the {toy['name']}">
+
+**Category:** {toy['category']}
+{availability_note}
+{description}
+
+{meta_block}
+
+<a href="{zip_rel}" class="download-button" download>⬇ Download Instructions (.zip)</a>
+
+[View this toy's source folder on GitHub]({toy['link']})
+
+[← Back to all toys](../../toy-instructions/)
+"""
+
+
 def main():
     if not TOY_INSTRUCTIONS_DIR.exists():
         print(f"WARNING: {TOY_INSTRUCTIONS_DIR} does not exist - skipping.")
@@ -166,6 +233,8 @@ def main():
 
     IMAGES_OUT_DIR.mkdir(parents=True, exist_ok=True)
     JS_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    TOY_PAGES_OUT_DIR.mkdir(parents=True, exist_ok=True)
+    DOWNLOADS_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     categories = []
     toys = []
@@ -206,9 +275,11 @@ def main():
             link = info.get("link") or build_github_link(category_dir.name, toy_dir.name)
             description = info.get("description") or ""
 
+            slug = f"{slugify(category_name)}-{slugify(name)}"
+
             thumbnail = find_thumbnail(toy_dir)
             if thumbnail:
-                image_filename = f"{slugify(category_name)}-{slugify(name)}{thumbnail.suffix.lower()}"
+                image_filename = f"{slug}{thumbnail.suffix.lower()}"
                 shutil.copyfile(thumbnail, IMAGES_OUT_DIR / image_filename)
                 image_path = f"images/toys/{image_filename}"
             else:
@@ -218,21 +289,36 @@ def main():
             if category_name not in categories:
                 categories.append(category_name)
 
-            toys.append(
-                {
-                    "name": name,
-                    "image": image_path,
-                    "link": link,
-                    "category": category_name,
-                    "description": description,
-                    "available": info.get("available", True),
-                    "last_update": info.get("last_update") or "",
-                    "battery_type": info.get("battery_type") or "",
-                    "battery_required": info.get("battery_required"),
-                    "battery_included": info.get("battery_included"),
-                    "adaptation_inputs": info.get("adaptation_inputs"),
-                }
+            toy = {
+                "name": name,
+                "slug": slug,
+                "image": image_path,
+                "link": link,
+                "category": category_name,
+                "description": description,
+                "available": info.get("available", True),
+                "last_update": info.get("last_update") or "",
+                "battery_type": info.get("battery_type") or "",
+                "battery_required": info.get("battery_required"),
+                "battery_included": info.get("battery_included"),
+                "adaptation_inputs": info.get("adaptation_inputs"),
+            }
+
+            # Zip up the toy's whole folder (instructions, extra photos, CAD
+            # files, etc.) as a flat archive - shutil.make_archive with
+            # root_dir=toy_dir zips the *contents* of the folder rather than
+            # nesting everything one level deeper inside a folder named
+            # after the toy.
+            shutil.make_archive(
+                str(DOWNLOADS_OUT_DIR / slug), "zip", root_dir=str(toy_dir)
             )
+
+            # Write the toy's dedicated detail page (docs/toys/<slug>.md).
+            (TOY_PAGES_OUT_DIR / f"{slug}.md").write_text(
+                render_toy_page(toy), encoding="utf-8"
+            )
+
+            toys.append(toy)
 
     categories = sorted(categories)
 
@@ -245,6 +331,8 @@ def main():
 
     print(f"Generated {len(toys)} toy cards across {len(categories)} categories.")
     print(f"-> {JS_OUT_PATH.relative_to(REPO_ROOT)}")
+    print(f"-> {len(toys)} detail pages in {TOY_PAGES_OUT_DIR.relative_to(REPO_ROOT)}/")
+    print(f"-> {len(toys)} zip downloads in {DOWNLOADS_OUT_DIR.relative_to(REPO_ROOT)}/")
 
 
 if __name__ == "__main__":

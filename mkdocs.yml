@@ -9,6 +9,15 @@ nav:
   - Toy Instructions: toy-instructions.md
   - Resources for Toy Adapting: toy-resources.md
 
+# The per-toy pages in docs/toys/ are auto-generated at build time by
+# scripts/generate_toy_data.py (one per toy folder), so they can't be
+# listed here individually. This just tells MkDocs that's expected,
+# instead of warning/failing on "page not in nav".
+validation:
+  nav:
+    omitted_files: ignore
+    not_found: warn
+
 theme:
   name: material
   logo: images/hfth-logo.png
