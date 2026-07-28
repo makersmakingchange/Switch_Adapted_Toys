@@ -61,53 +61,103 @@ Both are fully regenerated on every build, so nothing needs to be committed
 by hand when a new toy folder is added.
 """
 
+import json
 import os
 import re
-import json
 import shutil
-import zipfile
 from pathlib import Path
 
-# Paths
-ROOT_DIR = Path(__file__).resolve().parent.parent
-DOCS_DIR = ROOT_DIR / "docs"
-TOYS_SOURCE_DIR = ROOT_DIR / "toys"
-TOYS_DOCS_DIR = DOCS_DIR / "toys"
-DOWNLOADS_DIR = DOCS_DIR / "downloads"
-JS_OUTPUT_PATH = DOCS_DIR / "js" / "toy-data.js"
+# ---------------------------------------------------------------------------
+# CONFIG - adjust these if your repo layout changes
+# ---------------------------------------------------------------------------
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+# Toy_Instructions lives on the `main` branch, while this script and the
+# website files live on the website branch. The GitHub Actions workflow
+# checks out `main` into a separate folder (see workflow step) and passes
+# its location in here via the TOY_INSTRUCTIONS_DIR environment variable.
+# Falls back to a local Toy_Instructions/ folder for local testing.
+TOY_INSTRUCTIONS_DIR = Path(
+    os.environ.get("TOY_INSTRUCTIONS_DIR", REPO_ROOT / "Toy_Instructions")
+)
+DOCS_DIR = REPO_ROOT / "docs"
+IMAGES_OUT_DIR = DOCS_DIR / "images" / "toys"
+JS_OUT_PATH = DOCS_DIR / "js" / "toy-data.js"
+TOY_PAGES_OUT_DIR = DOCS_DIR / "toys"          # one .md per toy, auto-generated
+DOWNLOADS_OUT_DIR = DOCS_DIR / "downloads"      # one .zip per toy, auto-generated
+
+GITHUB_ORG = "makersmakingchange"
+GITHUB_REPO = "Switch_Adapted_Toys"
+GITHUB_BRANCH = "main"
+
+IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+
+# Folder names under Toy_Instructions that are NOT real toy categories,
+# and should be skipped entirely (case-insensitive match).
+IGNORED_FOLDERS = {
+    "_template",
+    "template",
+}
+
+
+def prettify(folder_name: str) -> str:
+    """Turn 'Battery_Interrupter_Toys' into 'Battery Interrupter Toys'."""
+    return folder_name.replace("_", " ").replace("-", " ").strip()
+
+
+def slugify(text: str) -> str:
+    """Turn 'Bubble Blower' into 'bubble-blower' (safe for filenames)."""
+    text = text.lower().strip()
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    return text.strip("-")
 
 
 def parse_info_txt(info_path: Path) -> dict:
-    if not info_path.exists():
-        return {}
+    """Reads a simple 'Key: value' formatted info.txt file (legacy format)."""
     data = {}
-    with open(info_path, "r", encoding="utf-8") as f:
-        for line in f:
-            if ":" in line:
-                key, val = line.split(":", 1)
-                data[key.strip().lower()] = val.strip()
+    if not info_path.exists():
+        return data
+    for line in info_path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if stripped.startswith("---"):
+            break  # stop at the "what each line means" divider, if present
+        if ":" not in line or stripped.startswith("#"):
+            continue
+        key, _, value = line.partition(":")
+        data[key.strip().lower()] = value.strip()
     return data
 
 
-def to_bool(val) -> bool:
-    if isinstance(val, bool):
-        return val
-    if not val:
-        return True
-    return str(val).strip().lower() not in ("false", "no", "0", "off")
+def to_bool(value, default=True):
+    if value is None or value == "":
+        return default
+    return str(value).strip().lower() in ("true", "yes", "1")
 
 
-def to_int(val):
-    if val is None or val == "":
-        return None
+def to_int(value):
     try:
-        return int(val)
-    except ValueError:
+        return int(str(value).strip())
+    except (ValueError, TypeError):
         return None
+
+
+def to_list(value):
+    """Turns 'Bubble, HFTH 2026, Battery Powered' into ['Bubble', 'HFTH 2026', 'Battery Powered']."""
+    if not value:
+        return []
+    return [item.strip() for item in value.split(",") if item.strip()]
 
 
 def parse_toy_info(info_path: Path) -> dict:
-    raw = parse_info_txt(info_path)
+    """
+    Reads the richer plain-text toy-info.txt format (Key: value lines,
+    same style as the legacy info.txt but with more fields) and returns
+    a dict of the fields the site uses. Returns {} if the file doesn't
+    exist. Lines starting with '#' are treated as comments and ignored,
+    so the instructional text at the bottom of the template is safely
+    skipped.
+    """
+    raw = parse_info_txt(info_path)  # reuses the same "Key: value" parsing
     if not raw:
         return {}
 
@@ -123,41 +173,38 @@ def parse_toy_info(info_path: Path) -> dict:
         "battery_required": to_int(raw.get("battery required") or raw.get("battery_required")),
         "battery_included": to_int(raw.get("battery included") or raw.get("battery_included")),
         "adaptation_inputs": to_int(raw.get("adaptation inputs") or raw.get("adaptation_inputs")),
-        "build_type": raw.get("build type") or raw.get("build_type") or "",
-        "method": raw.get("method") or "",
-        "activation_type": raw.get("activation type") or raw.get("activation_type") or "",
-        "requires_3d": raw.get("requires 3d printed parts") or raw.get("requires_3d") or "",
     }
 
 
-def find_toy_image(toy_dir: Path) -> str:
-    for ext in (".jpg", ".jpeg", ".png", ".webp"):
-        for img in toy_dir.glob(f"*{ext}"):
-            if img.name.lower() != "cover.jpg":
-                return f"images/toys/{toy_dir.name}/{img.name}"
-    return "images/placeholder.png"
+def find_thumbnail(toy_dir: Path) -> Path | None:
+    """Finds the first image file in a toy folder, alphabetically."""
+    images = sorted(
+        [f for f in toy_dir.iterdir() if f.suffix.lower() in IMAGE_EXTENSIONS]
+    )
+    return images[0] if images else None
 
 
-def create_zip_archive(toy_dir: Path, zip_path: Path):
-    zip_path.parent.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
-        for root, dirs, files in os.walk(toy_dir):
-            for file in files:
-                file_path = Path(root) / file
-                arcname = file_path.relative_to(toy_dir)
-                zf.write(file_path, arcname)
+def build_github_link(category_folder: str, toy_folder: str) -> str:
+    return (
+        f"https://github.com/{GITHUB_ORG}/{GITHUB_REPO}/tree/"
+        f"{GITHUB_BRANCH}/Toy_Instructions/{category_folder}/{toy_folder}"
+    )
 
 
 def render_toy_page(toy: dict) -> str:
+    """
+    Builds the markdown for a toy's dedicated detail page. This file lives
+    at docs/toys/<slug>.md, which MkDocs (use_directory_urls: true) serves
+    at /toys/<slug>/. That means relative links need to climb two levels
+    ("../../") to reach the docs root - one for the "toys" folder, one for
+    the "<slug>" directory itself.
+    """
     image_rel = f"../../{toy['image']}"
     zip_rel = f"../../downloads/{toy['slug']}.zip"
-    issue_link = "https://github.com/makersmakingchange/Switch_Adapted_Toys/issues"
 
     meta_rows = []
     if toy.get("tags"):
         meta_rows.append(f"**Tags:** {', '.join(toy['tags'])}")
-    if toy.get("build_type"):
-        meta_rows.append(f"**Build Type:** {toy['build_type']}")
     if toy.get("battery_type"):
         req = toy.get("battery_required")
         inc = toy.get("battery_included")
@@ -166,14 +213,8 @@ def render_toy_page(toy: dict) -> str:
             battery_line += f" ({req} required"
             battery_line += f", {inc} included)" if inc else ")"
         meta_rows.append(battery_line)
-    if toy.get("method"):
-        meta_rows.append(f"**Method:** {toy['method']}")
     if toy.get("adaptation_inputs"):
-        meta_rows.append(f"**Number of Inputs:** {toy['adaptation_inputs']}")
-    if toy.get("activation_type"):
-        meta_rows.append(f"**Activation Type:** {toy['activation_type']}")
-    if toy.get("requires_3d"):
-        meta_rows.append(f"**Requires 3D Printed Parts:** {toy['requires_3d']}")
+        meta_rows.append(f"**Switch Inputs:** {toy['adaptation_inputs']}")
     if toy.get("last_update"):
         meta_rows.append(f"**Last Updated:** {toy['last_update']}")
 
@@ -190,8 +231,10 @@ def render_toy_page(toy: dict) -> str:
     if toy.get("description"):
         description = toy["description"]
     elif has_info:
+        # Had SOME toy-info.txt fields, just no description text.
         description = "No written description has been added for this toy yet."
     else:
+        # No toy-info.txt at all - most likely a newly added toy folder.
         description = (
             "This toy doesn't have any information added yet (no `toy-info.txt` "
             "has been created for it). Check back soon for a full description — "
@@ -200,7 +243,7 @@ def render_toy_page(toy: dict) -> str:
 
     return f"""# {toy['name']}
 
-<img src="{image_rel}" class="toy-page-image-half" alt="Photo of the {toy['name']}">
+<img src="{image_rel}" class="toy-page-image" alt="Photo of the {toy['name']}">
 
 **Category:** {toy['category']}
 {availability_note}
@@ -208,52 +251,85 @@ def render_toy_page(toy: dict) -> str:
 
 {meta_block}
 
-<div class="toy-action-buttons">
-  <a href="{zip_rel}" class="download-button" download>⬇ Download Instructions (.zip)</a>
-  <a href="{toy['link']}" class="secondary-button" target="_blank" rel="noopener">View Source Folder on GitHub</a>
-  <a href="{issue_link}" class="issue-button" target="_blank" rel="noopener">Report an Issue with the Toy or Instructions</a>
-</div>
+<a href="{zip_rel}" class="download-button" download>⬇ Download Instructions (.zip)</a>
+
+[View this toy's source folder on GitHub]({toy['link']})
 
 [← Back to all toys](../../toy-instructions/)
 """
 
 
 def main():
-    if not TOYS_SOURCE_DIR.exists():
-        print(f"Error: Toys source directory {TOYS_SOURCE_DIR} does not exist.")
+    if not TOY_INSTRUCTIONS_DIR.exists():
+        print(f"WARNING: {TOY_INSTRUCTIONS_DIR} does not exist - skipping.")
         return
 
-    TOYS_DOCS_DIR.mkdir(parents=True, exist_ok=True)
-    DOWNLOADS_DIR.mkdir(parents=True, exist_ok=True)
-    JS_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    IMAGES_OUT_DIR.mkdir(parents=True, exist_ok=True)
+    JS_OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    TOY_PAGES_OUT_DIR.mkdir(parents=True, exist_ok=True)
+    DOWNLOADS_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    toys_data = []
-    all_tags = set()
+    all_tags = []
+    toys = []
 
-    for category_dir in sorted(TOYS_SOURCE_DIR.iterdir()):
-        if not category_dir.is_dir() or category_dir.name.startswith("."):
-            continue
-        category_name = category_dir.name.replace("_", " ").title()
+    category_dirs = sorted(
+        [
+            d for d in TOY_INSTRUCTIONS_DIR.iterdir()
+            if d.is_dir()
+            and not d.name.startswith(".")
+            and d.name.lower() not in IGNORED_FOLDERS
+        ]
+    )
 
-        for toy_dir in sorted(category_dir.iterdir()):
-            if not toy_dir.is_dir() or toy_dir.name.startswith("."):
-                continue
+    for category_dir in category_dirs:
+        folder_category_name = prettify(category_dir.name)
 
-            slug = toy_dir.name
-            info_path = toy_dir / "toy-info.txt"
-            info = parse_toy_info(info_path)
+        toy_dirs = sorted(
+            [d for d in category_dir.iterdir() if d.is_dir() and not d.name.startswith(".")]
+        )
 
-            name = info.get("name") or slug.replace("_", " ").title()
-            image_path = find_toy_image(toy_dir)
-            link = info.get("link") or f"https://github.com/makersmakingchange/Switch_Adapted_Toys/tree/main/toys/{category_dir.name}/{slug}"
-            
-            raw_tags = info.get("tags", "")
-            tags = [t.strip() for t in raw_tags.split(",")] if raw_tags else [category_name]
+        for toy_dir in toy_dirs:
+            info = parse_toy_info(toy_dir / "toy-info.txt")
+            if not info:
+                # Fall back to the old info.txt format, in case some
+                # folders were set up before this richer format existed.
+                legacy = parse_info_txt(toy_dir / "info.txt")
+                if legacy:
+                    info = {
+                        "name": legacy.get("name"),
+                        "link": legacy.get("link"),
+                        "description": legacy.get("description"),
+                    }
+
+            name = info.get("name") or prettify(toy_dir.name)
+            # Category can be overridden by toy-info.txt; otherwise use the
+            # folder it's actually sitting in.
+            category_name = info.get("category") or folder_category_name
+            link = info.get("link") or build_github_link(category_dir.name, toy_dir.name)
+            description = info.get("description") or ""
+
+            slug = f"{slugify(category_name)}-{slugify(name)}"
+
+            # Tags drive the filter bar now (rather than category/folder).
+            # A toy can carry any number of tags via "Tags: a, b, c" in
+            # toy-info.txt. If none were set, fall back to using its
+            # category as a single tag, so it's still filterable and
+            # nothing "disappears" for toys that haven't been retagged yet.
+            tags = to_list(info.get("tags"))
+            if not tags:
+                tags = [category_name]
             for t in tags:
-                if t:
-                    all_tags.add(t)
+                if t not in all_tags:
+                    all_tags.append(t)
 
-            description = info.get("description", "")
+            thumbnail = find_thumbnail(toy_dir)
+            if thumbnail:
+                image_filename = f"{slug}{thumbnail.suffix.lower()}"
+                shutil.copyfile(thumbnail, IMAGES_OUT_DIR / image_filename)
+                image_path = f"images/toys/{image_filename}"
+            else:
+                image_path = "images/placeholder.png"
+                print(f"NOTE: no thumbnail found for '{name}' - using placeholder.")
 
             toy = {
                 "name": name,
@@ -269,33 +345,37 @@ def main():
                 "battery_required": info.get("battery_required"),
                 "battery_included": info.get("battery_included"),
                 "adaptation_inputs": info.get("adaptation_inputs"),
-                "build_type": info.get("build_type") or "",
-                "method": info.get("method") or "",
-                "activation_type": info.get("activation_type") or "",
-                "requires_3d": info.get("requires_3d") or "",
             }
-            toys_data.append(toy)
 
-            # Generate markdown page
-            page_content = render_toy_page(toy)
-            toy_doc_dir = TOYS_DOCS_DIR / slug
-            toy_doc_dir.mkdir(parents=True, exist_ok=True)
-            with open(toy_doc_dir / "index.md", "w", encoding="utf-8") as f:
-                f.write(page_content)
+            # Zip up the toy's whole folder (instructions, extra photos, CAD
+            # files, etc.) as a flat archive - shutil.make_archive with
+            # root_dir=toy_dir zips the *contents* of the folder rather than
+            # nesting everything one level deeper inside a folder named
+            # after the toy.
+            shutil.make_archive(
+                str(DOWNLOADS_OUT_DIR / slug), "zip", root_dir=str(toy_dir)
+            )
 
-            # Generate ZIP archive
-            zip_path = DOWNLOADS_DIR / f"{slug}.zip"
-            create_zip_archive(toy_dir, zip_path)
+            # Write the toy's dedicated detail page (docs/toys/<slug>.md).
+            (TOY_PAGES_OUT_DIR / f"{slug}.md").write_text(
+                render_toy_page(toy), encoding="utf-8"
+            )
 
-    # Write out JSON/JS file for the frontend app
-    js_content = f"""// Generated automatically by scripts/generate_toy_data.py
-window.TOY_DATA = {json.dumps(toys_data, indent=2)};
-window.TOY_TAGS = {json.dumps(sorted(list(all_tags)), indent=2)};
-"""
-    with open(JS_OUTPUT_PATH, "w", encoding="utf-8") as f:
-        f.write(js_content)
+            toys.append(toy)
 
-    print(f"Successfully processed {len(toys_data)} toys.")
+    all_tags = sorted(all_tags)
+
+    js_content = (
+        "// AUTO-GENERATED by scripts/generate_toy_data.py - do not edit by hand.\n"
+        f"window.TOY_TAGS = {json.dumps(all_tags, indent=2)};\n"
+        f"window.TOY_DATA = {json.dumps(toys, indent=2)};\n"
+    )
+    JS_OUT_PATH.write_text(js_content, encoding="utf-8")
+
+    print(f"Generated {len(toys)} toy cards across {len(all_tags)} tags.")
+    print(f"-> {JS_OUT_PATH.relative_to(REPO_ROOT)}")
+    print(f"-> {len(toys)} detail pages in {TOY_PAGES_OUT_DIR.relative_to(REPO_ROOT)}/")
+    print(f"-> {len(toys)} zip downloads in {DOWNLOADS_OUT_DIR.relative_to(REPO_ROOT)}/")
 
 
 if __name__ == "__main__":
