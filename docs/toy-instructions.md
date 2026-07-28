@@ -2,7 +2,7 @@
 
 Browse switch-adapted toy builds. Use the filters below to narrow down by category, or scroll through everything.
 
-!!! note "Adding a new toy"
+!!! note "Information be outdated"
     This resource is where Makers Making Change hosts all of our toy instructions both current and past. This means, some of the toys that you find instructions for may not be available at the moment OR information may be out of date.
 
 <div id="toy-app">
