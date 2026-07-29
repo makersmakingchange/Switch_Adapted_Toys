@@ -20,29 +20,42 @@ toy-info.txt (optional) format - one item per line, e.g.:
     Available: true
     Last Update: 2025-09-23
     Category: Bubble
-    Tags: Bubble, HFTH 2026, Battery Powered
+    Tags: Bubble, Battery Powered
     Link: https://github.com/makersmakingchange/Switch-Adapted-Bubble-Blower
     Description: A switch-adapted bubble machine for younger kids.
     Battery Type: AA
     Battery Required: 2
     Battery Included: 2
     Adaptation Inputs: 2
+    Activation Type: Single Press
+    Requires 3D Printing: No
+    Method Of Adaption: Battery Interrupter
+    Number Of Switches: 2
+    HFTH 2026: Yes
+    Available To Purchase As Of Last Update: Yes
+    General Notes: Works best with a jelly bean switch.
 
-Tags drive the filter chips on the "Toy Instructions" page (rather than
-category/folder). A toy can have as many comma-separated tags as you want,
-and shows up under every one of them - e.g. tagging a toy with
-"HFTH 2026" makes it show up both under its usual category tag AND under
-an "HFTH 2026" filter alongside any other toy tagged that way, regardless
-of which category folder either one lives in. If a toy has no Tags line
-yet, it just falls back to using its Category as its one tag, so nothing
+Tags drive the main filter chips on the "Toy Instructions" page (rather
+than category/folder). A toy can have as many comma-separated tags as you
+want, and shows up under every one of them. If a toy has no Tags line yet,
+it just falls back to using its Category as its one tag, so nothing
 disappears from the filters for toys that haven't been retagged.
+
+Activation Type, Method Of Adaption, and Number Of Switches feed a
+secondary set of grouped filters (shown collapsed under "More Filters" so
+the page isn't overwhelming with chips) - a filter chip only appears for
+values that at least one toy actually has. HFTH 2026, Requires 3D
+Printing, and Available To Purchase As Of Last Update are simple Yes/No
+toggles rather than chip groups, since they're binary. All of these are
+optional per toy; leaving one blank just means that toy won't show up
+under that particular filter, without affecting any other filter.
 
 If toy-info.txt is missing entirely, the script falls back to:
     Name     -> the toy folder name, with underscores/hyphens turned into spaces
     Category -> the name of the folder this toy sits directly inside
     Tags     -> [Category] (a single tag matching the category)
     Link     -> an auto-built link to that folder on GitHub
-    Available, Description, Battery/Adaptation fields -> left blank/default
+    Available, Description, Battery/Adaptation/template fields -> left blank/default
 
 Also still reads the older, simpler "info.txt" format (Name/Link/Description
 only) if toy-info.txt isn't present, for backwards compatibility.
@@ -173,6 +186,14 @@ def parse_toy_info(info_path: Path) -> dict:
         "battery_required": to_int(raw.get("battery required") or raw.get("battery_required")),
         "battery_included": to_int(raw.get("battery included") or raw.get("battery_included")),
         "adaptation_inputs": to_int(raw.get("adaptation inputs") or raw.get("adaptation_inputs")),
+        # Fields from the newer toy-info template:
+        "activation_type": raw.get("activation type") or raw.get("activation_type"),
+        "requires_3d_printing": to_bool(raw.get("requires 3d printing") or raw.get("requires_3d_printing"), default=False),
+        "adaptation_method": raw.get("method of adaption") or raw.get("method of adaptation") or raw.get("adaptation_method"),
+        "number_of_switches": to_int(raw.get("number of switches") or raw.get("number_of_switches")),
+        "hfth_2026": to_bool(raw.get("hfth 2026") or raw.get("hfth_2026"), default=False),
+        "available_to_purchase": to_bool(raw.get("available to purchase as of last update") or raw.get("available_to_purchase"), default=False),
+        "general_notes": raw.get("general notes") or raw.get("general_notes"),
     }
 
 
@@ -205,6 +226,12 @@ def render_toy_page(toy: dict) -> str:
     meta_rows = []
     if toy.get("tags"):
         meta_rows.append(f"**Tags:** {', '.join(toy['tags'])}")
+    if toy.get("activation_type"):
+        meta_rows.append(f"**Activation Type:** {toy['activation_type']}")
+    if toy.get("adaptation_method"):
+        meta_rows.append(f"**Method of Adaptation:** {toy['adaptation_method']}")
+    if toy.get("number_of_switches"):
+        meta_rows.append(f"**Number of Switches:** {toy['number_of_switches']}")
     if toy.get("battery_type"):
         req = toy.get("battery_required")
         inc = toy.get("battery_included")
@@ -215,10 +242,21 @@ def render_toy_page(toy: dict) -> str:
         meta_rows.append(battery_line)
     if toy.get("adaptation_inputs"):
         meta_rows.append(f"**Switch Inputs:** {toy['adaptation_inputs']}")
+    meta_rows.append(f"**Requires 3D Printing:** {'Yes' if toy.get('requires_3d_printing') else 'No'}")
+    if toy.get("available_to_purchase"):
+        meta_rows.append("**Available to Purchase:** Yes, as of last update")
     if toy.get("last_update"):
         meta_rows.append(f"**Last Updated:** {toy['last_update']}")
 
     meta_block = "\n".join(f"- {row}" for row in meta_rows)
+
+    hfth_badge = ""
+    if toy.get("hfth_2026"):
+        hfth_badge = '\n<span class="hfth-badge">🎄 HFTH 2026</span>\n'
+
+    notes_block = ""
+    if toy.get("general_notes"):
+        notes_block = f"\n**Notes:** {toy['general_notes']}\n"
 
     availability_note = ""
     if not toy.get("available", True):
@@ -242,18 +280,20 @@ def render_toy_page(toy: dict) -> str:
         )
 
     return f"""# {toy['name']}
-
+{hfth_badge}
 <img src="{image_rel}" class="toy-page-image" alt="Photo of the {toy['name']}">
 
 **Category:** {toy['category']}
 {availability_note}
 {description}
-
+{notes_block}
 {meta_block}
 
-<a href="{zip_rel}" class="download-button" download>⬇ Download Instructions (.zip)</a>
-
-[View this toy's source folder on GitHub]({toy['link']})
+<div class="toy-page-buttons">
+<a href="{zip_rel}" class="btn btn-primary" download>⬇ Download Instructions (.zip)</a>
+<a href="{toy['link']}" class="btn btn-secondary">View Source Folder on GitHub</a>
+<a href="https://github.com/{GITHUB_ORG}/{GITHUB_REPO}/issues" class="btn btn-outline">⚠ Report an Issue</a>
+</div>
 
 [← Back to all toys](../../toy-instructions/)
 """
@@ -270,6 +310,9 @@ def main():
     DOWNLOADS_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     all_tags = []
+    all_activation_types = []
+    all_adaptation_methods = []
+    all_switch_counts = []
     toys = []
 
     category_dirs = sorted(
@@ -322,6 +365,18 @@ def main():
                 if t not in all_tags:
                     all_tags.append(t)
 
+            activation_type = info.get("activation_type") or ""
+            if activation_type and activation_type not in all_activation_types:
+                all_activation_types.append(activation_type)
+
+            adaptation_method = info.get("adaptation_method") or ""
+            if adaptation_method and adaptation_method not in all_adaptation_methods:
+                all_adaptation_methods.append(adaptation_method)
+
+            number_of_switches = info.get("number_of_switches")
+            if number_of_switches and number_of_switches not in all_switch_counts:
+                all_switch_counts.append(number_of_switches)
+
             thumbnail = find_thumbnail(toy_dir)
             if thumbnail:
                 image_filename = f"{slug}{thumbnail.suffix.lower()}"
@@ -345,6 +400,13 @@ def main():
                 "battery_required": info.get("battery_required"),
                 "battery_included": info.get("battery_included"),
                 "adaptation_inputs": info.get("adaptation_inputs"),
+                "activation_type": activation_type,
+                "requires_3d_printing": info.get("requires_3d_printing", False),
+                "adaptation_method": adaptation_method,
+                "number_of_switches": number_of_switches,
+                "hfth_2026": info.get("hfth_2026", False),
+                "available_to_purchase": info.get("available_to_purchase", False),
+                "general_notes": info.get("general_notes") or "",
             }
 
             # Zip up the toy's whole folder (instructions, extra photos, CAD
@@ -364,10 +426,18 @@ def main():
             toys.append(toy)
 
     all_tags = sorted(all_tags)
+    all_activation_types = sorted(all_activation_types)
+    all_adaptation_methods = sorted(all_adaptation_methods)
+    all_switch_counts = sorted(all_switch_counts)
 
     js_content = (
         "// AUTO-GENERATED by scripts/generate_toy_data.py - do not edit by hand.\n"
         f"window.TOY_TAGS = {json.dumps(all_tags, indent=2)};\n"
+        "window.TOY_FILTERS = {\n"
+        f"  activationTypes: {json.dumps(all_activation_types, indent=2)},\n"
+        f"  adaptationMethods: {json.dumps(all_adaptation_methods, indent=2)},\n"
+        f"  switchCounts: {json.dumps(all_switch_counts, indent=2)}\n"
+        "};\n"
         f"window.TOY_DATA = {json.dumps(toys, indent=2)};\n"
     )
     JS_OUT_PATH.write_text(js_content, encoding="utf-8")
