@@ -10,11 +10,11 @@ Folder convention:
         <Category Folder>/
             <Toy Folder>/
                 <photo>.jpg / .png / .webp   (thumbnail - optional)
-                toy-info.txt                 (optional overrides, see below)
+                toy_info.md                  (optional overrides, see below)
                 ... any other files (assembly guides, 3D files, etc.)
                                               (ignored by this script)
 
-toy-info.txt (optional) format - one item per line, e.g.:
+toy_info.md (optional) format - one item per line, e.g.:
 
     Name: Bubble Blower
     Available: true
@@ -50,15 +50,16 @@ toggles rather than chip groups, since they're binary. All of these are
 optional per toy; leaving one blank just means that toy won't show up
 under that particular filter, without affecting any other filter.
 
-If toy-info.txt is missing entirely, the script falls back to:
+If toy_info.md is missing entirely, the script falls back to:
     Name     -> the toy folder name, with underscores/hyphens turned into spaces
     Category -> the name of the folder this toy sits directly inside
     Tags     -> [Category] (a single tag matching the category)
     Link     -> an auto-built link to that folder on GitHub
     Available, Description, Battery/Adaptation/template fields -> left blank/default
 
-Also still reads the older, simpler "info.txt" format (Name/Link/Description
-only) if toy-info.txt isn't present, for backwards compatibility.
+Also still reads the older, simpler "toy-info.txt" (richer format) or
+"info.txt" (legacy Name/Link/Description only) filenames, in that order,
+for anyone with folders set up before "toy_info.md" became the convention.
 
 Run this BEFORE `mkdocs build` / `mkdocs gh-deploy` in the GitHub Action.
 
@@ -125,10 +126,10 @@ def slugify(text: str) -> str:
     return text.strip("-")
 
 
-def parse_info_txt(info_path: Path) -> dict:
+def parse_info_txt(info_path: Path | None) -> dict:
     """Reads a simple 'Key: value' formatted info.txt file (legacy format)."""
     data = {}
-    if not info_path.exists():
+    if not info_path or not info_path.exists():
         return data
     for line in info_path.read_text(encoding="utf-8").splitlines():
         stripped = line.strip()
@@ -212,6 +213,20 @@ def build_github_link(category_folder: str, toy_folder: str) -> str:
     )
 
 
+# Filenames checked, in priority order, for the richer per-toy info format.
+# "toy_info.md" is the current convention; "toy-info.txt" is kept for
+# anyone who set folders up before that convention settled.
+INFO_FILENAMES = ["toy_info.md", "toy-info.txt"]
+
+
+def find_info_file(toy_dir: Path) -> Path | None:
+    for filename in INFO_FILENAMES:
+        candidate = toy_dir / filename
+        if candidate.exists():
+            return candidate
+    return None
+
+
 def render_toy_page(toy: dict) -> str:
     """
     Builds the markdown for a toy's dedicated detail page. This file lives
@@ -265,23 +280,22 @@ def render_toy_page(toy: dict) -> str:
             "    This toy adaptation is not currently available/supported.\n"
         )
 
-    has_info = bool(toy.get("description")) or bool(toy.get("battery_type")) or bool(toy.get("adaptation_inputs"))
     if toy.get("description"):
         description = toy["description"]
-    elif has_info:
-        # Had SOME toy-info.txt fields, just no description text.
+    elif toy.get("has_info_file"):
+        # Had a toy_info.md, just no description text in it.
         description = "No written description has been added for this toy yet."
     else:
-        # No toy-info.txt at all - most likely a newly added toy folder.
+        # No toy_info.md at all - most likely a newly added toy folder.
         description = (
-            "This toy doesn't have any information added yet (no `toy-info.txt` "
+            "This toy doesn't have any information added yet (no `toy_info.md` "
             "has been created for it). Check back soon for a full description — "
             "in the meantime, the instructions can still be downloaded below."
         )
 
     return f"""# {toy['name']}
 {hfth_badge}
-<img src="{image_rel}" class="toy-page-image" alt="Photo of the {toy['name']}">
+<img src="{image_rel}" class="toy-page-image" style="max-width:200px;" alt="Photo of the {toy['name']}">
 
 **Category:** {toy['category']}
 {availability_note}
@@ -332,7 +346,7 @@ def main():
         )
 
         for toy_dir in toy_dirs:
-            info = parse_toy_info(toy_dir / "toy-info.txt")
+            info = parse_toy_info(find_info_file(toy_dir))
             if not info:
                 # Fall back to the old info.txt format, in case some
                 # folders were set up before this richer format existed.
@@ -343,6 +357,7 @@ def main():
                         "link": legacy.get("link"),
                         "description": legacy.get("description"),
                     }
+            has_info_file = bool(info)
 
             name = info.get("name") or prettify(toy_dir.name)
             # Category can be overridden by toy-info.txt; otherwise use the
@@ -407,6 +422,7 @@ def main():
                 "hfth_2026": info.get("hfth_2026", False),
                 "available_to_purchase": info.get("available_to_purchase", False),
                 "general_notes": info.get("general_notes") or "",
+                "has_info_file": has_info_file,
             }
 
             # Zip up the toy's whole folder (instructions, extra photos, CAD
