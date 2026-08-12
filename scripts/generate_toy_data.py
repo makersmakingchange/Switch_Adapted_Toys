@@ -265,10 +265,19 @@ def normalize_to_known(value: str, known_list: list[str]) -> str:
 # that toy has a toy_info.md - edit this text directly whenever real copy
 # is ready; it isn't pulled from anywhere per-toy.
 GENERAL_TOY_HACKING_INFO = (
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod "
-    "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim "
-    "veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea "
-    "commodo consequat."
+    "Every child deserves to play. But for many kids with disabilities, toys can be hard to use"
+    "independently, and commercially adapted versions can run upwards of $300. However, with a little bit of tinkering,"
+    "we can switch-adapt toys and make them accessible for a fraction of the cost."
+   
+   
+    "The information on this page and the files themselves may be outdated as toys change"
+    "throughout time or may no longer be available. Please see the Common Components and Tools"
+    "page if you are looking for frequently used parts and tools in toy adapting."
+    
+    "Annually, from September to December, Makers Making Change runs a Hacking for the Holidays campaign."
+    "This program engages volunteers (students, corporate partners, and other community members) to help us"
+    "adapt and donate thousands of toys and switches to families and clinicians all over Canada."
+    "To learn more to volunteer or request a toy, visit the [Hacking For the Holidays Site](https://www.makersmakingchange.com/2025-hacking-for-the-holidays-recap)"
 )
 
 
