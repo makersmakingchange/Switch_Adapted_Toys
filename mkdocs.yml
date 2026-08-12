@@ -57,6 +57,7 @@ extra_css:
 extra_javascript:
   - extra.js
   - js/toy-data.js
+  - toy-app.js
 
 markdown_extensions:
   - admonition
