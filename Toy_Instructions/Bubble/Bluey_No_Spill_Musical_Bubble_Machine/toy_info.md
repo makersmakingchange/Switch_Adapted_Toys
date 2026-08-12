@@ -10,7 +10,7 @@ A summary of the key toy info can be found below:
 
 Info last updated (mm/dd/yyyy): 07/29/2026
 
-Tags: 
+Tags: Difficult
 
 Activation Type: press and hold
 
