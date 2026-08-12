@@ -6,9 +6,8 @@ use_directory_urls: true
 nav:
   - Latest Updates: updates.md
   - Start Here: index.md
-  - Toy Instructions:
-      - Toy Instructions: toy-instructions.md
-      - Component & Tool List: toy-components-and-tools.md
+  - Toy Instructions: toy-instructions.md
+  - Component & Tool List: toy-components-and-tools.md
   - Resources for Toy Adapting: toy-resources.md
 
 # The per-toy pages in docs/toys/ are auto-generated at build time by
