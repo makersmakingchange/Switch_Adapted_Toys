@@ -298,6 +298,22 @@ if (typeof document$ !== "undefined" && document$ && typeof document$.subscribe 
   background: var(--md-code-bg-color, #f7f7f7);
 }
 
+/* .more-filters{display:flex} and the browser's built-in [hidden]{display:none}
+   have equal CSS specificity, so without this, source order alone decided
+   the tie and the panel could get stuck permanently visible regardless of
+   the hidden attribute. This rule has higher specificity and always wins. */
+.more-filters[hidden] {
+  display: none;
+}
+
+/* [hidden] and .more-filters{display:flex} have equal CSS specificity;
+   without this rule, source order lets display:flex win and the panel
+   never actually collapses. This rule (class + attribute) outranks both
+   and makes the toggle button actually work. */
+.more-filters[hidden] {
+  display: none;
+}
+
 .filter-group-label {
   display: block;
   font-size: 0.75rem;

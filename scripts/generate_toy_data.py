@@ -178,7 +178,12 @@ def parse_toy_info(info_path: Path) -> dict:
     return {
         "name": raw.get("name"),
         "available": to_bool(raw.get("available")),
-        "last_update": raw.get("last update") or raw.get("last_update"),
+        "last_update": (
+            raw.get("info last updated (mm/dd/yyyy)")
+            or raw.get("last updated")
+            or raw.get("last update")
+            or raw.get("last_update")
+        ),
         "category": raw.get("category"),
         "tags": raw.get("tags"),
         "link": raw.get("link"),
@@ -227,6 +232,46 @@ def find_info_file(toy_dir: Path) -> Path | None:
     return None
 
 
+# The known option sets from the toy_info.md template, used to pre-seed
+# the filter groups so every option shows up on the page immediately -
+# even before any toy actually has that value set yet. Anything a toy
+# has that ISN'T in these lists still gets added as its own filter
+# option (see the "add if new" logic in main()); these lists are just
+# the starting point, not a hard restriction on allowed values.
+KNOWN_ACTIVATION_TYPES = ["Press and Hold", "Single Press"]
+KNOWN_ADAPTATION_METHODS = ["Battery Interrupter", "Mono Jack + Wire", "Mono Cable"]
+KNOWN_SWITCH_COUNTS = [1, 2, 3, 4, 5, 6]
+
+
+def normalize_to_known(value: str, known_list: list[str]) -> str:
+    """
+    Case-insensitively matches a raw toy_info.md value (e.g. 'press and
+    hold') to its canonical display form from KNOWN_ACTIVATION_TYPES etc.
+    (e.g. 'Press and Hold'), so filter matching works regardless of how
+    someone capitalized it in the file. Falls back to the value as typed
+    if it doesn't match anything known, so new/unexpected values still
+    work as their own filter option rather than being silently dropped.
+    """
+    if not value:
+        return ""
+    value = value.strip()
+    for known in known_list:
+        if known.lower() == value.lower():
+            return known
+    return value
+
+
+# Static boilerplate shown on every toy detail page, regardless of whether
+# that toy has a toy_info.md - edit this text directly whenever real copy
+# is ready; it isn't pulled from anywhere per-toy.
+GENERAL_TOY_HACKING_INFO = (
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod "
+    "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim "
+    "veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea "
+    "commodo consequat."
+)
+
+
 def render_toy_page(toy: dict) -> str:
     """
     Builds the markdown for a toy's dedicated detail page. This file lives
@@ -257,7 +302,8 @@ def render_toy_page(toy: dict) -> str:
         meta_rows.append(battery_line)
     if toy.get("adaptation_inputs"):
         meta_rows.append(f"**Switch Inputs:** {toy['adaptation_inputs']}")
-    meta_rows.append(f"**Requires 3D Printing:** {'Yes' if toy.get('requires_3d_printing') else 'No'}")
+    if toy.get("has_info_file"):
+        meta_rows.append(f"**Requires 3D Printing:** {'Yes' if toy.get('requires_3d_printing') else 'No'}")
     if toy.get("available_to_purchase"):
         meta_rows.append("**Available to Purchase:** Yes, as of last update")
     if toy.get("last_update"):
@@ -280,24 +326,21 @@ def render_toy_page(toy: dict) -> str:
             "    This toy adaptation is not currently available/supported.\n"
         )
 
-    if toy.get("description"):
-        description = toy["description"]
-    elif toy.get("has_info_file"):
-        # Had a toy_info.md, just no description text in it.
-        description = "No written description has been added for this toy yet."
+    if toy.get("has_info_file"):
+        # Real toy_info.md data exists - the meta list below already
+        # covers it, no filler text needed here.
+        description = ""
     else:
         # No toy_info.md at all - most likely a newly added toy folder.
         description = (
             "This toy doesn't have any information added yet (no `toy_info.md` "
-            "has been created for it). Check back soon for a full description — "
+            "has been created for it). Check back soon for full details — "
             "in the meantime, the instructions can still be downloaded below."
         )
 
     return f"""# {toy['name']}
 {hfth_badge}
 <img src="{image_rel}" class="toy-page-image" style="max-width:200px;" alt="Photo of the {toy['name']}">
-
-**Category:** {toy['category']}
 {availability_note}
 {description}
 {notes_block}
@@ -308,6 +351,10 @@ def render_toy_page(toy: dict) -> str:
 <a href="{toy['link']}" class="btn btn-secondary">View Source Folder on GitHub</a>
 <a href="https://github.com/{GITHUB_ORG}/{GITHUB_REPO}/issues" class="btn btn-outline">⚠ Report an Issue</a>
 </div>
+
+## General Toy Hacking Info
+
+{GENERAL_TOY_HACKING_INFO}
 
 [← Back to all toys](../../toy-instructions/)
 """
@@ -324,9 +371,9 @@ def main():
     DOWNLOADS_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     all_tags = []
-    all_activation_types = []
-    all_adaptation_methods = []
-    all_switch_counts = []
+    all_activation_types = list(KNOWN_ACTIVATION_TYPES)
+    all_adaptation_methods = list(KNOWN_ADAPTATION_METHODS)
+    all_switch_counts = list(KNOWN_SWITCH_COUNTS)
     toys = []
 
     category_dirs = sorted(
@@ -368,23 +415,22 @@ def main():
 
             slug = f"{slugify(category_name)}-{slugify(name)}"
 
-            # Tags drive the filter bar now (rather than category/folder).
-            # A toy can carry any number of tags via "Tags: a, b, c" in
-            # toy-info.txt. If none were set, fall back to using its
-            # category as a single tag, so it's still filterable and
-            # nothing "disappears" for toys that haven't been retagged yet.
+            # Tags drive the filter bar, and come ONLY from toy_info.md's
+            # "Tags: a, b, c" field - deliberately not tied to which
+            # category folder the toy happens to live in, so a toy can be
+            # tagged e.g. "Bubble, RC" regardless of its folder. A toy
+            # with no Tags line set just has no tags (still shows up
+            # normally when no filters are active).
             tags = to_list(info.get("tags"))
-            if not tags:
-                tags = [category_name]
             for t in tags:
                 if t not in all_tags:
                     all_tags.append(t)
 
-            activation_type = info.get("activation_type") or ""
+            activation_type = normalize_to_known(info.get("activation_type") or "", KNOWN_ACTIVATION_TYPES)
             if activation_type and activation_type not in all_activation_types:
                 all_activation_types.append(activation_type)
 
-            adaptation_method = info.get("adaptation_method") or ""
+            adaptation_method = normalize_to_known(info.get("adaptation_method") or "", KNOWN_ADAPTATION_METHODS)
             if adaptation_method and adaptation_method not in all_adaptation_methods:
                 all_adaptation_methods.append(adaptation_method)
 
@@ -442,9 +488,10 @@ def main():
             toys.append(toy)
 
     all_tags = sorted(all_tags)
-    all_activation_types = sorted(all_activation_types)
-    all_adaptation_methods = sorted(all_adaptation_methods)
-    all_switch_counts = sorted(all_switch_counts)
+    # activation types / adaptation methods / switch counts are left in
+    # their seeded order (template order, with any brand-new values
+    # encountered in the data appended after) rather than re-sorted, so
+    # the known options stay in a sensible, intentional order.
 
     js_content = (
         "// AUTO-GENERATED by scripts/generate_toy_data.py - do not edit by hand.\n"
