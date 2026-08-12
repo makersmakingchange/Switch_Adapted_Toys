@@ -3,7 +3,7 @@ Insert main boiler plate info about toys here.
 
 A summary of the key toy info can be found below: 
 
-/nfo last updated (mm/dd/yyyy): 07/29/2026
+Info last updated (mm/dd/yyyy): 07/29/2026
 
 Activation type: press and hold
 
