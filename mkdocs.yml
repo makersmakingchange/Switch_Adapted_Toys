@@ -8,7 +8,7 @@ nav:
   - Start Here: index.md
   - Toy Instructions: toy-instructions.md
   - Component & Tool List: toy-components-and-tools.md
-  - Resources for Toy Adapting: toy-resources.md
+  - Other Resources for Toy Adapting: toy-resources.md
 
 # The per-toy pages in docs/toys/ are auto-generated at build time by
 # scripts/generate_toy_data.py (one per toy folder), so they can't be

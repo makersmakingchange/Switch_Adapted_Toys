@@ -1,9 +1,9 @@
 # Component & Tool List
 
-This is a list of commonly used components and tools for switch adapting toys. Most components can be purchased from different manufacturers for various prices, and the tools listed are widely available at most local hardware stores. Not every tool and component is needed for every toy — check the first page of a toy's Maker Guide to see what it specifically calls for.
+This is a list of commonly used components and tools for switch adapting toys. Most components can be purchased from different manufacturers for various prices, and the tools listed are widely available at most local hardware stores but you can also use the link below to find our recommended links. Not every tool and component is needed for every toy. Please check the first page of a toy's Maker Guide to see what it specifically calls for.
 
 <div class="shop-button-wrap">
-  <a href="https://www.makersmakingchange.com/tools" class="btn btn-primary" target="_blank" rel="noopener">🛒 Click to Purchase</a>
+  <a href="https://www.makersmakingchange.com/tools" class="btn btn-primary" target="_blank" rel="noopener">Click to Find Where to Purchase</a>
 </div>
 
 <!--
@@ -279,5 +279,3 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 ---
-
-*Adapted from the Switch Adapted Toys Component and Tool List, © Neil Squire Society, licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0).*
