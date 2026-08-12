@@ -221,14 +221,25 @@ def build_github_link(category_folder: str, toy_folder: str) -> str:
 # Filenames checked, in priority order, for the richer per-toy info format.
 # "toy_info.md" is the current convention; "toy-info.txt" is kept for
 # anyone who set folders up before that convention settled.
-INFO_FILENAMES = ["toy_info.md", "toy-info.txt"]
+# Priority order for locating a toy's info file. "toy_info*.md" is a glob
+# pattern, not an exact filename - it matches "toy_info.md" as well as
+# per-toy variants like "toy_info_bubble_blower.md", so you can name these
+# however you like without any code changes. "toy-info.txt" is kept as an
+# exact-match fallback for anyone who set folders up before "toy_info.md"
+# became the convention.
+INFO_FILENAME_PATTERNS = ["toy_info*.md", "toy-info.txt"]
 
 
 def find_info_file(toy_dir: Path) -> Path | None:
-    for filename in INFO_FILENAMES:
-        candidate = toy_dir / filename
-        if candidate.exists():
-            return candidate
+    for pattern in INFO_FILENAME_PATTERNS:
+        matches = sorted(toy_dir.glob(pattern))
+        if matches:
+            if len(matches) > 1:
+                print(
+                    f"NOTE: multiple files matched '{pattern}' in "
+                    f"{toy_dir.name} - using {matches[0].name}"
+                )
+            return matches[0]
     return None
 
 
@@ -265,19 +276,10 @@ def normalize_to_known(value: str, known_list: list[str]) -> str:
 # that toy has a toy_info.md - edit this text directly whenever real copy
 # is ready; it isn't pulled from anywhere per-toy.
 GENERAL_TOY_HACKING_INFO = (
-    "Every child deserves to play. But for many kids with disabilities, toys can be hard to use"
-    "independently, and commercially adapted versions can run upwards of $300. However, with a little bit of tinkering,"
-    "we can switch-adapt toys and make them accessible for a fraction of the cost."
-   
-   
-    "The information on this page and the files themselves may be outdated as toys change"
-    "throughout time or may no longer be available. Please see the Common Components and Tools"
-    "page if you are looking for frequently used parts and tools in toy adapting."
-    
-    "Annually, from September to December, Makers Making Change runs a Hacking for the Holidays campaign."
-    "This program engages volunteers (students, corporate partners, and other community members) to help us"
-    "adapt and donate thousands of toys and switches to families and clinicians all over Canada."
-    "To learn more to volunteer or request a toy, visit the [Hacking For the Holidays Site](https://www.makersmakingchange.com/2025-hacking-for-the-holidays-recap)"
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod "
+    "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim "
+    "veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea "
+    "commodo consequat."
 )
 
 
