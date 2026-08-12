@@ -1,0 +1,73 @@
+name: Deploy MKDocs site
+
+# Trigger on push to main or Website-v1.0, on PRs, on a schedule, or manually.
+#
+# NOTE: a push to `main` (e.g. adding/editing a Toy_Instructions folder)
+# already triggers this workflow via the `push.branches` list below - but
+# only if this workflow file itself is present and up to date on the `main`
+# branch too (GitHub Actions runs the copy of the workflow that lives on
+# whichever branch received the push). Keep this file in sync on both
+# branches so pushes to `main` reliably rebuild the site.
+#
+# The schedule below is a belt-and-suspenders fallback (e.g. in case a push
+# to `main` happens in a way that doesn't fire the push event, or content
+# changes without a git push), rebuilding the site every 8 hours regardless.
+on:
+  push:
+    branches:
+      - Website-v1.0
+      - main
+  pull_request:
+  schedule:
+    - cron: '0 */8 * * *'   # every 8 hours, on the hour (00:00, 08:00, 16:00 UTC)
+  workflow_dispatch: {}      # lets you trigger a rebuild manually from the Actions tab
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout the website branch (always this branch, regardless of
+      #    which branch's push triggered the run - see note above)
+      - name: Checkout website branch
+        uses: actions/checkout@v3
+        with:
+          ref: Website-v1.0
+
+      # 2️⃣ Checkout Toy_Instructions from the main branch into a side folder
+      #    (Toy_Instructions lives permanently on main, not on the website branch)
+      - name: Checkout Toy_Instructions from main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          path: toy-content
+          sparse-checkout: |
+            Toy_Instructions
+          sparse-checkout-cone-mode: false
+
+      # 3️⃣ Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      # 4️⃣ Install MKDocs + plugins
+      - name: Install MKDocs and plugins
+        run: |
+          pip install mkdocs
+          pip install mkdocs-material
+          pip install mkdocs-with-pdf
+          pip install mkdocs-include-markdown-plugin
+
+      # 5️⃣ Generate toy card data from the checked-out Toy_Instructions folder
+      - name: Generate toy card data from Toy_Instructions folder
+        run: python scripts/generate_toy_data.py
+        env:
+          TOY_INSTRUCTIONS_DIR: ${{ github.workspace }}/toy-content/Toy_Instructions
+
+      # 6️⃣ Build and deploy to GitHub Pages
+      - name: Build & deploy
+        run: |
+          mkdocs gh-deploy --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
