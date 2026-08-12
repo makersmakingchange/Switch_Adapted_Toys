@@ -275,12 +275,13 @@ def normalize_to_known(value: str, known_list: list[str]) -> str:
 # Static boilerplate shown on every toy detail page, regardless of whether
 # that toy has a toy_info.md - edit this text directly whenever real copy
 # is ready; it isn't pulled from anywhere per-toy.
-GENERAL_TOY_HACKING_INFO = (
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod "
-    "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim "
-    "veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea "
-    "commodo consequat."
-)
+GENERAL_TOY_HACKING_INFO = """Every child deserves to play. But for many kids with disabilities, toys can be hard to use independently, and commercially adapted versions can run upwards of $300. However, with a little bit of tinkering, we can switch-adapt toys and make them accessible for a fraction of the cost.
+
+Annually, from September to December, Makers Making Change hosts the [Hacking for the Holidays](https://www.makersmakingchange.com/hacking-for-the-holidays) campaign, where we engage volunteers — students, corporate partners, and other community members — in many build events across Canada to help us adapt and donate thousands of toys and switches to families and clinicians all over Canada.
+
+*Please note: the information on this page is only accurate as of when it was last updated.*
+
+If you are looking for more information on where to purchase the materials to adapt a toy, please visit the [Component & Tool List](../../toy-components-and-tools/) page on this resource."""
 
 
 def render_toy_page(toy: dict) -> str:
