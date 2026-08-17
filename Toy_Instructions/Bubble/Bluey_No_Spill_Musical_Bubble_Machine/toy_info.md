@@ -37,6 +37,8 @@ Category: (overrides which category the toy is grouped under -
        otherwise taken from the category folder it's sitting in)
 Link: (overrides the "View Source Folder on GitHub" button - otherwise
        auto-built from the toy's actual folder location)
+Toy Purchase Link: https://a.co/d/00hziQcD (adds a "Where to Buy This Toy" button, if filled in - otherwise the button just doesn't appear)
+Toy Purchase Link (alternate): https://www.realcanadiansuperstore.ca/en/musical-bubble-machine/p/21630035_EA?pc-express-book=1539&utm_source=google&utm_medium=display&utm_campaign=2026-03-19-ld-internal-market-home_ent_outdoor-realcanadiansuperstore-other-national-demandgen-7012269-2026superstorewws-616&utm_content=6182082-cnmg5aak_616_2026_home_entertainment_outdoor_rcss_national_mass_en_localinventory-l03puaab_mass-en&utm_term=&gad_source=1&gad_campaignid=23776657116&gbraid=0AAAAADFbI404XaPMLPB9Bfi2-hZhGGS3P&gclid=Cj0KCQjw4orUBhCjARIsAIbF3qwVTjfBrlLWOZzK8FNN6uyhVD3yggpVSaOp6lmtcaBlk_1shSBOyZQaApv8EALw_wcB (adds a second "Alternate Purchase Link" button, if there's a second place to buy the toy - otherwise omitted, same as above)
 Battery Type:
 Battery Required:
 Battery Included:
