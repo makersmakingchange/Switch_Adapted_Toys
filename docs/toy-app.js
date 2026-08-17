@@ -53,14 +53,8 @@ function handleToySearch(value) {
 }
 
 function buildFilterBar() {
-  const bar = document.getElementById("filter-bar");
   const tags = window.TOY_TAGS || [];
-  bar.innerHTML = tags.map(tag => `
-    <label class="filter-chip">
-      <input type="checkbox" value="${tag}" onchange="toggleToyFilter(this)">
-      <span>${tag}</span>
-    </label>
-  `).join("");
+  buildChipGroup("filter-bar", "filter-group-tags", tags, "tags");
 
   const filters = window.TOY_FILTERS || {};
   buildChipGroup("filter-bar-activation", "filter-group-activation", filters.activationTypes || [], "activation");
@@ -69,7 +63,7 @@ function buildFilterBar() {
 }
 
 // Only renders a facet group (and shows its label) if at least one toy
-// actually has a value for it - keeps "More Filters" from listing empty
+// actually has a value for it - keeps "Filters" from listing empty
 // groups as more fields get added to the toy-info template over time.
 function buildChipGroup(barId, groupId, values, groupKey) {
   const bar = document.getElementById(barId);
@@ -88,17 +82,8 @@ function buildChipGroup(barId, groupId, values, groupKey) {
   `).join("");
 }
 
-function toggleToyFilter(checkbox) {
-  if (checkbox.checked) {
-    activeFilters.add(checkbox.value);
-  } else {
-    activeFilters.delete(checkbox.value);
-  }
-  renderToyCards();
-}
-
 function toggleGroupFilter(groupKey, checkbox) {
-  const setMap = { activation: activeActivation, method: activeMethod, switches: activeSwitchCount };
+  const setMap = { tags: activeFilters, activation: activeActivation, method: activeMethod, switches: activeSwitchCount };
   const set = setMap[groupKey];
   if (!set) return;
   if (checkbox.checked) {

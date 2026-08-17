@@ -37,7 +37,8 @@ Category: (overrides which category the toy is grouped under -
        otherwise taken from the category folder it's sitting in)
 Link: (overrides the "View Source Folder on GitHub" button - otherwise
        auto-built from the toy's actual folder location)
+Toy Purchase Link: (adds a "Where to Buy This Toy" button, if filled in - otherwise the button just doesn't appear)
+Toy Purchase Link (alternate): (adds a second "Alternate Purchase Link" button, if there's a second place to buy the toy - otherwise omitted, same as above)
 Battery Type:
 Battery Required:
 Battery Included:
-Adaptation Inputs:

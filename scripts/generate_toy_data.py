@@ -187,6 +187,12 @@ def parse_toy_info(info_path: Path) -> dict:
         "category": raw.get("category"),
         "tags": raw.get("tags"),
         "link": raw.get("link"),
+        "toy_purchase_link": raw.get("toy purchase link") or raw.get("toy_purchase_link"),
+        "toy_purchase_link_alt": (
+            raw.get("toy purchase link (alternate)")
+            or raw.get("toy purchase link alternate")
+            or raw.get("toy_purchase_link_alt")
+        ),
         "description": raw.get("description"),
         "battery_type": raw.get("battery type") or raw.get("battery_type"),
         "battery_required": to_int(raw.get("battery required") or raw.get("battery_required")),
@@ -350,6 +356,18 @@ def render_toy_page(toy: dict) -> str:
             "in the meantime, the instructions can still be downloaded below."
         )
 
+    purchase_buttons = ""
+    if toy.get("toy_purchase_link"):
+        purchase_buttons += (
+            f'<a href="{toy["toy_purchase_link"]}" class="btn btn-secondary" '
+            f'target="_blank" rel="noopener">🛒 Where to Buy This Toy</a>\n'
+        )
+    if toy.get("toy_purchase_link_alt"):
+        purchase_buttons += (
+            f'<a href="{toy["toy_purchase_link_alt"]}" class="btn btn-outline" '
+            f'target="_blank" rel="noopener">🛒 Alternate Purchase Link</a>\n'
+        )
+
     return f"""# {toy['name']}
 {hfth_badge}
 <img src="{image_rel}" class="toy-page-image" style="max-width:200px;" alt="Photo of the {toy['name']}">
@@ -360,7 +378,7 @@ def render_toy_page(toy: dict) -> str:
 
 <div class="toy-page-buttons">
 <a href="{zip_rel}" class="btn btn-primary" download>⬇ Download Instructions (.zip)</a>
-<a href="{toy['link']}" class="btn btn-secondary">View Source Folder on GitHub</a>
+{purchase_buttons}<a href="{toy['link']}" class="btn btn-secondary">View Source Folder on GitHub</a>
 <a href="https://github.com/{GITHUB_ORG}/{GITHUB_REPO}/issues" class="btn btn-outline">⚠ Report an Issue</a>
 </div>
 
@@ -464,6 +482,8 @@ def main():
                 "slug": slug,
                 "image": image_path,
                 "link": link,
+                "toy_purchase_link": info.get("toy_purchase_link") or "",
+                "toy_purchase_link_alt": info.get("toy_purchase_link_alt") or "",
                 "category": category_name,
                 "tags": tags,
                 "description": description,

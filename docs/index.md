@@ -1,4 +1,4 @@
-# Welcome to MMC's Toy Adapitng Instructions
+# Welcome to MMC's Toy Adapting Instructions
 
 <img src="./images/toy-banner.png" class="page-banner" alt="decorative banner showing various adapted toys/kids playing with them">
 
