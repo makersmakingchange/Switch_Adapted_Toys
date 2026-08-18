@@ -37,7 +37,7 @@ Join us for the 2026 Hacking for the Holidays, presented by Air Canada Foundatio
 
 
 <div class="center-thumb">
-    <img src="../images/Air-Canada-Foundation.png" alt="Air Canada Logo">
+    <img src="./images/Air-Canada-Foundation.png" alt="Air Canada Logo">
 </div>
 
 ## Why Adaptive Toys Matter
