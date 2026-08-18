@@ -11,10 +11,6 @@ Browse switch-adapted toy builds. Use the filters below to narrow down by catego
   <button class="more-filters-toggle" id="more-filters-toggle" onclick="toggleMoreFilters()">Filters ▾</button>
 
   <div class="more-filters" id="more-filters" hidden>
-    <div class="filter-group" id="filter-group-tags">
-      <span class="filter-group-label">Other Tags</span>
-      <div class="filter-bar" id="filter-bar"></div>
-    </div>
     <div class="filter-group" id="filter-group-activation">
       <span class="filter-group-label">Activation Type</span>
       <div class="filter-bar" id="filter-bar-activation"></div>
@@ -24,8 +20,12 @@ Browse switch-adapted toy builds. Use the filters below to narrow down by catego
       <div class="filter-bar" id="filter-bar-method"></div>
     </div>
     <div class="filter-group" id="filter-group-switches">
-      <span class="filter-group-label">Number of Switches</span>
+      <span class="filter-group-label">Number of Switches Required</span>
       <div class="filter-bar" id="filter-bar-switches"></div>
+    </div>
+    <div class="filter-group" id="filter-group-tags">
+      <span class="filter-group-label">Other Tags</span>
+      <div class="filter-bar" id="filter-bar"></div>
     </div>
     <div class="filter-group filter-toggles">
       <label class="filter-toggle"><input type="checkbox" onchange="toggleFlag('hfth_2026', this)"> HFTH 2026</label>

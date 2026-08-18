@@ -6,6 +6,8 @@ Please note the information on this page is only accurate to when it was last up
 
 If you are looking for more information on where to purchase the materials to adapt a toy, please visit the [Common Component and Tool page](https://makersmakingchange.github.io/Switch_Adapted_Toys/toy-components-and-tools/) on this resource.
 
+-----------------------------------------------------------------
+
 A summary of the key toy info can be found below:
 
 Info last updated (mm/dd/yyyy): mm/dd/yyyy
@@ -24,11 +26,15 @@ HFTH 2026: Yes or No
 
 Available to purchase as of last update: yes or no
 
+Toy Purchase Link: (adds a "Where to Buy This Toy" button, if filled in - otherwise the button just doesn't appear)
+
+Toy Purchase Link (alternate): (adds a second "Alternate Purchase Link" button, if there's a second place to buy the toy - otherwise omitted, same as above)
+
 General Notes: 
 
+
 -----------------------------------------------------------------
-Everything below this line is optional / not currently shown on
-the site, but the script still understands it if you ever want it:
+Overrides and Extra Info:
 
 Name: (overrides the toy's display name - otherwise taken from the
        folder name, e.g. "Dollarama_Motorized_Bubble_Machine" becomes
@@ -37,8 +43,9 @@ Category: (overrides which category the toy is grouped under -
        otherwise taken from the category folder it's sitting in)
 Link: (overrides the "View Source Folder on GitHub" button - otherwise
        auto-built from the toy's actual folder location)
-Toy Purchase Link: (adds a "Where to Buy This Toy" button, if filled in - otherwise the button just doesn't appear)
-Toy Purchase Link (alternate): (adds a second "Alternate Purchase Link" button, if there's a second place to buy the toy - otherwise omitted, same as above)
+
 Battery Type:
+
 Battery Required:
+
 Battery Included:

@@ -31,10 +31,18 @@ There are two main sections of this web page:
 
 ## Hacking For the Holidays
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae quam vitae purus dignissim egestas nec id orci. Sed ac iaculis lorem. In hac habitasse platea dictumst. Donec quis gravida odio. Nulla egestas turpis eget ligula sagittis semper. Maecenas placerat, elit ut aliquet vestibulum, velit neque viverra lacus, id euismod nisl dolor eget nulla. Fusce venenatis augue urna, in aliquet augue commodo nec. Sed congue augue non rutrum tristique. Nulla in quam lacinia, vehicula urna id, hendrerit libero. Etiam at maximus ex.
+We need your help to make play accessible for kids with disabilities. Every year from September to December, volunteers across Canada join a mission to adapt and donate accessible toys and switches to families and clinicians nationwide.
 
+Join us for the 2026 Hacking for the Holidays, presented by Air Canada Foundation, as we fundraise $150,000, engage 1,000 volunteers, and deliver 2,500 devices. Learn more on the [Hacking For the Holidays site.](https://www.makersmakingchange.com/hacking-for-the-holidays)
+
+
+<div class="center-thumb">
+    <img src="../images/Air-Canada-Foundation.png" alt="Air Canada Logo">
+</div>
 
 ## Why Adaptive Toys Matter
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae quam vitae purus dignissim egestas nec id orci. Sed ac iaculis lorem. In hac habitasse platea dictumst. Donec quis gravida odio. Nulla egestas turpis eget ligula sagittis semper. Maecenas placerat, elit ut aliquet vestibulum, velit neque viverra lacus, id euismod nisl dolor eget nulla. Fusce venenatis augue urna, in aliquet augue commodo nec. Sed congue augue non rutrum tristique. Nulla in quam lacinia, vehicula urna id, hendrerit libero. Etiam at maximus ex.
+For many kids with disabilities, toys can be hard to use independently, and commercially adapted versions can cost hundreds of dollars. That high cost leaves many families and therapists supporting kids with disabilities without the interactive toys and access methods crucial to childhood development.
+However, with a little bit of tinkering, toys can be switch-adapt and made accessible for a fraction of the cost.
+
 

@@ -126,6 +126,20 @@ def slugify(text: str) -> str:
     return text.strip("-")
 
 
+# Lines matching any of these (case-insensitive, ignoring surrounding
+# whitespace/punctuation) mark the start of the "overrides and extra info"
+# section at the bottom of toy_info.md. Parsing stops there so unfilled
+# placeholder text like "Name: (overrides the toy's display name...)"
+# never gets read as real data. This is intentionally NOT just "any line
+# starting with ---", since templates can have other dividers earlier in
+# the file (e.g. separating intro copy from the actual fields) that must
+# NOT stop parsing.
+STOP_PARSING_MARKERS = [
+    "overrides and extra info",
+    "everything below this line is optional",
+]
+
+
 def parse_info_txt(info_path: Path | None) -> dict:
     """Reads a simple 'Key: value' formatted info.txt file (legacy format)."""
     data = {}
@@ -133,9 +147,10 @@ def parse_info_txt(info_path: Path | None) -> dict:
         return data
     for line in info_path.read_text(encoding="utf-8").splitlines():
         stripped = line.strip()
-        if stripped.startswith("---"):
-            break  # stop at the "what each line means" divider, if present
-        if ":" not in line or stripped.startswith("#"):
+        stripped_check = stripped.lower().rstrip(":").strip()
+        if any(stripped_check.startswith(marker) for marker in STOP_PARSING_MARKERS):
+            break
+        if stripped.startswith("---") or stripped.startswith("#") or ":" not in line:
             continue
         key, _, value = line.partition(":")
         data[key.strip().lower()] = value.strip()
@@ -215,6 +230,19 @@ def find_thumbnail(toy_dir: Path) -> Path | None:
         [f for f in toy_dir.iterdir() if f.suffix.lower() in IMAGE_EXTENSIONS]
     )
     return images[0] if images else None
+
+
+def clean_url(value: str | None) -> str | None:
+    """Only accept a value that actually looks like a URL. Guards against
+    unfilled template placeholder text - e.g. a Toy Purchase Link left as
+    '(adds a button if filled in...)' rather than a real link - being
+    treated as a real, filled-in value and turned into a broken button."""
+    if not value:
+        return None
+    value = value.strip()
+    if value.lower().startswith(("http://", "https://")):
+        return value
+    return None
 
 
 def build_github_link(category_folder: str, toy_folder: str) -> str:
@@ -440,7 +468,7 @@ def main():
             # Category can be overridden by toy-info.txt; otherwise use the
             # folder it's actually sitting in.
             category_name = info.get("category") or folder_category_name
-            link = info.get("link") or build_github_link(category_dir.name, toy_dir.name)
+            link = clean_url(info.get("link")) or build_github_link(category_dir.name, toy_dir.name)
             description = info.get("description") or ""
 
             slug = f"{slugify(category_name)}-{slugify(name)}"
@@ -482,8 +510,8 @@ def main():
                 "slug": slug,
                 "image": image_path,
                 "link": link,
-                "toy_purchase_link": info.get("toy_purchase_link") or "",
-                "toy_purchase_link_alt": info.get("toy_purchase_link_alt") or "",
+                "toy_purchase_link": clean_url(info.get("toy_purchase_link")) or "",
+                "toy_purchase_link_alt": clean_url(info.get("toy_purchase_link_alt")) or "",
                 "category": category_name,
                 "tags": tags,
                 "description": description,
