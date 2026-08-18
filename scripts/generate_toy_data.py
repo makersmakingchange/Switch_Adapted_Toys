@@ -234,14 +234,16 @@ def find_thumbnail(toy_dir: Path) -> Path | None:
 
 def clean_url(value: str | None) -> str | None:
     """Only accept a value that actually looks like a URL. Guards against
-    unfilled template placeholder text - e.g. a Toy Purchase Link left as
-    '(adds a button if filled in...)' rather than a real link - being
-    treated as a real, filled-in value and turned into a broken button."""
+    two common real-world cases: an unfilled placeholder left as-is (e.g.
+    '(adds a button if filled in...)'), and a real URL that still has the
+    template's trailing instructional text stuck on the same line (e.g.
+    'https://example.com (adds a button...)') - in that second case, only
+    the URL itself is kept and the rest is discarded."""
     if not value:
         return None
-    value = value.strip()
-    if value.lower().startswith(("http://", "https://")):
-        return value
+    first_token = value.strip().split()[0] if value.strip() else ""
+    if first_token.lower().startswith(("http://", "https://")):
+        return first_token
     return None
 
 
