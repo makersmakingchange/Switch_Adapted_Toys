@@ -1,55 +1,28 @@
 ---
-last_updated: 2026-08-19          # date this file was last updated
-
-tags: [test, test2]                           # add tags inside the brackets, separated by
-                                    # commas, e.g. tags: [Bubble, HFTH]
-
-activation_type:                   # keep only the relevant ones, delete the rest
+# Fill in the value after each colon, on the SAME line as the field -
+# don't press Enter partway through a value. Leave a field completely
+# blank (nothing after the colon) if you don't have that info yet.
+last_updated: 2026-08-19               # yyyy-mm-dd - date this file was last updated
+tags: [test1, test2]                    # e.g. [Bubble, HFTH] - comma separated, in brackets
+activation_type:            # keep only the relevant lines below, delete the rest
   - Press and Hold
   - Single Press
-
-requires_3d_printing: No           # Yes or No
-
-adaptation_method:                 # keep only the relevant ones, delete the rest
+requires_3d_printing: No    # Yes or No
+adaptation_method:          # keep only the relevant lines below, delete the rest
   - Battery Interrupter
   - Mono Jack + Wire
-
-number_of_switches:                # keep only the relevant ones, delete the rest
+number_of_switches:         # keep only the relevant lines below, delete the rest
   - 5
-
-hfth_collection_year: 2026             # the year this toy was part of a Hacking for
-                                    # the Holidays collection (e.g. 2026) - leave
-                                    # blank if it's never been part of one
-
-available_to_purchase: Yes         # Yes or No - is the toy itself still available
-                                    # to purchase, as of last_updated above?
-
-toy_purchase_link: https://a.co/d/01HkZ7gN                 # adds a "Where to Buy This Toy" button if
-                                    # filled in - otherwise the button just
-                                    # doesn't appear
-
-toy_purchase_link_alt:             # adds a second "Alternate Purchase Link"
-                                    # button if there's a second place to buy the
-                                    # toy - otherwise omitted, same as above
-
-general_notes: "This toy has lots of screws"                  # any general important notes about the toy,
-                                    # e.g. "uses lots of screws"
-
-# --- Internal MMC Info (not shown on the public site) ---
-device_uid: "100231"                     # the device UID from SF
-
-# --- Overrides (only fill in if you need to override the default) ---
-name: ""                           # overrides the toy's display name - otherwise
-                                    # taken from the folder name, e.g.
-                                    # "Dollarama_Motorized_Bubble_Machine" becomes
-                                    # "Dollarama Motorized Bubble Machine"
-category: ""                       # overrides which category the toy is grouped
-                                    # under - otherwise taken from the category
-                                    # folder it's sitting in
-link: ""                           # overrides the "View Source Folder on GitHub"
-                                    # button - otherwise auto-built from the
-                                    # toy's actual folder location
-battery_type: ""
+hfth_collection_year: 2026      # e.g. 2026 - leave blank if never part of a HFTH collection
+available_to_purchase: Yes  # Yes or No - is the toy still available to purchase?
+toy_purchase_link: https://a.co/d/05CLDlfu          # adds a "Where to Buy This Toy" button if filled in
+toy_purchase_link_alt:      # adds a 2nd purchase button if there's another link
+general_notes: This toy has lots of screws              # any general notes, e.g. "Uses lots of screws."
+device_uid: 10013                 # internal MMC use only - never shown on the site
+name:                        # only fill in to OVERRIDE the auto name - else leave blank
+category:                    # only fill in to OVERRIDE the auto category - else leave blank
+link:                        # only fill in to OVERRIDE the auto GitHub link - else leave blank
+battery_type:
 battery_required:
 battery_included:
 ---
@@ -61,3 +34,19 @@ Annually, from September to December Makers Making Change hosts the [Hacking for
 Please note the information on this page is only accurate to when it was last updated.
 
 If you are looking for more information on where to purchase the materials to adapt a toy, please visit the [Common Component and Tool page](https://makersmakingchange.github.io/Switch_Adapted_Toys/toy-components-and-tools/) on this resource.
+
+<!--
+  Everything above this line (outside the --- --- block at the top) is
+  just for humans reading this file - it isn't read by the site build.
+  This same text already shows automatically on every toy's page, so you
+  don't need to copy/edit it per toy; it's here for context only.
+
+  ONE IMPORTANT RULE for the fields inside the --- --- block above:
+  keep every value on the SAME line as its field name. If a value
+  wraps onto a second line by accident (e.g. a long name spilling onto
+  a new line without quotes), that whole wrapped block gets silently
+  read as one long piece of text - which can also swallow the field(s)
+  that come right after it. If you ever need to double check a field
+  looks right, open this file on GitHub and confirm nothing after a
+  colon spills onto its own new line unless it's a "- " list item.
+-->
