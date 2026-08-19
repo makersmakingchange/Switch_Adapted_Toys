@@ -233,6 +233,28 @@ def as_str(value) -> str | None:
     return s or None
 
 
+def as_short_str(value, field_label: str, max_len: int = 80) -> str | None:
+    """Like as_str, but rejects implausibly long values for fields that
+    should always be short (a toy name, a category, a battery type).
+    This exists specifically to catch YAML's line-folding behavior: an
+    unquoted value left wrapped across multiple lines by mistake (rather
+    than kept on one line, or quoted) gets silently folded into one very
+    long string - this rejects that outright and prints a build-log
+    warning, rather than letting garbled placeholder text quietly become
+    a toy's real name/category/etc."""
+    s = as_str(value)
+    if s is None:
+        return None
+    if len(s) > max_len:
+        print(
+            f"WARNING: '{field_label}' value looks like corrupted/wrapped "
+            f"text ({len(s)} chars, expected a short value) - ignoring it: "
+            f"{s[:60]}..."
+        )
+        return None
+    return s
+
+
 def as_int(value) -> int | None:
     try:
         return int(value)
@@ -246,16 +268,16 @@ def normalize_from_yaml(raw: dict) -> dict:
     script."""
     hfth_year = as_int(raw.get("hfth_collection_year"))
     return {
-        "name": as_str(raw.get("name")),
+        "name": as_short_str(raw.get("name"), "name"),
         "available": to_bool(raw.get("available")),
         "last_update": as_str(raw.get("last_updated")),
-        "category": as_str(raw.get("category")),
+        "category": as_short_str(raw.get("category"), "category"),
         "tags": as_list(raw.get("tags")),
         "link": as_str(raw.get("link")),
         "toy_purchase_link": clean_url(as_str(raw.get("toy_purchase_link"))),
         "toy_purchase_link_alt": clean_url(as_str(raw.get("toy_purchase_link_alt"))),
         "description": as_str(raw.get("description")),
-        "battery_type": as_str(raw.get("battery_type")),
+        "battery_type": as_short_str(raw.get("battery_type"), "battery_type"),
         "battery_required": as_int(raw.get("battery_required")),
         "battery_included": as_int(raw.get("battery_included")),
         "adaptation_inputs": as_int(raw.get("adaptation_inputs")),
@@ -277,7 +299,7 @@ def normalize_from_legacy(raw: dict) -> dict:
     toy folders that haven't been migrated to frontmatter yet."""
     hfth_flag = to_bool(raw.get("hfth 2026") or raw.get("hfth_2026"), default=False)
     return {
-        "name": raw.get("name"),
+        "name": as_short_str(raw.get("name"), "name"),
         "available": to_bool(raw.get("available")),
         "last_update": (
             raw.get("info last updated (mm/dd/yyyy)")
@@ -286,7 +308,7 @@ def normalize_from_legacy(raw: dict) -> dict:
             or raw.get("last update")
             or raw.get("last_update")
         ),
-        "category": raw.get("category"),
+        "category": as_short_str(raw.get("category"), "category"),
         "tags": to_list(raw.get("tags")),
         "link": raw.get("link"),
         "toy_purchase_link": clean_url(raw.get("toy purchase link") or raw.get("toy_purchase_link")),
@@ -296,7 +318,7 @@ def normalize_from_legacy(raw: dict) -> dict:
             or raw.get("toy_purchase_link_alt")
         ),
         "description": raw.get("description"),
-        "battery_type": raw.get("battery type") or raw.get("battery_type"),
+        "battery_type": as_short_str(raw.get("battery type") or raw.get("battery_type"), "battery_type"),
         "battery_required": to_int(raw.get("battery required") or raw.get("battery_required")),
         "battery_included": to_int(raw.get("battery included") or raw.get("battery_included")),
         "adaptation_inputs": to_int(raw.get("adaptation inputs") or raw.get("adaptation_inputs")),
