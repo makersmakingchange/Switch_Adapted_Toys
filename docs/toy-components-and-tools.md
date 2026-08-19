@@ -32,19 +32,19 @@ This is a list of commonly used components and tools for switch adapting toys. M
     <p class="component-name">3.5 mm Rectangular Mono Jack</p>
     <p class="component-notes">The most used mono jack. Solder wires onto the two tabs closest to the cable input.</p>
     <div class="component-example">
-      <img src="../images/components/mono-jack-rectangular-example.png" alt="Rectangular mono jack wired example" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+      <img src="../images/components/reg_mono_jack_Use.jpg" alt="Rectangular mono jack wired example" onerror="this.onerror=null;this.src='../images/placeholder.png';">
       <span>Example: wires soldered onto the two tabs closest to the cable input</span>
     </div>
   </div>
 </div>
 
 <div class="component-row">
-  <img src="../images/reg_mono_jack_Use.jpg" class="component-image" alt="3.5mm Square Mono Jack" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/square_mono.jpg" class="component-image" alt="3.5mm Square Mono Jack" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">3.5 mm Square Mono Jack</p>
     <p class="component-notes">Solder wires onto the two tabs directly across from each other.</p>
     <div class="component-example">
-      <img src="../images/components/mono-jack-square-example.png" alt="Square mono jack wired example" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+      <img src="../images/components/square_mono_use.jpg" alt="Square mono jack wired example" onerror="this.onerror=null;this.src='../images/placeholder.png';">
       <span>Example: wires soldered onto the two tabs directly across from each other</span>
     </div>
   </div>

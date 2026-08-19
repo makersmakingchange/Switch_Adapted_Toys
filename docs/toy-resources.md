@@ -9,7 +9,7 @@ Select a resource below to open or download it.
 <div class="profile-grid">
 
     <div class="profile-card">
-        <div class="card-image" style="background-image: url('../images/placeholder.png');"></div>
+        <div class="card-image" style="background-image: url('../images/toy_hacking_101.png');"></div>
         <div class="card-content">
             <h3>Toy Hacking Webinars</h3>
             <p>In this 3-part video series, we demonstrate everything you need to switch-adapt toys, including various adapting methods, instructions, helpful resources, tools required, and more.</p>
@@ -21,7 +21,7 @@ Select a resource below to open or download it.
     </div>
 
     <div class="profile-card">
-        <div class="card-image" style="background-image: url('../images/toy_hacking_101.png');"></div>
+        <div class="card-image" style="background-image: url('../images/placeholder.png');"></div>
         <div class="card-content">
             <h3>Maker Guide Template</h3>
             <p>A set of templates that can be used to document how to adapt a toy. </p>
