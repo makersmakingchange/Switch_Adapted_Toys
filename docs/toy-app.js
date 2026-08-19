@@ -44,7 +44,8 @@ let activeFilters = new Set();       // Tags
 let activeActivation = new Set();    // Activation Type
 let activeMethod = new Set();        // Method of Adaptation
 let activeSwitchCount = new Set();   // Number of Switches (stored as strings)
-let flagFilters = { hfth_2026: false, requires_3d_printing: false, available_to_purchase: false };
+let activeHfthYears = new Set();     // HFTH Collection Year (stored as strings)
+let flagFilters = { requires_3d_printing: false, available_to_purchase: false };
 let searchQuery = "";
 
 function handleToySearch(value) {
@@ -60,6 +61,7 @@ function buildFilterBar() {
   buildChipGroup("filter-bar-activation", "filter-group-activation", filters.activationTypes || [], "activation");
   buildChipGroup("filter-bar-method", "filter-group-method", filters.adaptationMethods || [], "method");
   buildChipGroup("filter-bar-switches", "filter-group-switches", (filters.switchCounts || []).map(String), "switches");
+  buildChipGroup("filter-bar-hfth", "filter-group-hfth", (filters.hfthYears || []).map(String), "hfth");
 }
 
 // Only renders a facet group (and shows its label) if at least one toy
@@ -83,7 +85,13 @@ function buildChipGroup(barId, groupId, values, groupKey) {
 }
 
 function toggleGroupFilter(groupKey, checkbox) {
-  const setMap = { tags: activeFilters, activation: activeActivation, method: activeMethod, switches: activeSwitchCount };
+  const setMap = {
+    tags: activeFilters,
+    activation: activeActivation,
+    method: activeMethod,
+    switches: activeSwitchCount,
+    hfth: activeHfthYears,
+  };
   const set = setMap[groupKey];
   if (!set) return;
   if (checkbox.checked) {
@@ -116,7 +124,8 @@ function clearToyFilters() {
   activeActivation.clear();
   activeMethod.clear();
   activeSwitchCount.clear();
-  flagFilters = { hfth_2026: false, requires_3d_printing: false, available_to_purchase: false };
+  activeHfthYears.clear();
+  flagFilters = { requires_3d_printing: false, available_to_purchase: false };
   searchQuery = "";
   document.querySelectorAll("#toy-app input[type=checkbox]").forEach(cb => cb.checked = false);
   const searchBox = document.getElementById("toy-search");
@@ -130,10 +139,10 @@ function renderToyCards() {
 
   let visibleToys = toys.filter(t => {
     if (activeFilters.size > 0 && !(t.tags || []).some(tag => activeFilters.has(tag))) return false;
-    if (activeActivation.size > 0 && !activeActivation.has(t.activation_type)) return false;
-    if (activeMethod.size > 0 && !activeMethod.has(t.adaptation_method)) return false;
-    if (activeSwitchCount.size > 0 && !activeSwitchCount.has(String(t.number_of_switches))) return false;
-    if (flagFilters.hfth_2026 && !t.hfth_2026) return false;
+    if (activeActivation.size > 0 && !(t.activation_type || []).some(v => activeActivation.has(v))) return false;
+    if (activeMethod.size > 0 && !(t.adaptation_method || []).some(v => activeMethod.has(v))) return false;
+    if (activeSwitchCount.size > 0 && !(t.number_of_switches || []).some(v => activeSwitchCount.has(String(v)))) return false;
+    if (activeHfthYears.size > 0 && !activeHfthYears.has(String(t.hfth_collection_year))) return false;
     if (flagFilters.requires_3d_printing && !t.requires_3d_printing) return false;
     if (flagFilters.available_to_purchase && !t.available_to_purchase) return false;
     return true;
@@ -172,7 +181,8 @@ function initToyApp() {
   activeActivation = new Set();
   activeMethod = new Set();
   activeSwitchCount = new Set();
-  flagFilters = { hfth_2026: false, requires_3d_printing: false, available_to_purchase: false };
+  activeHfthYears = new Set();
+  flagFilters = { requires_3d_printing: false, available_to_purchase: false };
   searchQuery = "";
   const morePanel = document.getElementById("more-filters");
   if (morePanel) morePanel.setAttribute("hidden", "");

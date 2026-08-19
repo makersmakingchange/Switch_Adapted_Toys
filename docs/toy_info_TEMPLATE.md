@@ -10,28 +10,33 @@ If you are looking for more information on where to purchase the materials to ad
 
 A summary of the key toy info can be found below:
 
-Info last updated (mm/dd/yyyy): mm/dd/yyyy
+Info last updated (yyyy/mm/dd): <!--- input the date this file was last updated --->
 
-Tags: 
+Tags: <!--- input approved tags here seperated with commas. Example: tag1, tag2, tag3 --->
 
-Activation Type: press and hold, single press
+Activation Type: press and hold, single press <!--- Delete the non relevant activation types or keep multiple if needed --->
 
-Requires 3D Printing: Yes or No
+Requires 3D Printing: Yes/No <!--- Delete the / and just keep  the Yes or No here --->
 
-Method of Adaption: battery interrupter, Mono jack + wire, Mono cable
+Method of Adaption: battery interrupter, Mono jack + wire, Mono cable <!--- Delete the non relevant methods or keep multiple if needed --->
 
-Number of Switches: 1, 2, 3, 4, 5, 6
+Number of Switches: 1, 2, 3, 4, 5, 6 <!--- Delete the non relevant number of switches the toy uses or keep multiple if needed --->
 
-HFTH 2026: Yes or No
+Hacking for the Holiday Collection (yyyy):  <!--- Input the year here (ex: 2026) if it was a part of a HFTH collection --->
 
-Available to purchase as of last update: yes or no
+Available to purchase as of last update: Yes/No <!--- Delete the / and just keep  the Yes or No here --->
 
-Toy Purchase Link: (adds a "Where to Buy This Toy" button, if filled in - otherwise the button just doesn't appear)
+Toy Purchase Link: <!---adds a "Where to Buy This Toy" button, if filled in - otherwise the button just doesn't appear --->
 
-Toy Purchase Link (alternate): (adds a second "Alternate Purchase Link" button, if there's a second place to buy the toy - otherwise omitted, same as above)
+Toy Purchase Link (alternate): <!--- adds a second "Alternate Purchase Link" button, if there's a second place to buy the toy - otherwise omitted, same as above) --->
 
-General Notes: 
+General Notes: <!--- Add any general important notes about the toy here such as "uses lots of screws" --->
 
+
+-----------------------------------------------------------------
+Internal MMC Info:
+
+Device UID: <!--- Use the device UID from SF and input it here --->
 
 -----------------------------------------------------------------
 Overrides and Extra Info:

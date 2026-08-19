@@ -14,41 +14,55 @@ Folder convention:
                 ... any other files (assembly guides, 3D files, etc.)
                                               (ignored by this script)
 
-toy_info.md (optional) format - one item per line, e.g.:
+toy_info.md now uses YAML frontmatter (a --- delimited block at the very
+top of the file) rather than plain "Key: value" lines - see
+Toy_Instructions/_TEMPLATE/toy_info.md for the full template with
+comments. Example:
 
-    Name: Bubble Blower
-    Available: true
-    Last Update: 2025-09-23
-    Category: Bubble
-    Tags: Bubble, Battery Powered
-    Link: https://github.com/makersmakingchange/Switch-Adapted-Bubble-Blower
-    Description: A switch-adapted bubble machine for younger kids.
-    Battery Type: AA
-    Battery Required: 2
-    Battery Included: 2
-    Adaptation Inputs: 2
-    Activation Type: Single Press
-    Requires 3D Printing: No
-    Method Of Adaption: Battery Interrupter
-    Number Of Switches: 2
-    HFTH 2026: Yes
-    Available To Purchase As Of Last Update: Yes
-    General Notes: Works best with a jelly bean switch.
+    ---
+    last_updated: 2026-07-29
+    tags: [Bubble, HFTH]
+    activation_type:
+      - Press and Hold
+    requires_3d_printing: No
+    adaptation_method:
+      - Battery Interrupter
+    number_of_switches:
+      - 2
+    hfth_collection_year: 2026
+    available_to_purchase: Yes
+    toy_purchase_link: https://example.com/product
+    toy_purchase_link_alt:
+    general_notes: Works best with a jelly bean switch.
+    device_uid:
+    name:
+    category:
+    link:
+    battery_type: AA
+    battery_required: 2
+    battery_included: 2
+    ---
 
-Tags drive the main filter chips on the "Toy Instructions" page (rather
-than category/folder). A toy can have as many comma-separated tags as you
-want, and shows up under every one of them. If a toy has no Tags line yet,
-it just falls back to using its Category as its one tag, so nothing
-disappears from the filters for toys that haven't been retagged.
+    (any markdown body text below the closing --- is ignored by this
+    script - it's just a place for human-readable notes if wanted)
 
-Activation Type, Method Of Adaption, and Number Of Switches feed a
-secondary set of grouped filters (shown collapsed under "More Filters" so
-the page isn't overwhelming with chips) - a filter chip only appears for
-values that at least one toy actually has. HFTH 2026, Requires 3D
-Printing, and Available To Purchase As Of Last Update are simple Yes/No
-toggles rather than chip groups, since they're binary. All of these are
-optional per toy; leaving one blank just means that toy won't show up
-under that particular filter, without affecting any other filter.
+Tags, Activation Type, Method of Adaptation, and Number of Switches can
+all hold more than one value (as a YAML list) and each toy shows up
+under every value it has. Tags drive the main filter chips; the other
+three feed a secondary set of grouped filters (shown collapsed under
+"Filters" so the page isn't overwhelming) - a filter chip only appears
+for values that at least one toy actually has. Requires 3D Printing and
+Available To Purchase are simple Yes/No toggles. HFTH Collection Year is
+its own chip group too (not hardcoded to 2026 - any year works, and
+years only show up as filter options once some toy actually has them).
+All of these are optional per toy; leaving one blank just means that toy
+won't show up under that particular filter, without affecting any other
+filter.
+
+Still reads the older, pre-frontmatter "Key: value" line format too
+(including the very old "toy-info.txt" filename), for any folder that
+hasn't been migrated yet - both formats can coexist across different
+toys at once.
 
 If toy_info.md is missing entirely, the script falls back to:
     Name     -> the toy folder name, with underscores/hyphens turned into spaces
@@ -79,6 +93,7 @@ import json
 import os
 import re
 import shutil
+import yaml
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
@@ -177,33 +192,105 @@ def to_list(value):
     return [item.strip() for item in value.split(",") if item.strip()]
 
 
-def parse_toy_info(info_path: Path) -> dict:
-    """
-    Reads the richer plain-text toy-info.txt format (Key: value lines,
-    same style as the legacy info.txt but with more fields) and returns
-    a dict of the fields the site uses. Returns {} if the file doesn't
-    exist. Lines starting with '#' are treated as comments and ignored,
-    so the instructional text at the bottom of the template is safely
-    skipped.
-    """
-    raw = parse_info_txt(info_path)  # reuses the same "Key: value" parsing
-    if not raw:
-        return {}
+FRONTMATTER_RE = re.compile(r"^---[ \t]*\r?\n(.*?)\r?\n---[ \t]*\r?\n?", re.DOTALL)
 
+
+def extract_frontmatter(text: str) -> dict | None:
+    """
+    If the file starts with a '---' delimited YAML block, parses and
+    returns it as a dict. Returns None if there's no frontmatter block at
+    all (meaning: the caller should try the legacy flat 'Key: value' line
+    format instead). Returns {} (not None) if there IS a frontmatter
+    block but it's empty or invalid YAML - that still counts as "this
+    toy has an info file", just with no usable fields in it.
+    """
+    match = FRONTMATTER_RE.match(text)
+    if not match:
+        return None
+    try:
+        data = yaml.safe_load(match.group(1))
+    except yaml.YAMLError as e:
+        print(f"WARNING: invalid YAML frontmatter in a toy_info.md file - {e}")
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def as_list(value) -> list[str]:
+    """Normalizes a YAML value (None / scalar / list) into a clean list
+    of non-empty strings, e.g. for tags, activation_type, etc."""
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return [str(v).strip() for v in value if v is not None and str(v).strip() != ""]
+    s = str(value).strip()
+    return [s] if s else []
+
+
+def as_str(value) -> str | None:
+    if value is None:
+        return None
+    s = str(value).strip()
+    return s or None
+
+
+def as_int(value) -> int | None:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def normalize_from_yaml(raw: dict) -> dict:
+    """Maps a parsed YAML frontmatter dict (clean snake_case keys, native
+    types) to the single unified info schema used everywhere else in this
+    script."""
+    hfth_year = as_int(raw.get("hfth_collection_year"))
+    return {
+        "name": as_str(raw.get("name")),
+        "available": to_bool(raw.get("available")),
+        "last_update": as_str(raw.get("last_updated")),
+        "category": as_str(raw.get("category")),
+        "tags": as_list(raw.get("tags")),
+        "link": as_str(raw.get("link")),
+        "toy_purchase_link": clean_url(as_str(raw.get("toy_purchase_link"))),
+        "toy_purchase_link_alt": clean_url(as_str(raw.get("toy_purchase_link_alt"))),
+        "description": as_str(raw.get("description")),
+        "battery_type": as_str(raw.get("battery_type")),
+        "battery_required": as_int(raw.get("battery_required")),
+        "battery_included": as_int(raw.get("battery_included")),
+        "adaptation_inputs": as_int(raw.get("adaptation_inputs")),
+        "activation_type": as_list(raw.get("activation_type")),
+        "requires_3d_printing": to_bool(raw.get("requires_3d_printing"), default=False),
+        "adaptation_method": as_list(raw.get("adaptation_method")),
+        "number_of_switches": as_list(raw.get("number_of_switches")),
+        "hfth_collection_year": str(hfth_year) if hfth_year else None,
+        "available_to_purchase": to_bool(raw.get("available_to_purchase"), default=False),
+        "general_notes": as_str(raw.get("general_notes")),
+        "device_uid": as_str(raw.get("device_uid")),
+    }
+
+
+def normalize_from_legacy(raw: dict) -> dict:
+    """Maps the old flat 'Key: value' line format (fuzzy lowercase keys,
+    all-string values, from parse_info_txt) to the same unified info
+    schema normalize_from_yaml produces, for backwards compatibility with
+    toy folders that haven't been migrated to frontmatter yet."""
+    hfth_flag = to_bool(raw.get("hfth 2026") or raw.get("hfth_2026"), default=False)
     return {
         "name": raw.get("name"),
         "available": to_bool(raw.get("available")),
         "last_update": (
             raw.get("info last updated (mm/dd/yyyy)")
+            or raw.get("info last updated (yyyy/mm/dd)")
             or raw.get("last updated")
             or raw.get("last update")
             or raw.get("last_update")
         ),
         "category": raw.get("category"),
-        "tags": raw.get("tags"),
+        "tags": to_list(raw.get("tags")),
         "link": raw.get("link"),
-        "toy_purchase_link": raw.get("toy purchase link") or raw.get("toy_purchase_link"),
-        "toy_purchase_link_alt": (
+        "toy_purchase_link": clean_url(raw.get("toy purchase link") or raw.get("toy_purchase_link")),
+        "toy_purchase_link_alt": clean_url(
             raw.get("toy purchase link (alternate)")
             or raw.get("toy purchase link alternate")
             or raw.get("toy_purchase_link_alt")
@@ -213,15 +300,42 @@ def parse_toy_info(info_path: Path) -> dict:
         "battery_required": to_int(raw.get("battery required") or raw.get("battery_required")),
         "battery_included": to_int(raw.get("battery included") or raw.get("battery_included")),
         "adaptation_inputs": to_int(raw.get("adaptation inputs") or raw.get("adaptation_inputs")),
-        # Fields from the newer toy-info template:
-        "activation_type": raw.get("activation type") or raw.get("activation_type"),
+        "activation_type": as_list(raw.get("activation type") or raw.get("activation_type")),
         "requires_3d_printing": to_bool(raw.get("requires 3d printing") or raw.get("requires_3d_printing"), default=False),
-        "adaptation_method": raw.get("method of adaption") or raw.get("method of adaptation") or raw.get("adaptation_method"),
-        "number_of_switches": to_int(raw.get("number of switches") or raw.get("number_of_switches")),
-        "hfth_2026": to_bool(raw.get("hfth 2026") or raw.get("hfth_2026"), default=False),
-        "available_to_purchase": to_bool(raw.get("available to purchase as of last update") or raw.get("available_to_purchase"), default=False),
+        "adaptation_method": as_list(
+            raw.get("method of adaption") or raw.get("method of adaptation") or raw.get("adaptation_method")
+        ),
+        "number_of_switches": as_list(raw.get("number of switches") or raw.get("number_of_switches")),
+        # The old template hardcoded the year into the field name itself
+        # ("HFTH 2026: Yes/No"), so a truthy legacy flag always means 2026.
+        "hfth_collection_year": "2026" if hfth_flag else None,
+        "available_to_purchase": to_bool(
+            raw.get("available to purchase as of last update") or raw.get("available_to_purchase"), default=False
+        ),
         "general_notes": raw.get("general notes") or raw.get("general_notes"),
+        "device_uid": raw.get("device uid") or raw.get("device_uid"),
     }
+
+
+def parse_toy_info(info_path: Path | None) -> dict:
+    """
+    Reads a toy's info file - either the current YAML-frontmatter
+    toy_info.md format, or the older flat 'Key: value' line format - and
+    returns a dict in one unified schema regardless of which format was
+    used. Returns {} if the file doesn't exist.
+    """
+    if not info_path or not info_path.exists():
+        return {}
+
+    text = info_path.read_text(encoding="utf-8")
+    frontmatter = extract_frontmatter(text)
+    if frontmatter is not None:
+        return normalize_from_yaml(frontmatter)
+
+    raw = parse_info_txt(info_path)
+    if not raw:
+        return {}
+    return normalize_from_legacy(raw)
 
 
 def find_thumbnail(toy_dir: Path) -> Path | None:
@@ -263,7 +377,7 @@ def build_github_link(category_folder: str, toy_folder: str) -> str:
 # however you like without any code changes. "toy-info.txt" is kept as an
 # exact-match fallback for anyone who set folders up before "toy_info.md"
 # became the convention.
-INFO_FILENAME_PATTERNS = ["toy_info*.md", "toy-info.txt"]
+INFO_FILENAME_PATTERNS = ["toy_info*.md", "toy-info.txt", "info.txt"]
 
 
 def find_info_file(toy_dir: Path) -> Path | None:
@@ -287,7 +401,7 @@ def find_info_file(toy_dir: Path) -> Path | None:
 # the starting point, not a hard restriction on allowed values.
 KNOWN_ACTIVATION_TYPES = ["Press and Hold", "Single Press"]
 KNOWN_ADAPTATION_METHODS = ["Battery Interrupter", "Mono Jack + Wire", "Mono Cable"]
-KNOWN_SWITCH_COUNTS = [1, 2, 3, 4, 5, 6]
+KNOWN_SWITCH_COUNTS = ["1", "2", "3", "4", "5", "6"]
 
 
 def normalize_to_known(value: str, known_list: list[str]) -> str:
@@ -335,11 +449,11 @@ def render_toy_page(toy: dict) -> str:
     if toy.get("tags"):
         meta_rows.append(f"**Tags:** {', '.join(toy['tags'])}")
     if toy.get("activation_type"):
-        meta_rows.append(f"**Activation Type:** {toy['activation_type']}")
+        meta_rows.append(f"**Activation Type:** {', '.join(toy['activation_type'])}")
     if toy.get("adaptation_method"):
-        meta_rows.append(f"**Method of Adaptation:** {toy['adaptation_method']}")
+        meta_rows.append(f"**Method of Adaptation:** {', '.join(toy['adaptation_method'])}")
     if toy.get("number_of_switches"):
-        meta_rows.append(f"**Number of Switches:** {toy['number_of_switches']}")
+        meta_rows.append(f"**Number of Switches:** {', '.join(toy['number_of_switches'])}")
     if toy.get("battery_type"):
         req = toy.get("battery_required")
         inc = toy.get("battery_included")
@@ -360,8 +474,8 @@ def render_toy_page(toy: dict) -> str:
     meta_block = "\n".join(f"- {row}" for row in meta_rows)
 
     hfth_badge = ""
-    if toy.get("hfth_2026"):
-        hfth_badge = '\n<span class="hfth-badge">🎄 HFTH 2026</span>\n'
+    if toy.get("hfth_collection_year"):
+        hfth_badge = f'\n<span class="hfth-badge">🎄 HFTH {toy["hfth_collection_year"]} Collection</span>\n'
 
     notes_block = ""
     if toy.get("general_notes"):
@@ -434,6 +548,7 @@ def main():
     all_activation_types = list(KNOWN_ACTIVATION_TYPES)
     all_adaptation_methods = list(KNOWN_ADAPTATION_METHODS)
     all_switch_counts = list(KNOWN_SWITCH_COUNTS)
+    all_hfth_years = []
     toys = []
 
     category_dirs = sorted(
@@ -453,18 +568,9 @@ def main():
         )
 
         for toy_dir in toy_dirs:
-            info = parse_toy_info(find_info_file(toy_dir))
-            if not info:
-                # Fall back to the old info.txt format, in case some
-                # folders were set up before this richer format existed.
-                legacy = parse_info_txt(toy_dir / "info.txt")
-                if legacy:
-                    info = {
-                        "name": legacy.get("name"),
-                        "link": legacy.get("link"),
-                        "description": legacy.get("description"),
-                    }
-            has_info_file = bool(info)
+            info_file_path = find_info_file(toy_dir)
+            info = parse_toy_info(info_file_path)
+            has_info_file = info_file_path is not None
 
             name = info.get("name") or prettify(toy_dir.name)
             # Category can be overridden by toy-info.txt; otherwise use the
@@ -476,27 +582,38 @@ def main():
             slug = f"{slugify(category_name)}-{slugify(name)}"
 
             # Tags drive the filter bar, and come ONLY from toy_info.md's
-            # "Tags: a, b, c" field - deliberately not tied to which
-            # category folder the toy happens to live in, so a toy can be
-            # tagged e.g. "Bubble, RC" regardless of its folder. A toy
-            # with no Tags line set just has no tags (still shows up
-            # normally when no filters are active).
-            tags = to_list(info.get("tags"))
+            # "tags" field - deliberately not tied to which category
+            # folder the toy happens to live in, so a toy can be tagged
+            # e.g. "Bubble, RC" regardless of its folder. A toy with no
+            # tags set just has no tags (still shows up normally when no
+            # filters are active).
+            tags = info.get("tags") or []
             for t in tags:
                 if t not in all_tags:
                     all_tags.append(t)
 
-            activation_type = normalize_to_known(info.get("activation_type") or "", KNOWN_ACTIVATION_TYPES)
-            if activation_type and activation_type not in all_activation_types:
-                all_activation_types.append(activation_type)
+            activation_types = [
+                normalize_to_known(a, KNOWN_ACTIVATION_TYPES) for a in (info.get("activation_type") or [])
+            ]
+            for a in activation_types:
+                if a and a not in all_activation_types:
+                    all_activation_types.append(a)
 
-            adaptation_method = normalize_to_known(info.get("adaptation_method") or "", KNOWN_ADAPTATION_METHODS)
-            if adaptation_method and adaptation_method not in all_adaptation_methods:
-                all_adaptation_methods.append(adaptation_method)
+            adaptation_methods = [
+                normalize_to_known(m, KNOWN_ADAPTATION_METHODS) for m in (info.get("adaptation_method") or [])
+            ]
+            for m in adaptation_methods:
+                if m and m not in all_adaptation_methods:
+                    all_adaptation_methods.append(m)
 
-            number_of_switches = info.get("number_of_switches")
-            if number_of_switches and number_of_switches not in all_switch_counts:
-                all_switch_counts.append(number_of_switches)
+            number_of_switches = info.get("number_of_switches") or []
+            for s in number_of_switches:
+                if s and s not in all_switch_counts:
+                    all_switch_counts.append(s)
+
+            hfth_year = info.get("hfth_collection_year")
+            if hfth_year and hfth_year not in all_hfth_years:
+                all_hfth_years.append(hfth_year)
 
             thumbnail = find_thumbnail(toy_dir)
             if thumbnail:
@@ -523,11 +640,11 @@ def main():
                 "battery_required": info.get("battery_required"),
                 "battery_included": info.get("battery_included"),
                 "adaptation_inputs": info.get("adaptation_inputs"),
-                "activation_type": activation_type,
+                "activation_type": activation_types,
                 "requires_3d_printing": info.get("requires_3d_printing", False),
-                "adaptation_method": adaptation_method,
+                "adaptation_method": adaptation_methods,
                 "number_of_switches": number_of_switches,
-                "hfth_2026": info.get("hfth_2026", False),
+                "hfth_collection_year": hfth_year,
                 "available_to_purchase": info.get("available_to_purchase", False),
                 "general_notes": info.get("general_notes") or "",
                 "has_info_file": has_info_file,
@@ -561,7 +678,8 @@ def main():
         "window.TOY_FILTERS = {\n"
         f"  activationTypes: {json.dumps(all_activation_types, indent=2)},\n"
         f"  adaptationMethods: {json.dumps(all_adaptation_methods, indent=2)},\n"
-        f"  switchCounts: {json.dumps(all_switch_counts, indent=2)}\n"
+        f"  switchCounts: {json.dumps(all_switch_counts, indent=2)},\n"
+        f"  hfthYears: {json.dumps(sorted(all_hfth_years), indent=2)}\n"
         "};\n"
         f"window.TOY_DATA = {json.dumps(toys, indent=2)};\n"
     )

@@ -23,12 +23,15 @@ Browse switch-adapted toy builds. Use the filters below to narrow down by catego
       <span class="filter-group-label">Number of Switches Required</span>
       <div class="filter-bar" id="filter-bar-switches"></div>
     </div>
+    <div class="filter-group" id="filter-group-hfth">
+      <span class="filter-group-label">HFTH Collection Year</span>
+      <div class="filter-bar" id="filter-bar-hfth"></div>
+    </div>
     <div class="filter-group" id="filter-group-tags">
       <span class="filter-group-label">Other Tags</span>
       <div class="filter-bar" id="filter-bar"></div>
     </div>
     <div class="filter-group filter-toggles">
-      <label class="filter-toggle"><input type="checkbox" onchange="toggleFlag('hfth_2026', this)"> HFTH 2026</label>
       <label class="filter-toggle"><input type="checkbox" onchange="toggleFlag('requires_3d_printing', this)"> Requires 3D Printing</label>
       <label class="filter-toggle"><input type="checkbox" onchange="toggleFlag('available_to_purchase', this)"> Available to Purchase</label>
     </div>
