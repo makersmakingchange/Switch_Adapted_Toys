@@ -21,7 +21,7 @@ Select a resource below to open or download it.
     </div>
 
     <div class="profile-card">
-        <div class="card-image" style="background-image: url('../images/placeholder.png');"></div>
+        <div class="card-image" style="background-image: url('../images/toy_hacking_101.png');"></div>
         <div class="card-content">
             <h3>Maker Guide Template</h3>
             <p>A set of templates that can be used to document how to adapt a toy. </p>

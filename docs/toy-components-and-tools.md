@@ -27,7 +27,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 <div class="component-list">
 
 <div class="component-row">
-  <img src="../images/components/mono-jack-rectangular.png" class="component-image" alt="3.5mm Rectangular Mono Jack" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/reg_mono_jack.jpg" class="component-image" alt="3.5mm Rectangular Mono Jack" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">3.5 mm Rectangular Mono Jack</p>
     <p class="component-notes">The most used mono jack. Solder wires onto the two tabs closest to the cable input.</p>
@@ -39,7 +39,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/mono-jack-square.png" class="component-image" alt="3.5mm Square Mono Jack" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/reg_mono_jack_Use.jpg" class="component-image" alt="3.5mm Square Mono Jack" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">3.5 mm Square Mono Jack</p>
     <p class="component-notes">Solder wires onto the two tabs directly across from each other.</p>
