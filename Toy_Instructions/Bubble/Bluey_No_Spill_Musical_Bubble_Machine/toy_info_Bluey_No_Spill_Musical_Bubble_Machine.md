@@ -2,23 +2,23 @@
 # Fill in the value after each colon, on the SAME line as the field -
 # don't press Enter partway through a value. Leave a field completely
 # blank (nothing after the colon) if you don't have that info yet.
-last_updated: 2026-08-19               # yyyy-mm-dd - date this file was last updated
-tags: [test1, test2]                    # e.g. [Bubble, HFTH] - comma separated, in brackets
+last_updated: 2026-08-21               # yyyy-mm-dd - date this file was last updated
+toy_features:                # keep only the relevant lines below, delete the rest
+  - Sound
+  - Bubble
 activation_type:            # keep only the relevant lines below, delete the rest
   - Press and Hold
-  - Single Press
 requires_3d_printing: No    # Yes or No
 adaptation_method:          # keep only the relevant lines below, delete the rest
-  - Battery Interrupter
   - Mono Jack + Wire
 number_of_switches:         # keep only the relevant lines below, delete the rest
-  - 5
-hfth_collection_year: 2026      # e.g. 2026 - leave blank if never part of a HFTH collection
+  - 1
+hfth_collection_year: 2026       # e.g. 2026 - leave blank if never part of a HFTH collection
 available_to_purchase: Yes  # Yes or No - is the toy still available to purchase?
-toy_purchase_link: https://a.co/d/05CLDlfu          # adds a "Where to Buy This Toy" button if filled in
-toy_purchase_link_alt:      # adds a 2nd purchase button if there's another link
-general_notes: This toy has lots of screws              # any general notes, e.g. "Uses lots of screws."
-device_uid: 10013                 # internal MMC use only - never shown on the site
+toy_purchase_link: https://a.co/d/045pJdCe          # adds a "Where to Buy This Toy" button if filled in
+toy_purchase_link_alt: https://www.realcanadiansuperstore.ca/en/musical-bubble-machine/p/21630035_EA?pc-express-book=1539&utm_source=google&utm_medium=display&utm_campaign=2026-03-19-ld-internal-market-home_ent_outdoor-realcanadiansuperstore-other-national-demandgen-7012269-2026superstorewws-616&utm_content=6182082-cnmg5aak_616_2026_home_entertainment_outdoor_rcss_national_mass_en_localinventory-l03puaab_mass-en&utm_term=&gad_source=1&gad_campaignid=23776657116&gbraid=0AAAAADFbI42qr0f7jsr8Z7orPn3fWbibE&gclid=CjwKCAjw7p_UBhBlEiwAhpIs7_2txzXRA5UXsg-l5CaE2qjV6rSz23rXAARI4i34mp2yzH61AQhD5BoCIF0QAvD_BwE      # adds a 2nd purchase button if there's another link
+general_notes: Has lots of screws.               # any general notes, e.g. "Uses lots of screws."
+device_uid: 10280                  # internal MMC use only - never shown on the site
 name:                        # only fill in to OVERRIDE the auto name - else leave blank
 category:                    # only fill in to OVERRIDE the auto category - else leave blank
 link:                        # only fill in to OVERRIDE the auto GitHub link - else leave blank
