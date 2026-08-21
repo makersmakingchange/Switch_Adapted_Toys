@@ -32,7 +32,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
     <p class="component-name">3.5 mm Rectangular Mono Jack</p>
     <p class="component-notes">The most used mono jack. Solder wires onto the two tabs closest to the cable input.</p>
     <div class="component-example">
-      <img src="../images/components/reg_mono_jack_Use.jpg" alt="Rectangular mono jack wired example" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+      <img src="../images/reg_mono_jack_Use.jpg" alt="Rectangular mono jack wired example" onerror="this.onerror=null;this.src='../images/placeholder.png';">
       <span>Example: wires soldered onto the two tabs closest to the cable input</span>
     </div>
   </div>
@@ -44,17 +44,17 @@ This is a list of commonly used components and tools for switch adapting toys. M
     <p class="component-name">3.5 mm Square Mono Jack</p>
     <p class="component-notes">Solder wires onto the two tabs directly across from each other.</p>
     <div class="component-example">
-      <img src="../images/components/square_mono_use.jpg" alt="Square mono jack wired example" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+      <img src="../images/square_mono_use.jpg" alt="Square mono jack wired example" onerror="this.onerror=null;this.src='../images/placeholder.png';">
       <span>Example: wires soldered onto the two tabs directly across from each other</span>
     </div>
   </div>
 </div>
 
 <div class="component-row">
-  <img src="../images/components/wire-22awg.png" class="component-image" alt="22 AWG Wire" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/flat_mono_jack.jpg" class="component-image" alt="3.5mm Mono Jack Flat Rectangular" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
-    <p class="component-name">22 AWG Wire</p>
-    <p class="component-notes">Any 22 AWG silicone wire will work.</p>
+    <p class="component-name">3.5 mm Mono Jack Flat Rectangular</p>
+    <p class="component-notes">3.5 mm Flat Mono Jack</p>
   </div>
 </div>
 
@@ -65,7 +65,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 <div class="component-list">
 
 <div class="component-row">
-  <img src="../images/components/cable-mono-1ft.png" class="component-image" alt="3.5mm F/Bare Mono Cable (1ft)" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/mono_cable.jpg" class="component-image" alt="3.5mm F/Bare Mono Cable (1ft)" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">3.5 mm F/Bare Mono Cable (1 ft)</p>
     <span class="component-price">~$20.22 CAD / 10-pack</span>
@@ -74,13 +74,13 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/cable-stereo-1ft.png" class="component-image" alt="3.5mm F/Bare Stereo Cable (1ft)" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/stereo_cable.jpg" class="component-image" alt="3.5mm F/Bare Stereo Cable (1ft)" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">3.5 mm F/Bare Stereo Cable (1 ft)</p>
     <span class="component-price">~$10.99 CAD / 10-pack</span>
     <p class="component-notes">To use as a mono cable: fully strip the insulation off the white wire, and 0.5 cm from the red and black wires. Wrap the exposed wire around the red cable.</p>
     <div class="component-example">
-      <img src="../images/components/cable-stereo-1ft-example.png" alt="Stereo cable stripped and wrapped as a mono cable" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+      <img src="../images/stereo_cable_hack.jpg" alt="Stereo cable stripped and wrapped as a mono cable" onerror="this.onerror=null;this.src='../images/placeholder.png';">
       <span>Example: stripped and wrapped to use as a mono cable</span>
     </div>
   </div>
@@ -93,20 +93,13 @@ This is a list of commonly used components and tools for switch adapting toys. M
 <div class="component-list">
 
 <div class="component-row">
-  <img src="../images/components/battery-interrupter-flex-pcb.png" class="component-image" alt="Flex PCB" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/flex_pcb.jpg" class="component-image" alt="Flex PCB" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Flex PCB</p>
     <p class="component-notes">Request directly from Makers Making Change.</p>
   </div>
 </div>
 
-<div class="component-row">
-  <img src="../images/components/battery-interrupter-mono-jack-flat.png" class="component-image" alt="3.5mm Mono Jack Flat Rectangular" onerror="this.onerror=null;this.src='../images/placeholder.png';">
-  <div class="component-content">
-    <p class="component-name">3.5 mm Mono Jack Flat Rectangular</p>
-    <p class="component-notes">The Flex PCB is soldered onto this mono jack.</p>
-  </div>
-</div>
 
 </div>
 
@@ -115,7 +108,15 @@ This is a list of commonly used components and tools for switch adapting toys. M
 <div class="component-list">
 
 <div class="component-row">
-  <img src="../images/components/capacitor-103.png" class="component-image" alt="10,000 pf (103) Capacitor" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/wire.jpg" class="component-image" alt="22 AWG Wire" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <div class="component-content">
+    <p class="component-name">22 AWG Wire</p>
+    <p class="component-notes">Any 22 AWG silicone wire will work.</p>
+  </div>
+</div>
+
+<div class="component-row">
+  <img src="../images/capacitor_103.jpg" class="component-image" alt="10,000 pf (103) Capacitor" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">10,000 pf (103) Capacitor</p>
     <p class="component-notes">Used for adapting multiple RC cars, including the Amazon Dinosaur RC Car, the Prextex RC Race and Police Car, and the Prextex RC Truck and Tractor.</p>
@@ -123,7 +124,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/toggle-switch.png" class="component-image" alt="Toggle Switch" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/toggle_switch.jpg" class="component-image" alt="Toggle Switch" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Toggle Switch</p>
     <span class="component-price">~$15.98 CAD / 10-pack</span>
@@ -138,7 +139,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 <div class="component-list">
 
 <div class="component-row">
-  <img src="../images/components/soldering-kit.png" class="component-image" alt="Soldering Kit" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/soldering_kit.jpg" class="component-image" alt="Soldering Kit" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Soldering Kit</p>
     <span class="component-price">~$39.99 CAD</span>
@@ -147,7 +148,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/wire-strippers.png" class="component-image" alt="Wire Strippers" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/wire_strippers.jpg" class="component-image" alt="Wire Strippers" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Wire Strippers</p>
     <span class="component-price">~$21.43 CAD</span>
@@ -156,7 +157,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/multi-head-screwdriver.png" class="component-image" alt="Multi Head Screwdriver" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/screwdriver.jpg" class="component-image" alt="Multi Head Screwdriver" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Multi Head Screwdriver</p>
     <span class="component-price">~$31.77 CAD</span>
@@ -165,7 +166,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/cable-tie.png" class="component-image" alt="Cable Tie" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/cable_tie.jpg" class="component-image" alt="Cable Tie" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Cable Tie</p>
     <span class="component-price">~$10.99 CAD</span>
@@ -174,7 +175,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/flush-cutter.png" class="component-image" alt="Flush Cutter" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/flush_cutter.jpg" class="component-image" alt="Flush Cutter" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Flush Cutter</p>
     <p class="component-notes">Used to cut wires. Already included in the soldering kit above.</p>
@@ -182,7 +183,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/drill-and-bits.png" class="component-image" alt="Drill and Drill Bits" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/drill.jpg" class="component-image" alt="Drill and Drill Bits" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Drill and Drill Bits</p>
     <span class="component-price">~$69.99 CAD</span>
@@ -191,7 +192,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/safety-glasses.png" class="component-image" alt="Safety Glasses" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/saftey_glasses.jpg" class="component-image" alt="Safety Glasses" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Safety Glasses</p>
     <span class="component-price">~$39.50 CAD / pack of 28</span>
@@ -200,7 +201,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/silicone-mat-canadian-tire.png" class="component-image" alt="Silicone Mat (Canadian Tire)" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/mat.jpg" class="component-image" alt="Silicone Mat (Canadian Tire)" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Silicone Mat</p>
     <span class="component-price">~$9.99 CAD (often on sale for $5)</span>
@@ -209,7 +210,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/silicone-mat-amazon.png" class="component-image" alt="Silicone Mat (personal workstation)" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/mat_big.jpg" class="component-image" alt="Silicone Mat (personal workstation)" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Silicone Mat (Personal Workstation)</p>
     <span class="component-price">~$25.99 CAD</span>
@@ -218,7 +219,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/pliers.png" class="component-image" alt="Pliers" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/plyers.jpg" class="component-image" alt="Pliers" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Pliers</p>
     <span class="component-price">~$11.99 CAD</span>
@@ -226,7 +227,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/long-nose-pliers.png" class="component-image" alt="Long Nose Pliers" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/plyers_long.jpg" class="component-image" alt="Long Nose Pliers" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Long Nose Pliers</p>
     <span class="component-price">~$11.99 CAD</span>
@@ -234,7 +235,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/multimeter.png" class="component-image" alt="Multimeter" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/multimeter.jpg" class="component-image" alt="Multimeter" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Multimeter</p>
     <span class="component-price">~$23.99 CAD</span>
@@ -243,7 +244,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/electrical-tape.png" class="component-image" alt="Electrical Tape" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/tape.jpg" class="component-image" alt="Electrical Tape" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Electrical Tape</p>
     <span class="component-price">~$4.70 CAD</span>
@@ -252,7 +253,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/helping-hands.png" class="component-image" alt="Helping Hands" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/helping_hands.png" class="component-image" alt="Helping Hands" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Helping Hands</p>
     <span class="component-price">~$29.99 CAD</span>
@@ -261,7 +262,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/hot-glue-gun.png" class="component-image" alt="Hot Glue Gun" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/glue_gun.jpg" class="component-image" alt="Hot Glue Gun" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Hot Glue Gun</p>
     <span class="component-price">~$19.99 CAD</span>
@@ -269,7 +270,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/components/needle-and-thread.png" class="component-image" alt="Needle and Thread" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/thread.jpg" class="component-image" alt="Needle and Thread" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Needle and Thread</p>
     <p class="component-notes">Sometimes needed to close plush toys back up.</p>
