@@ -80,7 +80,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
     <span class="component-price">~$10.99 CAD / 10-pack</span>
     <p class="component-notes">To use as a mono cable: fully strip the insulation off the white wire, and 0.5 cm from the red and black wires. Wrap the exposed wire around the red cable.</p>
     <div class="component-example">
-      <img src="../images/stereo_cable_hack.jpg" alt="Stereo cable stripped and wrapped as a mono cable" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+      <img src="../images/stereo_cable_hack.png" alt="Stereo cable stripped and wrapped as a mono cable" onerror="this.onerror=null;this.src='../images/placeholder.png';">
       <span>Example: stripped and wrapped to use as a mono cable</span>
     </div>
   </div>
@@ -166,7 +166,7 @@ This is a list of commonly used components and tools for switch adapting toys. M
 </div>
 
 <div class="component-row">
-  <img src="../images/cable_tie.jpg" class="component-image" alt="Cable Tie" onerror="this.onerror=null;this.src='../images/placeholder.png';">
+  <img src="../images/cable_tie.png" class="component-image" alt="Cable Tie" onerror="this.onerror=null;this.src='../images/placeholder.png';">
   <div class="component-content">
     <p class="component-name">Cable Tie</p>
     <span class="component-price">~$10.99 CAD</span>
