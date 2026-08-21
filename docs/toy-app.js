@@ -20,7 +20,7 @@
 // actually re-runs on every navigation - safely, since it just rebuilds
 // the grid from scratch each time rather than accumulating state.
 
-// Data comes from window.TOY_TAGS and window.TOY_DATA,
+// Data comes from window.TOY_FEATURES and window.TOY_DATA,
 // which are generated automatically by scripts/generate_toy_data.py
 // during the site build - see docs/js/toy-data.js (auto-generated, do not edit).
 
@@ -40,7 +40,7 @@ function getSiteBase() {
 
 let SITE_BASE = "";
 
-let activeFilters = new Set();       // Tags
+let activeFeatures = new Set();      // Toy Features
 let activeActivation = new Set();    // Activation Type
 let activeMethod = new Set();        // Method of Adaptation
 let activeSwitchCount = new Set();   // Number of Switches (stored as strings)
@@ -54,8 +54,8 @@ function handleToySearch(value) {
 }
 
 function buildFilterBar() {
-  const tags = window.TOY_TAGS || [];
-  buildChipGroup("filter-bar", "filter-group-tags", tags, "tags");
+  const features = window.TOY_FEATURES || [];
+  buildChipGroup("filter-bar-features", "filter-group-features", features, "features");
 
   const filters = window.TOY_FILTERS || {};
   buildChipGroup("filter-bar-activation", "filter-group-activation", filters.activationTypes || [], "activation");
@@ -86,7 +86,7 @@ function buildChipGroup(barId, groupId, values, groupKey) {
 
 function toggleGroupFilter(groupKey, checkbox) {
   const setMap = {
-    tags: activeFilters,
+    features: activeFeatures,
     activation: activeActivation,
     method: activeMethod,
     switches: activeSwitchCount,
@@ -120,7 +120,7 @@ function toggleMoreFilters() {
 }
 
 function clearToyFilters() {
-  activeFilters.clear();
+  activeFeatures.clear();
   activeActivation.clear();
   activeMethod.clear();
   activeSwitchCount.clear();
@@ -138,7 +138,7 @@ function renderToyCards() {
   const toys = window.TOY_DATA || [];
 
   let visibleToys = toys.filter(t => {
-    if (activeFilters.size > 0 && !(t.tags || []).some(tag => activeFilters.has(tag))) return false;
+    if (activeFeatures.size > 0 && !(t.toy_features || []).some(f => activeFeatures.has(f))) return false;
     if (activeActivation.size > 0 && !(t.activation_type || []).some(v => activeActivation.has(v))) return false;
     if (activeMethod.size > 0 && !(t.adaptation_method || []).some(v => activeMethod.has(v))) return false;
     if (activeSwitchCount.size > 0 && !(t.number_of_switches || []).some(v => activeSwitchCount.has(String(v)))) return false;
@@ -177,7 +177,7 @@ function renderToyCards() {
 function initToyApp() {
   if (!document.getElementById("toy-grid")) return;
   SITE_BASE = getSiteBase();
-  activeFilters = new Set();
+  activeFeatures = new Set();
   activeActivation = new Set();
   activeMethod = new Set();
   activeSwitchCount = new Set();

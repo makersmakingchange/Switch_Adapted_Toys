@@ -217,13 +217,26 @@ def extract_frontmatter(text: str) -> dict | None:
 
 def as_list(value) -> list[str]:
     """Normalizes a YAML value (None / scalar / list) into a clean list
-    of non-empty strings, e.g. for tags, activation_type, etc."""
+    of non-empty strings, e.g. for toy_features, activation_type, etc."""
     if value is None:
         return []
     if isinstance(value, list):
         return [str(v).strip() for v in value if v is not None and str(v).strip() != ""]
     s = str(value).strip()
     return [s] if s else []
+
+
+def merge_lists(*lists) -> list[str]:
+    """Combines several lists into one, de-duplicated, preserving order.
+    Used to merge the current 'toy_features' field with the older 'tags'
+    field name, so any toy already using 'tags' keeps working without
+    needing to be manually migrated."""
+    seen: list[str] = []
+    for lst in lists:
+        for item in lst:
+            if item not in seen:
+                seen.append(item)
+    return seen
 
 
 def as_str(value) -> str | None:
@@ -272,7 +285,7 @@ def normalize_from_yaml(raw: dict) -> dict:
         "available": to_bool(raw.get("available")),
         "last_update": as_str(raw.get("last_updated")),
         "category": as_short_str(raw.get("category"), "category"),
-        "tags": as_list(raw.get("tags")),
+        "toy_features": merge_lists(as_list(raw.get("toy_features")), as_list(raw.get("tags"))),
         "link": as_str(raw.get("link")),
         "toy_purchase_link": clean_url(as_str(raw.get("toy_purchase_link"))),
         "toy_purchase_link_alt": clean_url(as_str(raw.get("toy_purchase_link_alt"))),
@@ -309,7 +322,9 @@ def normalize_from_legacy(raw: dict) -> dict:
             or raw.get("last_update")
         ),
         "category": as_short_str(raw.get("category"), "category"),
-        "tags": to_list(raw.get("tags")),
+        "toy_features": merge_lists(
+            to_list(raw.get("toy features") or raw.get("toy_features")), to_list(raw.get("tags"))
+        ),
         "link": raw.get("link"),
         "toy_purchase_link": clean_url(raw.get("toy purchase link") or raw.get("toy_purchase_link")),
         "toy_purchase_link_alt": clean_url(
@@ -421,7 +436,11 @@ def find_info_file(toy_dir: Path) -> Path | None:
 # has that ISN'T in these lists still gets added as its own filter
 # option (see the "add if new" logic in main()); these lists are just
 # the starting point, not a hard restriction on allowed values.
-KNOWN_ACTIVATION_TYPES = ["Press and Hold", "Single Press"]
+KNOWN_TOY_FEATURES = [
+    "Music", "Sound", "Light", "Vibration", "Movement",
+    "Bubble", "RC", "Lamp/Projector", "Blaster", "Water",
+]
+KNOWN_ACTIVATION_TYPES = ["Press and Hold", "Single Press", "Latch"]
 KNOWN_ADAPTATION_METHODS = ["Battery Interrupter", "Mono Jack + Wire", "Mono Cable"]
 KNOWN_SWITCH_COUNTS = ["1", "2", "3", "4", "5", "6"]
 
@@ -468,8 +487,8 @@ def render_toy_page(toy: dict) -> str:
     zip_rel = f"../../downloads/{toy['slug']}.zip"
 
     meta_rows = []
-    if toy.get("tags"):
-        meta_rows.append(f"**Tags:** {', '.join(toy['tags'])}")
+    if toy.get("toy_features"):
+        meta_rows.append(f"**Toy Features:** {', '.join(toy['toy_features'])}")
     if toy.get("activation_type"):
         meta_rows.append(f"**Activation Type:** {', '.join(toy['activation_type'])}")
     if toy.get("adaptation_method"):
@@ -566,7 +585,7 @@ def main():
     TOY_PAGES_OUT_DIR.mkdir(parents=True, exist_ok=True)
     DOWNLOADS_OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    all_tags = []
+    all_toy_features = list(KNOWN_TOY_FEATURES)
     all_activation_types = list(KNOWN_ACTIVATION_TYPES)
     all_adaptation_methods = list(KNOWN_ADAPTATION_METHODS)
     all_switch_counts = list(KNOWN_SWITCH_COUNTS)
@@ -603,16 +622,20 @@ def main():
 
             slug = f"{slugify(category_name)}-{slugify(name)}"
 
-            # Tags drive the filter bar, and come ONLY from toy_info.md's
-            # "tags" field - deliberately not tied to which category
-            # folder the toy happens to live in, so a toy can be tagged
-            # e.g. "Bubble, RC" regardless of its folder. A toy with no
-            # tags set just has no tags (still shows up normally when no
-            # filters are active).
-            tags = info.get("tags") or []
-            for t in tags:
-                if t not in all_tags:
-                    all_tags.append(t)
+            # Toy Features drive the filter bar, and come from
+            # toy_info.md's "toy_features" field (or the older "tags"
+            # field name, merged in for backwards compatibility) -
+            # deliberately not tied to which category folder the toy
+            # happens to live in, so a toy can have e.g. "Bubble, RC"
+            # regardless of its folder. A toy with none set just has no
+            # features (still shows up normally when no filters are
+            # active).
+            toy_features = [
+                normalize_to_known(f, KNOWN_TOY_FEATURES) for f in (info.get("toy_features") or [])
+            ]
+            for f in toy_features:
+                if f and f not in all_toy_features:
+                    all_toy_features.append(f)
 
             activation_types = [
                 normalize_to_known(a, KNOWN_ACTIVATION_TYPES) for a in (info.get("activation_type") or [])
@@ -654,7 +677,7 @@ def main():
                 "toy_purchase_link": clean_url(info.get("toy_purchase_link")) or "",
                 "toy_purchase_link_alt": clean_url(info.get("toy_purchase_link_alt")) or "",
                 "category": category_name,
-                "tags": tags,
+                "toy_features": toy_features,
                 "description": description,
                 "available": info.get("available", True),
                 "last_update": info.get("last_update") or "",
@@ -688,7 +711,7 @@ def main():
 
             toys.append(toy)
 
-    all_tags = sorted(all_tags)
+    all_toy_features = sorted(all_toy_features)
     # activation types / adaptation methods / switch counts are left in
     # their seeded order (template order, with any brand-new values
     # encountered in the data appended after) rather than re-sorted, so
@@ -696,7 +719,7 @@ def main():
 
     js_content = (
         "// AUTO-GENERATED by scripts/generate_toy_data.py - do not edit by hand.\n"
-        f"window.TOY_TAGS = {json.dumps(all_tags, indent=2)};\n"
+        f"window.TOY_FEATURES = {json.dumps(all_toy_features, indent=2)};\n"
         "window.TOY_FILTERS = {\n"
         f"  activationTypes: {json.dumps(all_activation_types, indent=2)},\n"
         f"  adaptationMethods: {json.dumps(all_adaptation_methods, indent=2)},\n"
@@ -707,7 +730,7 @@ def main():
     )
     JS_OUT_PATH.write_text(js_content, encoding="utf-8")
 
-    print(f"Generated {len(toys)} toy cards across {len(all_tags)} tags.")
+    print(f"Generated {len(toys)} toy cards across {len(all_toy_features)} toy features.")
     print(f"-> {JS_OUT_PATH.relative_to(REPO_ROOT)}")
     print(f"-> {len(toys)} detail pages in {TOY_PAGES_OUT_DIR.relative_to(REPO_ROOT)}/")
     print(f"-> {len(toys)} zip downloads in {DOWNLOADS_OUT_DIR.relative_to(REPO_ROOT)}/")

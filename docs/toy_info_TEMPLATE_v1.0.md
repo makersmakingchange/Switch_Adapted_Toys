@@ -3,10 +3,21 @@
 # don't press Enter partway through a value. Leave a field completely
 # blank (nothing after the colon) if you don't have that info yet.
 last_updated:               # yyyy-mm-dd - date this file was last updated
-tags: []                    # e.g. [Bubble, HFTH] - comma separated, in brackets
+toy_features:                # keep only the relevant lines below, delete the rest
+  - Music
+  - Sound
+  - Light
+  - Vibration
+  - Movement
+  - Bubble
+  - RC
+  - Lamp/Projector
+  - Blaster
+  - Water
 activation_type:            # keep only the relevant lines below, delete the rest
   - Press and Hold
   - Single Press
+  - Latch
 requires_3d_printing: No    # Yes or No
 adaptation_method:          # keep only the relevant lines below, delete the rest
   - Battery Interrupter
