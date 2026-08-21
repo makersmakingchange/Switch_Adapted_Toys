@@ -16,7 +16,7 @@ number_of_switches:         # keep only the relevant lines below, delete the res
 hfth_collection_year: 2026       # e.g. 2026 - leave blank if never part of a HFTH collection
 available_to_purchase: Yes  # Yes or No - is the toy still available to purchase?
 toy_purchase_link: https://a.co/d/045pJdCe          # adds a "Where to Buy This Toy" button if filled in
-toy_purchase_link_alt: https://www.realcanadiansuperstore.ca/en/musical-bubble-machine/p/21630035_EA?pc-express-book=1539&utm_source=google&utm_medium=display&utm_campaign=2026-03-19-ld-internal-market-home_ent_outdoor-realcanadiansuperstore-other-national-demandgen-7012269-2026superstorewws-616&utm_content=6182082-cnmg5aak_616_2026_home_entertainment_outdoor_rcss_national_mass_en_localinventory-l03puaab_mass-en&utm_term=&gad_source=1&gad_campaignid=23776657116&gbraid=0AAAAADFbI42qr0f7jsr8Z7orPn3fWbibE&gclid=CjwKCAjw7p_UBhBlEiwAhpIs7_2txzXRA5UXsg-l5CaE2qjV6rSz23rXAARI4i34mp2yzH61AQhD5BoCIF0QAvD_BwE      # adds a 2nd purchase button if there's another link
+toy_purchase_link_alt: https://www.realcanadiansuperstore.ca/en/musical-bubble-machine/p/21630035_EA    # adds a 2nd purchase button if there's another link
 general_notes: Has lots of screws.               # any general notes, e.g. "Uses lots of screws."
 device_uid: 10280                  # internal MMC use only - never shown on the site
 name:                        # only fill in to OVERRIDE the auto name - else leave blank
