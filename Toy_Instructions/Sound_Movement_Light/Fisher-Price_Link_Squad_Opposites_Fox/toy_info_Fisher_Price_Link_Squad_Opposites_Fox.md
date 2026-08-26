@@ -24,7 +24,7 @@ category:                    # only fill in to OVERRIDE the auto category - else
 link:                        # only fill in to OVERRIDE the auto GitHub link - else leave blank
 battery_type: AA
 battery_required: 2
-battery_included: yes
+battery_included: 2
 ---
 
 Every child deserves to play. But for many kids with disabilities, toys can be hard to use independently, and commercially adapted versions can run upwards of $300. However, with a little bit of tinkering, we can switch-adapt toys and make them accessible for a fraction of the cost.
