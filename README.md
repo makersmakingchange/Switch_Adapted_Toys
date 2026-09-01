@@ -1,6 +1,6 @@
 # Switch Adapted Toys Website
 
-THIS IS A WORK IN PROGRESS. We are creating a site to host this github for it to have a better user experience.
+Click this link to access the website: https://makersmakingchange.github.io/Switch_Adapted_Toys/
 
 
 ## License
