@@ -6,6 +6,7 @@ last_updated: 2026-08-21               # yyyy-mm-dd - date this file was last up
 toy_features:                # keep only the relevant lines below, delete the rest
   - Movement
   - Sound
+  - French instructions
 activation_type:            # keep only the relevant lines below, delete the rest
   - Single Press
 requires_3d_printing: No    # Yes or No
