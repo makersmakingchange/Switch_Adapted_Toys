@@ -16,7 +16,7 @@ number_of_switches:         # keep only the relevant lines below, delete the res
 hfth_collection_year:       # e.g. 2026 - leave blank if never part of a HFTH collection
 available_to_purchase: Yes  # Yes or No - is the toy still available to purchase?
 toy_purchase_link: https://www.walmart.ca/en/ip/Spark-Create-Imagine-Peek-a-Boo-Koala/6000208880006?classType=REGULAR&from=/search          # adds a "Where to Buy This Toy" button if filled in
-toy_purchase_link_alt:      # adds a 2nd purchase button if there's another link
+toy_purchase_link_alt: https://www.walmart.ca/en/ip/Spark-Create-Imagine-Peek-A-Boo-Elephant/6000207307778?classType=REGULAR&from=/search     # adds a 2nd purchase button if there's another link
 general_notes: Moderate -Board hard to solder to               # any general notes, e.g. "Uses lots of screws."
 device_uid:                  # internal MMC use only - never shown on the site
 name:                        # only fill in to OVERRIDE the auto name - else leave blank
