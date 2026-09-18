@@ -8,7 +8,7 @@ toy_features:                # keep only the relevant lines below, delete the re
   - Sound
 activation_type:            # keep only the relevant lines below, delete the rest
   - Single Press
-requires_3d_printing: Yes    # Yes or No
+requires_3d_printing: No    # Yes or No
 adaptation_method:          # keep only the relevant lines below, delete the rest
   - Mono Cable
 number_of_switches:         # keep only the relevant lines below, delete the rest
