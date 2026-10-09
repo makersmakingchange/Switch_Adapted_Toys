@@ -15,9 +15,9 @@ number_of_switches:         # keep only the relevant lines below, delete the res
   - 1
 hfth_collection_year: 2026       # e.g. 2026 - leave blank if never part of a HFTH collection
 available_to_purchase: Yes  # Yes or No - is the toy still available to purchase?
-toy_purchase_link: https://www.walmart.ca/en/ip/Crayola-Marker-Airbrush-Art-Kit/1HPWVN49J48X         # adds a "Where to Buy This Toy" button if filled in
-toy_purchase_link_alt: https://www.amazon.ca/Crayola-45205-Marker-Airbrush/dp/B0F6T2XWJL/ref=asc_df_B0F6T2XWJL     # adds a 2nd purchase button if there's another link
-general_notes: Requires a triangle screwdriver              # any general notes, e.g. "Uses lots of screws."
+toy_purchase_link: https://www.amazon.ca/dp/B0CJYKM4FT         # adds a "Where to Buy This Toy" button if filled in
+toy_purchase_link_alt:     # adds a 2nd purchase button if there's another link
+general_notes:               # any general notes, e.g. "Uses lots of screws."
 device_uid:                  # internal MMC use only - never shown on the site
 name:                        # only fill in to OVERRIDE the auto name - else leave blank
 category:                    # only fill in to OVERRIDE the auto category - else leave blank
@@ -25,7 +25,7 @@ link:                        # only fill in to OVERRIDE the auto GitHub link - e
 battery_type: AA
 battery_required: 4
 battery_included:            # number of batteries included
-contributers: Shanelle Gilman             # names of contributers to the instructions / this design
+contributers:              # names of contributers to the instructions / this design
 ---
 
 Every child deserves to play. But for many kids with disabilities, toys can be hard to use independently, and commercially adapted versions can run upwards of $300. However, with a little bit of tinkering, we can switch-adapt toys and make them accessible for a fraction of the cost.
