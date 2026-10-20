@@ -2,7 +2,7 @@
 # Fill in the value after each colon, on the SAME line as the field -
 # don't press Enter partway through a value. Leave a field completely
 # blank (nothing after the colon) if you don't have that info yet.
-last_updated: 2026-08-21               # yyyy-mm-dd - date this file was last updated
+last_updated: 2026-10-20               # yyyy-mm-dd - date this file was last updated
 toy_features:                # keep only the relevant lines below, delete the rest
   - Movement
   - Sound
@@ -15,16 +15,16 @@ number_of_switches:         # keep only the relevant lines below, delete the res
   - 2
 hfth_collection_year:       # e.g. 2026 - leave blank if never part of a HFTH collection
 available_to_purchase: Yes  # Yes or No - is the toy still available to purchase?
-toy_purchase_link: https://www.walmart.ca/en/ip/Spark-Create-Imagine-Peek-a-Boo-Koala/6000208880006?classType=REGULAR&from=/search          # adds a "Where to Buy This Toy" button if filled in
-toy_purchase_link_alt: https://www.walmart.ca/en/ip/Spark-Create-Imagine-Peek-A-Boo-Elephant/6000207307778?classType=REGULAR&from=/search     # adds a 2nd purchase button if there's another link
-general_notes: Moderate -Board hard to solder to               # any general notes, e.g. "Uses lots of screws."
+toy_purchase_link: https://www.walmart.ca/en/ip/Spark-Create-Imagine-Peek-a-Boo-Koala/6000208880006          # adds a "Where to Buy This Toy" button if filled in
+toy_purchase_link_alt: https://www.walmart.ca/en/ip/Spark-Create-Imagine-Peek-A-Boo-Elephant/6000207307778 # adds a 2nd purchase button if there's another link
+general_notes: Moderate                # any general notes, e.g. "Uses lots of screws."
 device_uid:                  # internal MMC use only - never shown on the site
 name:                        # only fill in to OVERRIDE the auto name - else leave blank
 category:                    # only fill in to OVERRIDE the auto category - else leave blank
 link:                        # only fill in to OVERRIDE the auto GitHub link - else leave blank
 battery_type: AA
 battery_required: 3
-battery_included:
+battery_included: 3
 ---
 
 Every child deserves to play. But for many kids with disabilities, toys can be hard to use independently, and commercially adapted versions can run upwards of $300. However, with a little bit of tinkering, we can switch-adapt toys and make them accessible for a fraction of the cost.
